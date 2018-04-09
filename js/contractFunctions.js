@@ -17,29 +17,7 @@ const contractFunctions = function() {
     }
     return i.toString();
   }
-  
-  function keccak256(...args) {
-    args = args.map(arg => {
-      if (typeof arg === 'string') {
-         if (arg.substring(0, 2) === '0x') {
-           return arg.slice(2)
-        } else {
-            return web3.toHex(arg).slice(2)
-        }
-      }
-
-      if (typeof arg === 'number') {
-        return leftPad((arg).toString(16), 64, 0)
-      } else {
-        return ''
-      }
-    })
-
-    args = args.join('')
-
-    return web3.sha3(args, { encoding: 'hex' })
-  }   
-  
+    
   function getBalance(callback) {    
     let userAddress = localStorage.getItem("userAddress");
     contract.userBalance.call(userAddress, function(err,val) {
@@ -60,8 +38,34 @@ const contractFunctions = function() {
     contract.table.call(hash, function(err,val) {
       if(!err)
       console.log(val);  
+    })      let order = JSON.parse(decodeURI(localStorage.getItem("order"))); 
+    let ante = order['ante'];
+    let deadline = order['deadline'];
+    let betWindow = order['betWindow'];
+    let nonce = order['nonce'];
+    let contractAddress = contract.address;
+    let hash = web3.sha3(contractAddress.slice(2),web3.toHex(ante),web3.toHex(deadline),web3.toHex(betWindow),web3.toHex(nonce));
+    console.log(hash);
+    contract.table.call(hash, function(err,val) {
+      if(!err)
+      console.log(val);  
     })    
   }
+  
+  function hasGameAlreadyBeenCreated() {
+    let order = JSON.parse(decodeURI(localStorage.getItem("order"))); 
+    let ante = order['ante'];
+    let deadline = order['deadline'];
+    let betWindow = order['betWindow'];
+    let nonce = order['nonce'];
+    let contractAddress = contract.address;
+    let hash = web3.sha3(contractAddress.slice(2),web3.toHex(ante),web3.toHex(deadline),web3.toHex(betWindow),web3.toHex(nonce));
+    console.log(hash);
+    contract.hasGameAlreadyBeenCreated.call(hash, function(err,val) {
+      if(!err)
+      console.log(val);  
+    })      
+  }  
   
   function createGameLink(args) {
     let ante = toFixedNumber(parseFloat(args[0])*Math.pow(10,18));
@@ -190,7 +194,8 @@ const contractFunctions = function() {
     withdrawAnte,
     getInitialCards,
     bet,
-    getGameStruct
+    getGameStruct,
+    hasGameAlreadyBeenCreated
   };
   
 }();
