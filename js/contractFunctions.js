@@ -38,9 +38,7 @@ const contractFunctions = function() {
     args = args.join('')
 
     return web3.sha3(args, { encoding: 'hex' })
-  }
-
-    
+  }   
   
   function getBalance(callback) {    
     let userAddress = localStorage.getItem("userAddress");
@@ -51,7 +49,7 @@ const contractFunctions = function() {
   }
   
   function getGameStruct() {
-    let order = JSON.parse(localStorage.getItem("orderJSON")); 
+    let order = JSON.parse(decodeURI(localStorage.getItem("orderJSON"))); 
     let ante = order['ante'];
     let deadline = order['deadline'];
     let betWindow = order['betWindow'];
