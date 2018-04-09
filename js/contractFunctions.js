@@ -16,32 +16,20 @@ const contractFunctions = function() {
     }
     return i.toString();
   }
+ 
+  function getGameHash(callback) {
+    let order = JSON.parse(decodeURI(localStorage.getItem("order"))); 
+    let ante = order['ante'];
+    let deadline = order['deadline'];
+    let betWindow = order['betWindow'];
+    let nonce = order['nonce'];
+    let contractAddress = contract.address;
+    contract.getGameHash(ante,deadline,betWindow,nonce,contractAddress, function(err,val) {
+      if(!err)
+      callback(val)
+    })
+  }
   
-  function keccak256(...args) {
-    args = args.map(arg => {
-    if (typeof arg === 'string') {
-      if (arg.substring(0, 2) === '0x') {
-          console.log(arg.slice(2));
-          return arg.slice(2)
-      } else {
-          console.log(web3.toHex(arg).slice(2));
-          return web3.toHex(arg).slice(2)
-      }
-    }
-
-    if (typeof arg === 'number') {
-      console.log(arg.toString(16).padStart(64,0));
-      return arg.toString(16).padStart(64,0);
-    } else {
-      return ''
-    }
-  })
-
-  args = args.join('')
-
-  return web3.sha3(args, { encoding: 'hex' })
-}
-    
   function getBalance(callback) {    
     let userAddress = localStorage.getItem("userAddress");
     contract.userBalance.call(userAddress, function(err,val) {
@@ -51,14 +39,6 @@ const contractFunctions = function() {
   }
   
   function getGameStruct() {
-    let order = JSON.parse(decodeURI(localStorage.getItem("order"))); 
-    let ante = order['ante'];
-    let deadline = order['deadline'];
-    let betWindow = order['betWindow'];
-    let nonce = order['nonce'];
-    let contractAddress = contract.address;
-    let hash = keccak256(contractAddress,web3.toBigNumber(ante),deadline,betWindow,nonce);
-    console.log(order,hash);
     contract.table.call(hash, function(err,val) {
       if(!err)
       console.log(val);  
@@ -66,14 +46,6 @@ const contractFunctions = function() {
   }  
   
   function hasGameAlreadyBeenCreated() {
-    let order = JSON.parse(decodeURI(localStorage.getItem("order"))); 
-    let ante = order['ante'];
-    let deadline = order['deadline'];
-    let betWindow = order['betWindow'];
-    let nonce = order['nonce'];
-    let contractAddress = contract.address;
-    let hash = keccak256(contractAddress,web3.toBigNumber(ante),deadline,betWindow,nonce);    
-    console.log(order,hash);
     contract.hasGameAlreadyBeenCreated.call(hash, function(err,val) {
       if(!err)
       console.log(val);  
