@@ -30,7 +30,7 @@ const contractFunctions = function() {
     })
   }
   
-  function getBalance(callback) {    
+  function getBalanceFunc(callback) {    
     let userAddress = localStorage.getItem("userAddress");
     contract.userBalance.call(userAddress, function(err,val) {
       if(!err)
@@ -38,12 +38,20 @@ const contractFunctions = function() {
     })    
   }
   
-  function getGameStruct() {
+  function getGameStructFunc() {
     contract.table.call(hash, function(err,val) {
       if(!err)
       console.log(val);  
     })
   }  
+  
+  function getBalance() {
+    getGameHash(getBalanceFunc);
+  }  
+  
+  function getGameStruct() {
+    getGameHash(getGameStructFunc);
+  } 
   
   function hasGameAlreadyBeenCreated() {
     contract.hasGameAlreadyBeenCreated.call(hash, function(err,val) {
