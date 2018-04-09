@@ -47,6 +47,17 @@ const contractFunctions = function() {
     return web3.sha3(args, { encoding: 'hex' })
   }
 
+    
+  function createGameLink(args) {
+    let ante = toFixedNumber(parseFloat(args[0])*Math.pow(10,18));
+    let deadline = args[1];
+    let betWindow = args[2];
+    let nonce = args[3];
+    let orderJSON = {'ante':ante,'deadline':deadline,'betWindow':betWindow,'nonce':nonce}';
+    let orderString = JSON.stringify(orderJSON);
+    alert("https://etheraccy.github.io/?" + orderString);
+  }  
+  
   function create(_ante,_deadline,_betWindow) {
     let userAddress = localStorage.getItem("userAddress");    
     let ante = toFixedNumber(parseFloat(_ante)*Math.pow(10,18));
@@ -60,7 +71,7 @@ const contractFunctions = function() {
        data: data,
        gasPrice: gasPrice
     };
-    transaction.send(Tx);      
+    transaction.send(Tx,createGameLink,[ante,deadline,betWindow,nonce]);      
   }
   
   function deposit(value) {
