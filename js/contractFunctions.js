@@ -30,7 +30,7 @@ const contractFunctions = function() {
   function withdraw(value) {
     let userAddress = localStorage.getItem("userAddress");
     let ethValue = parseInt(parseFloat(value)*Math.pow(10,18));    
-    let data = contract.withdraw.getData();
+    let data = contract.withdraw.getData(ethValue);
     let Tx = {
        from: userAddress,
        to: contractAddress,
