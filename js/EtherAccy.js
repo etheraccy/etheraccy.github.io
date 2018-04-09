@@ -1,7 +1,7 @@
 const EtherAccy = function() {
 
   function setBalance(value) {
-    let balance = value;
+    let balance = parseInt(value)/Math.pow(10,18);
     $('body > div > div > div > div.row.tp > div:nth-child(1) > div > div:nth-child(2) > input').attr('placeholder',balance);
     $('body > div > div > div > div.row.tp > div:nth-child(2) > div > div:nth-child(2) > input').attr('placeholder',balance);    
   }  
