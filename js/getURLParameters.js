@@ -6,6 +6,7 @@ const getParameters = function() {
       localStorage.setItem("order",orderArr[1]);
       window.location.href = "https://etheraccy.github.io/gamePage.html";
       console.log(decodeURI(localStorage.getItem("order")));
+    }  
   }
 
   return {
