@@ -17,6 +17,29 @@ const contractFunctions = function() {
     }
     return i.toString();
   }
+  
+  function keccak256(...args) {
+    args = args.map(arg => {
+    if (typeof arg === 'string') {
+      if (arg.substring(0, 2) === '0x') {
+          return arg.slice(2)
+      } else {
+          return web3.toHex(arg).slice(2)
+      }
+    }
+
+    if (typeof arg === 'number') {
+      console.log(arg.toString(16).padStart(64,0));
+      return arg.toString(16).padStart(64,0);
+    } else {
+      return ''
+    }
+  })
+
+  args = args.join('')
+
+  return web3.sha3(args, { encoding: 'hex' })
+}
     
   function getBalance(callback) {    
     let userAddress = localStorage.getItem("userAddress");
@@ -33,8 +56,7 @@ const contractFunctions = function() {
     let betWindow = order['betWindow'];
     let nonce = order['nonce'];
     let contractAddress = contract.address;
-    console.log(contractAddress.slice(2),web3.toHex(ante),web3.toHex(deadline),web3.toHex(betWindow),web3.toHex(nonce));
-    let hash = web3.sha3(contractAddress.slice(2),web3.toHex(ante),web3.toHex(deadline),web3.toHex(betWindow),web3.toHex(nonce),{encoding:"hex"});
+    let hash = keccak256(contractAddress,ante,deadline,betWindow,nonce);
     console.log(hash);
     contract.table.call(hash, function(err,val) {
       if(!err)
