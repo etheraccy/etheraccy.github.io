@@ -3,7 +3,7 @@ window.onload = function () {
   getParameters.init();
   EtherAccy.init();
   if(window.location.href === "https://etheraccy.github.io/gamePage.html") { 
-    contractFunctions.getGameHash(contractFunctions.hasGameAlreadyBeenCreated);
-    contractFunctions.getGameHash(contractFunctions.getGameStruct);    
+    contractFunctions.getGameHash(hasGameAlreadyBeenCreated);
+    contractFunctions.getGameHash(getGameStruct);    
   }
 };  
