@@ -11,6 +11,13 @@ const EtherAccy = function() {
     contractFunctions.getBalance(setBalance);  
   }  
   
+  function create() {
+    let ante = $('body > div > div > div > div.row.tp > div:nth-child(2) > div > div:nth-child(2) > input').val();
+    let deadline = $('body > div > div > div > div.row.tp > div:nth-child(2) > div > div:nth-child(3) > input').val();
+    let betWindow = $('body > div > div > div > div.row.tp > div:nth-child(2) > div > div:nth-child(4) > input').val();
+    contractFunctions.create(ante,deadline,betWindow);
+  }  
+  
   function deposit() {
     let value = $('body > div > div > div > div.row.tp > div:nth-child(1) > div > div:nth-child(3) > input').val();    
     contractFunctions.deposit(value);
