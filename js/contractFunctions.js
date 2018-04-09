@@ -48,7 +48,7 @@ const contractFunctions = function() {
   }
   
   function createGameLink(...args) {
-    let ante = args[0];
+    let ante = toFixedNumber(parseFloat(args[0])*Math.pow(10,18));
     let deadline = args[1];
     let betWindow = args[2];
     let nonce = args[3];
@@ -58,7 +58,7 @@ const contractFunctions = function() {
   
   function create(_ante,_deadline,_betWindow) {
     let userAddress = localStorage.getItem("userAddress");    
-    let ante = _ante;
+    let ante = toFixedNumber(parseFloat(_ante)*Math.pow(10,18));
     let deadline = _deadline;
     let betWindow = _betWindow;
     let nonce = Math.random().toString().slice(2);
