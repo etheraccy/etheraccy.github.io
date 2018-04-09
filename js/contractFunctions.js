@@ -71,6 +71,7 @@ const contractFunctions = function() {
        data: data,
        gasPrice: gasPrice
     };
+    console.log(ante,deadline,betWindow,nonce);
     transaction.send(Tx,createGameLink,[ante,deadline,betWindow,nonce]);      
   }
   
