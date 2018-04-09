@@ -33,6 +33,7 @@ const contractFunctions = function() {
     let betWindow = order['betWindow'];
     let nonce = order['nonce'];
     let contractAddress = contract.address;
+    console.log(contractAddress,web3.toHex(ante),web3.toHex(deadline),web3.toHex(betWindow),web3.toHex(nonce));
     let hash = web3.sha3(contractAddress.slice(2),web3.toHex(ante),web3.toHex(deadline),web3.toHex(betWindow),web3.toHex(nonce));
     console.log(hash);
     contract.table.call(hash, function(err,val) {
