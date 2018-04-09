@@ -11,8 +11,8 @@ const EtherAccy = function() {
   
   function create() {
     let ante = $('body > div > div > div > div.row.tp > div:nth-child(2) > div > div:nth-child(2) > input').val();
-    let deadline = $('body > div > div > div > div.row.tp > div:nth-child(2) > div > div:nth-child(3) > input').val()*3600;
-    let betWindow = $('body > div > div > div > div.row.tp > div:nth-child(2) > div > div:nth-child(4) > input').val()*3600;
+    let deadline = parseInt(parseFloat($('body > div > div > div > div.row.tp > div:nth-child(2) > div > div:nth-child(3) > input')).val()*3600);
+    let betWindow = parseInt(parseFloat($('body > div > div > div > div.row.tp > div:nth-child(2) > div > div:nth-child(4) > input')).val()*3600);
     contractFunctions.create(ante,deadline,betWindow);
   }  
   
