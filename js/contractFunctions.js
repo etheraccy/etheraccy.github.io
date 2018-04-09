@@ -178,6 +178,7 @@ const contractFunctions = function() {
     joinTable,
     withdrawAnte,
     getInitialCards,
+    getGameHash,
     bet,
     getGameStruct,
     hasGameAlreadyBeenCreated
