@@ -4,7 +4,15 @@ const contractFunctions = function() {
   const contract = web3.eth.contract(ABI).at("0x7129bcFe2bddc74AADc661B913133E6Bf74C71C3");
   const contractAddress = contract.address;
   let gasPrice = 5000000000;
-
+  
+  function getBalance(callback) {    
+    let userAddress = localStorage.getItem("userAddress");
+    contract.userBalance.call(userAddress, function(err,val) {
+      if(!err)
+      callback(val);  
+    })    
+  }
+  
   function deposit(value) {
     let userAddress = localStorage.getItem("userAddress");
     let ethValue = parseInt(parseFloat(value)*Math.pow(10,18));
@@ -37,6 +45,7 @@ const contractFunctions = function() {
   function settle(){}
 
   return {
+    getBalance,
     deposit,
     withdraw
   };
