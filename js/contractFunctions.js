@@ -58,8 +58,8 @@ const contractFunctions = function() {
     let betWindow = order['betWindow'];
     let nonce = order['nonce'];
     let contractAddress = contract.address;
-    let hash = keccak256(contractAddress,parseFloat(ante),deadline,betWindow,nonce);
-    console.log(hash);
+    let hash = keccak256(contractAddress,ante,deadline,betWindow,nonce);
+    console.log(order,hash);
     contract.table.call(hash, function(err,val) {
       if(!err)
       console.log(val);  
@@ -73,8 +73,8 @@ const contractFunctions = function() {
     let betWindow = order['betWindow'];
     let nonce = order['nonce'];
     let contractAddress = contract.address;
-    let hash = keccak256(contractAddress,parseFloat(ante),deadline,betWindow,nonce);    
-    console.log(hash);
+    let hash = keccak256(contractAddress,ante,deadline,betWindow,nonce);    
+    console.log(order,hash);
     contract.hasGameAlreadyBeenCreated.call(hash, function(err,val) {
       if(!err)
       console.log(val);  
