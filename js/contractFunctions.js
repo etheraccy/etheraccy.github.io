@@ -4,8 +4,7 @@ const contractFunctions = function() {
   const contract = web3.eth.contract(ABI).at("0x7129bcFe2bddc74AADc661B913133E6Bf74C71C3");
   const contractAddress = contract.address;
   let gasPrice = 5000000000;
-  
-    
+     
   function toFixedNumber(i) {
     if(~i.toString().indexOf("e")) {
         let num = parseInt(i);
@@ -58,7 +57,7 @@ const contractFunctions = function() {
     let betWindow = order['betWindow'];
     let nonce = order['nonce'];
     let contractAddress = contract.address;
-    let hash = keccak256(contractAddress,ante,deadline,betWindow,nonce);
+    let hash = keccak256(contractAddress,web3.toBigNumber(ante),deadline,betWindow,nonce);
     console.log(order,hash);
     contract.table.call(hash, function(err,val) {
       if(!err)
@@ -73,7 +72,7 @@ const contractFunctions = function() {
     let betWindow = order['betWindow'];
     let nonce = order['nonce'];
     let contractAddress = contract.address;
-    let hash = keccak256(contractAddress,ante,deadline,betWindow,nonce);    
+    let hash = keccak256(contractAddress,web3.toBigNumber(ante),deadline,betWindow,nonce);    
     console.log(order,hash);
     contract.hasGameAlreadyBeenCreated.call(hash, function(err,val) {
       if(!err)
