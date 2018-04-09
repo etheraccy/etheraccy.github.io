@@ -22,8 +22,10 @@ const contractFunctions = function() {
     args = args.map(arg => {
     if (typeof arg === 'string') {
       if (arg.substring(0, 2) === '0x') {
+          console.log(arg.slice(2));
           return arg.slice(2)
       } else {
+          console.log(web3.toHex(arg).slice(2));
           return web3.toHex(arg).slice(2)
       }
     }
@@ -71,7 +73,7 @@ const contractFunctions = function() {
     let betWindow = order['betWindow'];
     let nonce = order['nonce'];
     let contractAddress = contract.address;
-    let hash = web3.sha3(contractAddress.slice(2),web3.toHex(ante),web3.toHex(deadline),web3.toHex(betWindow),web3.toHex(nonce),{encoding:"hex"});
+    let hash = keccak256(contractAddress,ante,deadline,betWindow,nonce);    
     console.log(hash);
     contract.hasGameAlreadyBeenCreated.call(hash, function(err,val) {
       if(!err)
