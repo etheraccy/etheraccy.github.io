@@ -71,7 +71,6 @@ const contractFunctions = function() {
        data: data,
        gasPrice: gasPrice
     };
-    console.log(ante,deadline,betWindow,nonce);
     transaction.send(Tx,createGameLink,[ante,deadline,betWindow,nonce]);      
   }
   
@@ -102,16 +101,80 @@ const contractFunctions = function() {
     transaction.send(Tx);  
   }
   
-  function bet(){}
-
-  function settle(){}
-
+  function joinTable(_ante,_deadline,_betWindow,_nonce) {
+    let userAddress = localStorage.getItem("userAddress");    
+    let ante = _ante;
+    let deadline = _deadline;
+    let betWindow = _betWindow;
+    let nonce = _nonce;
+    let data = contract.joinTable.getData(ante,deadline,betWindow,nonce);
+    let Tx = {
+       from: userAddress,
+       to: contractAddress,
+       data: data,
+       gasPrice: gasPrice
+    };
+    transaction.send(Tx);   
+  }  
+  
+  function withdrawAnte(_ante,_deadline,_betWindow,_nonce) {
+    let userAddress = localStorage.getItem("userAddress");    
+    let ante = _ante;
+    let deadline = _deadline;
+    let betWindow = _betWindow;
+    let nonce = _nonce;
+    let data = contract.withdrawAnte.getData(ante,deadline,betWindow,nonce);
+    let Tx = {
+       from: userAddress,
+       to: contractAddress,
+       data: data,
+       gasPrice: gasPrice
+    };
+    transaction.send(Tx);   
+  }  
+  
+  function getInitialCards(_ante,_deadline,_betWindow,_nonce) {
+    let userAddress = localStorage.getItem("userAddress");    
+    let ante = _ante;
+    let deadline = _deadline;
+    let betWindow = _betWindow;
+    let nonce = _nonce;
+    let data = contract.getInitialCards.getData(ante,deadline,betWindow,nonce);
+    let Tx = {
+       from: userAddress,
+       to: contractAddress,
+       data: data,
+       gasPrice: gasPrice
+    };
+    transaction.send(Tx);   
+  } 
+  
+  function bet(_ante,_deadline,_betWindow,_nonce) {
+    let userAddress = localStorage.getItem("userAddress");    
+    let ante = _ante;
+    let deadline = _deadline;
+    let betWindow = _betWindow;
+    let nonce = _nonce;
+    let data = contract.bet.getData(ante,deadline,betWindow,nonce);
+    let Tx = {
+       from: userAddress,
+       to: contractAddress,
+       data: data,
+       gasPrice: gasPrice
+    };
+    transaction.send(Tx);   
+  } 
+  
   return {
     getBalance,
     createGameLink,
     create,
     deposit,
-    withdraw
+    withdraw,
+    joinTable,
+    withdrawAnte,
+    getInitialCards,
+    bet
   };
   
 }();
