@@ -7,7 +7,7 @@ function contractFunctions = function() {
 
   function deposit(value) {
     let userAddress = localStorage.getItem("userAddress");
-    let ethValue = parseInt(value)*Math.pow(10,18);
+    let ethValue = parseInt(parseFloat(value)*Math.pow(10,18));
     let data = contract.deposit.getData();
     let Tx = {
        from: userAddress,
@@ -21,7 +21,7 @@ function contractFunctions = function() {
   
   function withdraw(value) {
     let userAddress = localStorage.getItem("userAddress");
-    let ethValue = parseInt(value)*Math.pow(10,18);    
+    let ethValue = parseInt(parseFloat(value)*Math.pow(10,18));    
     let data = contract.withdraw.getData();
     let Tx = {
        from: userAddress,
