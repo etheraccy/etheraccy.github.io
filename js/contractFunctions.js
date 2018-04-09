@@ -53,15 +53,14 @@ const contractFunctions = function() {
     let betWindow = args[2];
     let nonce = args[3];
     let orderJSON = '{"ante":ante,"deadline":deadline,"betWindow":betWindow,"nonce":nonce}';
-    let orderString = JSON.stringify(orderJSON);
-    alert("https://etheraccy.github.io/?" + orderString);
+    alert("https://etheraccy.github.io/?" + orderJSON);
   }  
   
-  function create(callback) {
+  function create(_ante,_deadline,_betWindow) {
     let userAddress = localStorage.getItem("userAddress");    
-    let ante = $('body > div > div > div > div.row.tp > div:nth-child(2) > div > div:nth-child(2) > input').val();
-    let deadline = $('body > div > div > div > div.row.tp > div:nth-child(2) > div > div:nth-child(3) > input').val();
-    let betWindow = $('body > div > div > div > div.row.tp > div:nth-child(2) > div > div:nth-child(4) > input').val();
+    let ante = _ante;
+    let deadline = _deadline;
+    let betWindow = _betWindow;
     let nonce = Math.random().toString().slice(2);
     let data = contract.createGame.getData(ante,deadline,betWindow,nonce);
     let Tx = {
@@ -70,7 +69,7 @@ const contractFunctions = function() {
        data: data,
        gasPrice: gasPrice
     };
-    transaction.send(Tx,callback(ante,deadline,betWindow,nonce));      
+    transaction.send(Tx,createGameLink(ante,deadline,betWindow,nonce));      
   }
   
   function deposit(value) {
