@@ -49,7 +49,7 @@ const contractFunctions = function() {
   }
   
   function getGameStruct() {
-    let order = JSON.parse(decodeURI(localStorage.getItem("orderJSON"))); 
+    let order = JSON.parse(decodeURI(localStorage.getItem("order"))); 
     let ante = order['ante'];
     let deadline = order['deadline'];
     let betWindow = order['betWindow'];
