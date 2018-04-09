@@ -17,6 +17,6 @@ const EtherAccy = function() {
   
   return {
     init
-  }
+  };
   
-}  
+}();  
