@@ -30,14 +30,14 @@ const contractFunctions = function() {
     })
   }
   
-  function getGameStructFunc() {
+  function getGameStructFunc(hash) {
     contract.table.call(hash, function(err,val) {
       if(!err)
       console.log(val);  
     })
   }
   
-  function hasGameAlreadyBeenCreatedFunc() {
+  function hasGameAlreadyBeenCreatedFunc(hash) {
     contract.hasGameAlreadyBeenCreated.call(hash, function(err,val) {
       if(!err)
       console.log(val);  
