@@ -30,6 +30,7 @@ const EtherAccy = function() {
 
   function init() {
     getBalance();
+    $('body > div > div > div > div.row.tp > div:nth-child(2) > div > center > button').on('click',create);
     $('body > div > div > div > div.row.tp > div:nth-child(1) > div > center > button').on('click',deposit);
     $('body > div > div > div > div.row.tp > div:nth-child(2) > div > center > button').on('click',withdraw);
   }
