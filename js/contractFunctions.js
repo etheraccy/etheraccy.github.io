@@ -5,14 +5,7 @@ const contractFunctions = function() {
   const contractAddress = contract.address;
   let gasPrice = 5000000000;
   
-  function getBalance(callback) {    
-    let userAddress = localStorage.getItem("userAddress");
-    contract.userBalance.call(userAddress, function(err,val) {
-      if(!err)
-      callback(val);  
-    })    
-  }
- 
+    
   function toFixedNumber(i) {
     if(~i.toString().indexOf("e")) {
         let num = parseInt(i);
@@ -48,6 +41,29 @@ const contractFunctions = function() {
   }
 
     
+  
+  function getBalance(callback) {    
+    let userAddress = localStorage.getItem("userAddress");
+    contract.userBalance.call(userAddress, function(err,val) {
+      if(!err)
+      callback(val);  
+    })    
+  }
+  
+  function getGameStruct() {
+    let order = JSON.parse(localStorage.getItem("orderJSON")); 
+    let ante = order['ante'];
+    let deadline = order['deadline'];
+    let betWindow = order['betWindow'];
+    let nonce = order['nonce'];
+    let contractAddress = contract.address;
+    let hash = keccak256(contractAddress,ante,deadline,betWindow,nonce);
+    contract.table.call(hash, function(err,val) {
+      if(!err)
+      console.log(val);  
+    })    
+  }
+  
   function createGameLink(args) {
     let ante = toFixedNumber(parseFloat(args[0])*Math.pow(10,18));
     let deadline = args[1];
@@ -174,7 +190,8 @@ const contractFunctions = function() {
     joinTable,
     withdrawAnte,
     getInitialCards,
-    bet
+    bet,
+    getGameStruct
   };
   
 }();
