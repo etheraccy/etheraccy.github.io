@@ -30,35 +30,36 @@ const contractFunctions = function() {
     })
   }
   
-  function getBalanceFunc(callback) {    
+  function getGameStructFunc() {
+    contract.table.call(hash, function(err,val) {
+      if(!err)
+      console.log(val);  
+    })
+  }
+  
+  function hasGameAlreadyBeenCreatedFunc() {
+    contract.hasGameAlreadyBeenCreated.call(hash, function(err,val) {
+      if(!err)
+      console.log(val);  
+    })      
+  }  
+    
+  function getGameStruct() {
+    getGameHash(getGameStructFunc);
+  } 
+  
+  function hasGameAlreadyBeenCreated() {
+    getGameHash(hasGameAlreadyBeenCreatedFunc);
+  }  
+  
+    
+  function getBalance(callback) {    
     let userAddress = localStorage.getItem("userAddress");
     contract.userBalance.call(userAddress, function(err,val) {
       if(!err)
       callback(val);  
     })    
   }
-  
-  function getGameStructFunc() {
-    contract.table.call(hash, function(err,val) {
-      if(!err)
-      console.log(val);  
-    })
-  }  
-  
-  function getBalance() {
-    getGameHash(getBalanceFunc);
-  }  
-  
-  function getGameStruct() {
-    getGameHash(getGameStructFunc);
-  } 
-  
-  function hasGameAlreadyBeenCreated() {
-    contract.hasGameAlreadyBeenCreated.call(hash, function(err,val) {
-      if(!err)
-      console.log(val);  
-    })      
-  }  
   
   function createGameLink(args) {
     let ante = toFixedNumber(parseFloat(args[0])*Math.pow(10,18));
