@@ -1,9 +1,9 @@
 const getParameters = function() {
   
   function init() {
-    try {
-      localStorage.setItem("order",window.location.href.split("?")[1]);
-    } catch(err) {}  
+    let orderArr = window.location.href.split("?");
+    if(orderArr.length > 1) 
+    localStorage.setItem("order",orderArr[1]);
   }
 
   return {
