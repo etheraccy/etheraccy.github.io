@@ -60,7 +60,7 @@ const EtherAccy = function() {
   }  
   
   function getStartTime(arr) {
-    countDown(arr[3],'#timeFrame');  
+    countDown(arr[7],'#timeFrame');  
   }  
   
   function getNumberOfCardsDealt(arr) {
