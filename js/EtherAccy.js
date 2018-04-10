@@ -83,6 +83,7 @@ const EtherAccy = function() {
     setInterval(function() {
       for(i=0;i<arr[9].length - 1;i++) {
         let playerElement = '#player' + (i+1).toString();
+        console.log(playerElement,arr[9][i])
         $(playerElement).text(arr[9][i]);
       }  
     }, 10800);       
