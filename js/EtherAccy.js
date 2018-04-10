@@ -96,10 +96,32 @@ const EtherAccy = function() {
       }  
     }, 5000);       
   }
-  
+
   function getGameState(arr) {
     setInterval(function() {
-      $('#gameState').text(arr[10])
+      let state;
+      if(arr[10] === 0) {
+        state = "WAITING_FOR_PLAYERS" 
+      }  
+      else if(arr[10] === 1) {
+        state = "GAME_LIVE"
+      }  
+      else if(arr[10] === 2) {
+        state = "DEALING_CARDS"
+      }  
+      else if(arr[10] === 3) {
+        state = "CARDS_DEALT"
+      }  
+      else if(arr[10] === 4) {
+        state = "GAME_CANCELLED" 
+      }  
+      else if(arr[10] === 5) {
+        state = "GAME_FINISHED"
+      }  
+      else if(arr[10] === 6) {
+        state = "INVALID GAME"      
+      }  
+      $('#gameState').text(state);
     }, 5000);    
   }
   
