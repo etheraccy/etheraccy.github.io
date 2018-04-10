@@ -30,12 +30,13 @@ const contractFunctions = function() {
     })
   }
   
-  function getGameStruct(hash,callback) {
+  function getGameStruct(hash,callbackArr) {
     contract.table.call(hash, function(err,val) {
       if(!err)
-      if(callback)
-      console.log(hash);  
-      callback(val);  
+      if(callbackArr.length > 1)
+      callbackArr.forEach(function(callback) {
+        callback(val);
+      });  
     })
   }
   
