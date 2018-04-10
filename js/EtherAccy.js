@@ -116,8 +116,14 @@ const EtherAccy = function() {
     contractFunctions.getGameHash(contractFunctions.getGameStruct,[setPotSize,getStartTime,getAnte,getGameState,getPlayerList]);
   }  
   
+  function moveBettorArrow() {
+    let padding_right = $('.bettor').css('padding') + '10px';
+    $('.bettor').css('padding',padding_right);
+  }  
+  
   function init() {
-    getBalance();        
+    getBalance();  
+    $('.bettor').on('click',moveBettorArrow); 
     if(window.location.href === "https://etheraccy.github.io/depositWithdraw.html") {
       $('body > div > div > div > div.row.tp > div:nth-child(1) > div > center > button').on('click',deposit);
       $('body > div > div > div > div.row.tp > div:nth-child(2) > div > center > button').on('click',withdraw);      
