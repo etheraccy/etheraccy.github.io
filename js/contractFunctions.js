@@ -176,8 +176,7 @@ const contractFunctions = function() {
     getInitialCards,
     getGameHash,
     bet,
-    getGameStruct,
-    hasGameAlreadyBeenCreated
+    getGameStruct
   };
   
 }();
