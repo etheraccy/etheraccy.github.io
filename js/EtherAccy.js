@@ -147,7 +147,7 @@ const EtherAccy = function() {
   }
   
   function setInGameBalance(val) {
-    $('#inGameBalance').text(val/1e18);
+    $('#inGameBalance').text((val/1e18).toString() + " ETH");
   }  
   
   function getInGameBalance() {
