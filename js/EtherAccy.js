@@ -151,9 +151,7 @@ const EtherAccy = function() {
   }  
   
   function getInGameBalance() {
-    setInterval(function() {  
-      contractFunctions.getGameHash(contractFunctions.getInGameBalance,[setInGameBalance]);
-    }, 30000);        
+    contractFunctions.getGameHash(contractFunctions.getInGameBalance,[setInGameBalance]);
   }  
   
   function getStructElements() {
