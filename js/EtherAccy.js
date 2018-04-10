@@ -26,7 +26,7 @@ const EtherAccy = function() {
     contractFunctions.withdraw(value);
   }
   
-  function countDown(time) {
+  function countDown(time,id) {
     var countDownDate = parseInt(time)*1000;
         
     var x = setInterval(function() {
@@ -42,11 +42,11 @@ const EtherAccy = function() {
     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
     
-    $('#timeFrame').html(days + 'd ' + hours + 'h '
+    $(id).html(days + 'd ' + hours + 'h '
     + minutes + 'm ' + seconds + 's ');
     
     if (distance < 0) {
-        $('#timeFrame').html('EXPIRED');
+        $(id).html('EXPIRED');
     }
 }, 1000);  
   }  
@@ -56,11 +56,64 @@ const EtherAccy = function() {
   }  
   
   function getStartTime(arr) {
-    countDown(arr[3]);  
+    countDown(arr[3],'#timeFrame');  
   }  
   
+  function getNumberOfCardsDealt() {
+    setInterval(function() {
+      $('#numberOfCardsDealt').text(arr[5])
+    }, 10800);  
+  }
+  
+  function getAnte() {
+    $('#minBet').text(arr[2])
+  }
+  
+  function getBetWindow() {
+    countDown(arr[6],'#betWindow');      
+  }
+  
+  function getCurrentPlayer() {
+    setInterval(function() {
+      $('#currentPlayer').text(arr[8])
+    }, 10800);     
+  }
+  
+  function getPlayerList() {
+    setInterval(function() {
+      for(i=0;i<arr[9].length - 1;i++) {
+        let playerElement = '#player' + (i+1).toString();
+        $(playerElement).text(arr[9][i]);
+      }  
+    }, 10800);       
+  }
+  
+  function getGameState() {
+    setInterval(function() {
+      $('#gameState').text(arr[10])
+    }, 5000);    
+  }
+  
+  function getDealState() {
+    setInterval(function() {
+      $('#dealState').text(arr[11])
+    }, 5000);        
+  }
+  
+  function getUserHand() {
+    setInterval(function() {
+      $('#userHand').text(arr[13])
+    }, 5000);      
+  }
+  
+  function getGameBalance() {
+    setInterval(function() {
+      $('#gameBalance').text(arr[14])
+    }, 5000);   
+  }
+   
   function getStructElements() {
-    contractFunctions.getGameHash(contractFunctions.getGameStruct,[setPotSize,getStartTime])
+    contractFunctions.getGameHash(contractFunctions.getGameStruct,[setPotSize,getStartTime,getAnte,getGameState,getPlayerList])
   }  
   
   function init() {
