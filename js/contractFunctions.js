@@ -23,10 +23,10 @@ const contractFunctions = function() {
     let deadline = order['deadline'];
     let betWindow = order['betWindow'];
     let nonce = order['nonce'];
-    let contractAddress = contract.address;
+    console.log(order);
     contract.getGameHash(ante,deadline,betWindow,nonce, function(err,val) {
       if(!err)
-      console.log(val)
+      console.log("hash: ",val)
       callback(val)
     })
   }
