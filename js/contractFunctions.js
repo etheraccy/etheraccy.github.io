@@ -34,6 +34,7 @@ const contractFunctions = function() {
     contract.table.call(hash, function(err,val) {
       if(!err)
       if(callback)
+      console.log(hash);  
       callback(val);  
     })
   }
