@@ -60,7 +60,9 @@ const EtherAccy = function() {
   }  
   
   function getStartTime(arr) {
-    countDown(arr[6],'#timeFrame');  
+    let order = JSON.parse(decodeURI(localStorage.getItem("order"))); 
+    let deadline = parseInt(order['deadline']);
+    countDown(arr[6] + deadline,'#timeFrame');  
   }  
   
   function getNumberOfCardsDealt(arr) {
