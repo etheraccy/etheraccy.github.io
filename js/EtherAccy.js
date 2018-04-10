@@ -50,10 +50,18 @@ const EtherAccy = function() {
     }
 }, 1000);  
   }  
+    
+  function setPotSize(arr) {
+    $('#potAmount').val(parseInt(arr[0])/Math.pow(10,18));
+  }  
   
   function getStartTime(arr) {
     countDown(arr[3]);  
   }  
+  
+  function displayPotSize() {
+    contractFunctions.getGameHash(contractFunctions.getGameStruct,setPotSize);
+  }
   
   function startCountDown() {
     contractFunctions.getGameHash(contractFunctions.getGameStruct,getStartTime)
