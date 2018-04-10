@@ -100,26 +100,26 @@ const EtherAccy = function() {
   function getGameState(arr) {
     setInterval(function() {
       let state;
-      console.log(arr[10]);
-      if(arr[10] === 0) {
+      let val = parseFloat(arr[10]);
+      if(val === 0) {
         state = "WAITING_FOR_PLAYERS" 
       }  
-      else if(arr[10] === 1) {
+      else if(val === 1) {
         state = "GAME_LIVE"
       }  
-      else if(arr[10] === 2) {
+      else if(val === 2) {
         state = "DEALING_CARDS"
       }  
-      else if(arr[10] === 3) {
+      else if(val === 3) {
         state = "CARDS_DEALT"
       }  
-      else if(arr[10] === 4) {
+      else if(val === 4) {
         state = "GAME_CANCELLED" 
       }  
-      else if(arr[10] === 5) {
+      else if(val === 5) {
         state = "GAME_FINISHED"
       }  
-      else if(arr[10] === 6) {
+      else if(val === 6) {
         state = "INVALID GAME"      
       }  
       $('#gameState').text(state);
