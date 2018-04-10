@@ -23,6 +23,7 @@ const contractFunctions = function() {
     let deadline = order['deadline'];
     let betWindow = order['betWindow'];
     let nonce = order['nonce'];
+    console.log(order)
     contract.getGameHash(ante,deadline,betWindow,nonce, function(err,val) {
       if(!err)
       if(callback && callback1)  
@@ -95,6 +96,7 @@ const contractFunctions = function() {
     let betWindow = _betWindow.toString();
     let nonce = Math.random().toString().slice(2);
     let orderJSON = {'ante':ante,'deadline':deadline,'betWindow':betWindow,'nonce':nonce};
+    console.log(orderJSON);
     let data = contract.createGame.getData(ante,deadline,betWindow,nonce);
     let Tx = {
        from: userAddress,
