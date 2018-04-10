@@ -52,7 +52,7 @@ const EtherAccy = function() {
   }  
     
   function setPotSize(arr) {
-    $('#potAmount').val(parseInt(arr[0])/Math.pow(10,18));
+    $('#potAmount').text(parseInt(arr[0])/Math.pow(10,18));
   }  
   
   function getStartTime(arr) {
