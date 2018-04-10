@@ -75,8 +75,8 @@ const contractFunctions = function() {
   function create(_ante,_deadline,_betWindow) {
     let userAddress = localStorage.getItem("userAddress");    
     let ante = toFixedNumber(parseFloat(_ante)*Math.pow(10,18));
-    let deadline = _deadline;
-    let betWindow = _betWindow;
+    let deadline = _deadline.toString();
+    let betWindow = _betWindow.toString();
     let nonce = Math.random().toString().slice(2);
     let orderJSON = {'ante':ante,'deadline':deadline,'betWindow':betWindow,'nonce':nonce};
     console.log(orderJSON);
