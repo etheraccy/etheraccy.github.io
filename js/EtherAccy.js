@@ -29,6 +29,8 @@ const EtherAccy = function() {
   function countDown(time) {
     var countDownDate = parseInt(time)*1000;
     
+    console.log(countDownDate);
+    
     var x = setInterval(function() {
       
     var now = new Date().getTime();
