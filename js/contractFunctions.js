@@ -80,7 +80,7 @@ const contractFunctions = function() {
   }
   
   function createGameLink(args) {
-    let ante = toFixedNumber(parseFloat(args[0])*Math.pow(10,18));
+    let ante = args[0];
     let deadline = args[1];
     let betWindow = args[2];
     let nonce = args[3];
