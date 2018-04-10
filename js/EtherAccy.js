@@ -117,8 +117,8 @@ const EtherAccy = function() {
   }  
     
   function moveBettorArrow() {
-    let padding_left = parseInt(parseInt($('.bettor').css('padding-left').replace("px",""))*1.25);
-    console.log($('body > div > div > div > div.row.tp > div > div > div.col-lg-8.player-parent.clearfix > ul > li:nth-child(3)').outerWidth());
+    let elementWidth = $('body > div > div > div > div.row.tp > div > div > div.col-lg-8.player-parent.clearfix > ul > li:nth-child(3)').outerWidth();    
+    let padding_left = parseInt(parseInt($('.bettor').css('padding-left').replace("px","")) + elementWidth);
     console.log(padding_left);
     $('.bettor').css('padding-left',padding_left.toString() + "px");
   }  
