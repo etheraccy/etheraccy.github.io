@@ -53,7 +53,8 @@ const contractFunctions = function() {
     let userAddress = localStorage.getItem("userAddress");        
     contract.getInGameBalance(hash,userAddress, function(err,val) {
       if(!err)
-      callbackArr[0]();  
+      console.log(val);
+      callbackArr[0](val);  
     });  
   }  
   
