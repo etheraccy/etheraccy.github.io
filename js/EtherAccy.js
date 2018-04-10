@@ -52,6 +52,7 @@ const EtherAccy = function() {
   }  
     
   function setPotSize(arr) {
+    console.log(arr);
     console.log(parseInt(arr[0]));
     $('#potAmount').text(parseInt(arr[0])/Math.pow(10,18));
   }  
