@@ -115,7 +115,12 @@ const EtherAccy = function() {
   function getStructElements() {
     contractFunctions.getGameHash(contractFunctions.getGameStruct,[setPotSize,getStartTime,getAnte,getGameState,getPlayerList]);
   }  
-
+    
+  function moveBettorArrow() {
+    let padding_left = parseInt($('.bettor').css('padding-left').replace("px","")) + 120;
+    console.log(padding_left);
+    $('.bettor').css('padding-left',padding_left.toString() + "px");
+  }  
   
   function init() {
     getBalance();  
