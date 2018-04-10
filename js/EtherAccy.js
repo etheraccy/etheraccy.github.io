@@ -117,7 +117,7 @@ const EtherAccy = function() {
   }  
     
   function moveBettorArrow() {
-    let padding_left = parseInt($('.bettor').css('padding-left').replace("px","")) + 120;
+    let padding_left = parseInt(parseInt($('.bettor').css('padding-left').replace("px",""))*1.25);
     console.log(padding_left);
     $('.bettor').css('padding-left',padding_left.toString() + "px");
   }  
