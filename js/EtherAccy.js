@@ -51,8 +51,8 @@ const EtherAccy = function() {
   }  
   
   function getStartTime(arr) {
-    console.log(arr[4]);
-    countDown(arr[4]);  
+    console.log(arr[3]);
+    countDown(arr[3]);  
   }  
   
   function startCountDown() {
