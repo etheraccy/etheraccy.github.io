@@ -80,6 +80,7 @@ const EtherAccy = function() {
   }
   
   function getPlayerList(arr) {
+    console.log("playerListArray: ",arr[9]);
     setInterval(function() {
       for(i=0;i<arr[9].length - 1;i++) {
         let playerElement = '#player' + (i+1).toString();
