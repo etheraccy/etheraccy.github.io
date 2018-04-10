@@ -22,7 +22,7 @@ const EtherAccy = function() {
   }
 
   function withdraw() {
-    let value = $('body > div > div > div > div.row.tp > div:nth-child(2) > div > div > input).val();  
+    let value = $('body > div > div > div > div.row.tp > div:nth-child(2) > div > div > input').val();  
     contractFunctions.withdraw(value);
   }
   
