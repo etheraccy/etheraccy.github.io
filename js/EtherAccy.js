@@ -31,7 +31,7 @@ const EtherAccy = function() {
   }
   
   function countDown(time,id) {
-    var countDownDate = parseInt(time)*1000;
+    var countDownDate = time*1000;
         
     var x = setInterval(function() {
       
@@ -62,7 +62,7 @@ const EtherAccy = function() {
   function getStartTime(arr) {
     let order = JSON.parse(decodeURI(localStorage.getItem("order"))); 
     let deadline = parseInt(order['deadline']);
-    countDown(arr[6] + deadline,'#timeFrame');  
+    countDown(parseInt(arr[6]) + deadline,'#timeFrame');  
   }  
   
   function getNumberOfCardsDealt(arr) {
