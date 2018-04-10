@@ -123,6 +123,7 @@ const EtherAccy = function() {
       else if(val === 4) {
         state = "GAME_CANCELLED";
         $('#enterGame').hide();
+        $('#withdrawAnte').on('click',withdrawAnte);
         $('#withdrawAnte').show();
       }  
       else if(val === 5) {
