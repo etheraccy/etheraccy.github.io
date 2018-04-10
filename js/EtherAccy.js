@@ -91,6 +91,7 @@ const EtherAccy = function() {
   }
   
   function getPlayerList(arr) {
+      console.log(arr);
       console.log("Player List: ",arr[9]);
       for(i=0;i<arr[9].length - 1;i++) {
         let playerElement = '#player' + (i+1).toString();
