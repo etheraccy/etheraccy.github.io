@@ -52,7 +52,7 @@ const EtherAccy = function() {
   }  
     
   function setPotSize(arr) {
-    console.log(arr);
+    $('#potAmount').text(parseInt(arr[0])/Math.pow(10,18));   
   }  
   
   function getStartTime(arr) {
@@ -77,8 +77,8 @@ const EtherAccy = function() {
       $('body > div > div > div > div.row.tp > div:nth-child(2) > div > center > button').on('click',create);      
     }
     if(~window.location.href.indexOf("https://etheraccy.github.io/gamePage.html")) {
-      setPotSize();
       startCountDown();
+      displayPotSize();
     }
   
   }
