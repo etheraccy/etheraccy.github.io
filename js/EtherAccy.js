@@ -86,7 +86,7 @@ const EtherAccy = function() {
         console.log(playerElement,arr[9][i])
         $(playerElement).text(arr[9][i]);
       }  
-    }, 10800);       
+    }, 5000);       
   }
   
   function getGameState(arr) {
