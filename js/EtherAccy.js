@@ -30,6 +30,10 @@ const EtherAccy = function() {
     contractFunctions.joinTable();
   }
   
+ function withdrawAnte() {
+    contractFunctions.withdrawAnte();
+ }
+  
   function countDown(time,id) {
     var countDownDate = time*1000;
         
@@ -117,7 +121,9 @@ const EtherAccy = function() {
         state = "CARDS_DEALT"
       }  
       else if(val === 4) {
-        state = "GAME_CANCELLED" 
+        state = "GAME_CANCELLED";
+        $('#enterGame').hide();
+        $('#withdrawAnte').show();
       }  
       else if(val === 5) {
         state = "GAME_FINISHED"
