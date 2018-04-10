@@ -90,7 +90,8 @@ const contractFunctions = function() {
   }  
   
   function create(_ante,_deadline,_betWindow) {
-    let userAddress = localStorage.getItem("userAddress");    
+    let userAddress = localStorage.getItem("userAddress");  
+    console.log(_ante);
     let ante = toFixedNumber(parseFloat(_ante)*Math.pow(10,18));
     let deadline = _deadline.toString();
     let betWindow = _betWindow.toString();
