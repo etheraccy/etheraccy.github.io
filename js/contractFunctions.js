@@ -49,10 +49,11 @@ const contractFunctions = function() {
     });  
   }  
   
-  function getInGameBalance(hash,address) {
-    contract.getInGameBalance(hash,address, function(err,val) {
+  function getInGameBalance(hash,callbackArr) {
+    let userAddress = localStorage.getItem("userAddress");        
+    contract.getInGameBalance(hash,userAddress, function(err,val) {
       if(!err)
-      console.log(val);  
+      callbackArr[0]();  
     });  
   }  
   
