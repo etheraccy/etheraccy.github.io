@@ -59,27 +59,27 @@ const EtherAccy = function() {
     countDown(arr[3],'#timeFrame');  
   }  
   
-  function getNumberOfCardsDealt() {
+  function getNumberOfCardsDealt(arr) {
     setInterval(function() {
       $('#numberOfCardsDealt').text(arr[5])
     }, 10800);  
   }
   
-  function getAnte() {
+  function getAnte(arr) {
     $('#minBet').text(arr[2])
   }
   
-  function getBetWindow() {
+  function getBetWindow(arr) {
     countDown(arr[6],'#betWindow');      
   }
   
-  function getCurrentPlayer() {
+  function getCurrentPlayer(arr) {
     setInterval(function() {
       $('#currentPlayer').text(arr[8])
     }, 10800);     
   }
   
-  function getPlayerList() {
+  function getPlayerList(arr) {
     setInterval(function() {
       for(i=0;i<arr[9].length - 1;i++) {
         let playerElement = '#player' + (i+1).toString();
@@ -88,25 +88,25 @@ const EtherAccy = function() {
     }, 10800);       
   }
   
-  function getGameState() {
+  function getGameState(arr) {
     setInterval(function() {
       $('#gameState').text(arr[10])
     }, 5000);    
   }
   
-  function getDealState() {
+  function getDealState(arr) {
     setInterval(function() {
       $('#dealState').text(arr[11])
     }, 5000);        
   }
   
-  function getUserHand() {
+  function getUserHand(arr) {
     setInterval(function() {
       $('#userHand').text(arr[13])
     }, 5000);      
   }
   
-  function getGameBalance() {
+  function getGameBalance(arr) {
     setInterval(function() {
       $('#gameBalance').text(arr[14])
     }, 5000);   
