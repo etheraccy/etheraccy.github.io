@@ -48,8 +48,12 @@ const EtherAccy = function() {
 }, 1000);  
   }  
   
+  function getStartTime(arr) {
+    countDown(arr[4]);  
+  }  
+  
   function startCountDown() {
-    contractFunctions.getGameStruct(countDown)
+    contractFunctions.getGameHash(contractFunctions.getGameStruct,getStartTime)
   }  
   
   function init() {
