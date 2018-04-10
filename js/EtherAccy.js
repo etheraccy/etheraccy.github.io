@@ -26,6 +26,10 @@ const EtherAccy = function() {
     contractFunctions.withdraw(value);
   }
   
+  function joinTable() {
+    contractFunctions.joinTable();
+  }
+  
   function countDown(time,id) {
     var countDownDate = parseInt(time)*1000;
         
@@ -139,6 +143,7 @@ const EtherAccy = function() {
     }
     if(~window.location.href.indexOf("https://etheraccy.github.io/gamePage.html")) {
       getStructElements();
+      $('#enterGame').on('click',joinTable);
     }
   
   }
