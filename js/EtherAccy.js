@@ -17,12 +17,12 @@ const EtherAccy = function() {
   }  
   
   function deposit() {
-    let value = $('body > div > div > div > div.row.tp > div:nth-child(1) > div > div:nth-child(3) > input').val();    
+    let value = $('body > div > div > div > div.row.tp > div:nth-child(1) > div > div > input').val();    
     contractFunctions.deposit(value);
   }
 
   function withdraw() {
-    let value = $('body > div > div > div > div.row.tp > div:nth-child(2) > div > div:nth-child(3) > input').val();  
+    let value = $('body > div > div > div > div.row.tp > div:nth-child(2) > div > center > button').val();  
     contractFunctions.withdraw(value);
   }
   
