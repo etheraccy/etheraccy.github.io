@@ -91,12 +91,12 @@ const EtherAccy = function() {
   }
   
   function getPlayerList(arr) {
-    setInterval(function() {
+      console.log("Player List: ",arr[9]);
       for(i=0;i<arr[9].length - 1;i++) {
         let playerElement = '#player' + (i+1).toString();
         $(playerElement).text(arr[9][i]);
+        console.log(arr[9][i]);
       }  
-    }, 5000);       
   }
 
   function getGameState(arr) {
