@@ -36,9 +36,7 @@ const EtherAccy = function() {
     var x = setInterval(function() {
       
     var now = Date.now();
-      
-    console.log(countDownDate,now);
-      
+            
     var distance = countDownDate - now;
     
     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
