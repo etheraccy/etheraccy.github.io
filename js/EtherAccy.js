@@ -47,7 +47,11 @@ const EtherAccy = function() {
     }
 }, 1000);  
   }  
-
+  
+  function startCountDown() {
+    contractFunctions.getGameStruct(countDown)
+  }  
+  
   function init() {
     getBalance();        
     if(window.location.href === "https://etheraccy.github.io/depositWithdraw.html") {
@@ -56,7 +60,11 @@ const EtherAccy = function() {
     }  
     if(window.location.href === "https://etheraccy.github.io/index.html" || window.location.href === "https://etheraccy.github.io/") {
       $('body > div > div > div > div.row.tp > div:nth-child(2) > div > center > button').on('click',create);      
-    }  
+    }
+    if(window.location.href === "https://etheraccy.github.io/gamePage.html") {
+      startCountDown();
+    }
+  
   }
   
   return {
