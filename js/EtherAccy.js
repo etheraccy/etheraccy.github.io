@@ -60,7 +60,7 @@ const EtherAccy = function() {
   }  
   
   function getStartTime(arr) {
-    countDown(arr[7],'#timeFrame');  
+    countDown(arr[6],'#timeFrame');  
   }  
   
   function getNumberOfCardsDealt(arr) {
@@ -74,7 +74,7 @@ const EtherAccy = function() {
   }
   
   function getBetWindow(arr) {
-    countDown(arr[6],'#betWindow');      
+    countDown(arr[5],'#betWindow');      
   }
   
   function getCurrentPlayer(arr) {
