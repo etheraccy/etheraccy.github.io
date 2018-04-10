@@ -84,7 +84,7 @@ const contractFunctions = function() {
     let nonce = args[3];
     let orderJSON = {'ante':ante,'deadline':deadline,'betWindow':betWindow,'nonce':nonce};
     let orderString = JSON.stringify(orderJSON);
-    alert("https://etheraccy.github.io/?" + orderString);
+    prompt("https://etheraccy.github.io/?" + orderString);
   }  
   
   function create(_ante,_deadline,_betWindow) {
