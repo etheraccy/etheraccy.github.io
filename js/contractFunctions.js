@@ -17,43 +17,27 @@ const contractFunctions = function() {
     return i.toString();
   }
  
-  function getGameHash(callback) {
+  function getGameHash(callback,callback1) {
     let order = JSON.parse(decodeURI(localStorage.getItem("order"))); 
     let ante = order['ante'];
     let deadline = order['deadline'];
     let betWindow = order['betWindow'];
     let nonce = order['nonce'];
-    console.log(order);
     contract.getGameHash(ante,deadline,betWindow,nonce, function(err,val) {
       if(!err)
-      console.log("hash: ",val)
-      callback(val)
+      if(callback && callback1)  
+      callback(val,callback1);
     })
   }
   
-  function getGameStructFunc(hash) {
+  function getGameStruct(hash,callback) {
     contract.table.call(hash, function(err,val) {
       if(!err)
-      console.log(val);  
+      if(callback)
+      callback(val);  
     })
   }
   
-  function hasGameAlreadyBeenCreatedFunc(hash) {
-    contract.hasGameAlreadyBeenCreated.call(hash, function(err,val) {
-      if(!err)
-      console.log(val);  
-    })      
-  }  
-    
-  function getGameStruct() {
-    getGameHash(getGameStructFunc);
-  } 
-  
-  function hasGameAlreadyBeenCreated() {
-    getGameHash(hasGameAlreadyBeenCreatedFunc);
-  }  
-  
-    
   function getBalance(callback) {    
     let userAddress = localStorage.getItem("userAddress");
     contract.userBalance.call(userAddress, function(err,val) {
