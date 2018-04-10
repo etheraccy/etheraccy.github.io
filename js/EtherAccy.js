@@ -145,7 +145,17 @@ const EtherAccy = function() {
       $('#gameBalance').text(arr[14])
     }, 5000);   
   }
-   
+  
+  function setInGameBalance(val) {
+    setInterval(function() {
+      $('#inGameBalance').text(val);
+    }, 5000);  
+  }  
+  
+  function getInGameBalance() {
+     contractFunctions.getGameHash(contractFunctions.getInGameBalance,setInGameBalance);
+  }  
+  
   function getStructElements() {
     contractFunctions.getGameHash(contractFunctions.getGameStruct,[setPotSize,getStartTime,getAnte,getGameState,getPlayerList]);
   }  
