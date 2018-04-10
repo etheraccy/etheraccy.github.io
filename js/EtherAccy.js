@@ -28,12 +28,10 @@ const EtherAccy = function() {
   
   function countDown(time) {
     var countDownDate = parseInt(time)*1000;
-    
-    console.log(countDownDate);
-    
+        
     var x = setInterval(function() {
       
-    var now = new Date().getTime();
+    var now = Date.now();
     var distance = countDownDate - now;
     
     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -51,7 +49,6 @@ const EtherAccy = function() {
   }  
   
   function getStartTime(arr) {
-    console.log(arr[3]);
     countDown(arr[3]);  
   }  
   
