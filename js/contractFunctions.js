@@ -132,12 +132,13 @@ const contractFunctions = function() {
     transaction.send(Tx);  
   }
   
-  function joinTable(_ante,_deadline,_betWindow,_nonce) {
+  function joinTable() {
     let userAddress = localStorage.getItem("userAddress");    
-    let ante = _ante;
-    let deadline = _deadline;
-    let betWindow = _betWindow;
-    let nonce = _nonce;
+    let order = JSON.parse(decodeURI(localStorage.getItem("order"))); 
+    let ante = order['ante'];
+    let deadline = order['deadline'];
+    let betWindow = order['betWindow'];
+    let nonce = order['nonce'];
     let data = contract.joinTable.getData(ante,deadline,betWindow,nonce);
     let Tx = {
        from: userAddress,
@@ -148,12 +149,13 @@ const contractFunctions = function() {
     transaction.send(Tx);   
   }  
   
-  function withdrawAnte(_ante,_deadline,_betWindow,_nonce) {
+  function withdrawAnte() {
     let userAddress = localStorage.getItem("userAddress");    
-    let ante = _ante;
-    let deadline = _deadline;
-    let betWindow = _betWindow;
-    let nonce = _nonce;
+    let order = JSON.parse(decodeURI(localStorage.getItem("order"))); 
+    let ante = order['ante'];
+    let deadline = order['deadline'];
+    let betWindow = order['betWindow'];
+    let nonce = order['nonce'];
     let data = contract.withdrawAnte.getData(ante,deadline,betWindow,nonce);
     let Tx = {
        from: userAddress,
@@ -164,12 +166,13 @@ const contractFunctions = function() {
     transaction.send(Tx);   
   }  
   
-  function getInitialCards(_ante,_deadline,_betWindow,_nonce) {
+  function getInitialCards() {
     let userAddress = localStorage.getItem("userAddress");    
-    let ante = _ante;
-    let deadline = _deadline;
-    let betWindow = _betWindow;
-    let nonce = _nonce;
+    let order = JSON.parse(decodeURI(localStorage.getItem("order"))); 
+    let ante = order['ante'];
+    let deadline = order['deadline'];
+    let betWindow = order['betWindow'];
+    let nonce = order['nonce'];
     let data = contract.getInitialCards.getData(ante,deadline,betWindow,nonce);
     let Tx = {
        from: userAddress,
@@ -180,12 +183,13 @@ const contractFunctions = function() {
     transaction.send(Tx);   
   } 
   
-  function bet(_ante,_deadline,_betWindow,_nonce) {
+  function bet() {
     let userAddress = localStorage.getItem("userAddress");    
-    let ante = _ante;
-    let deadline = _deadline;
-    let betWindow = _betWindow;
-    let nonce = _nonce;
+    let order = JSON.parse(decodeURI(localStorage.getItem("order"))); 
+    let ante = order['ante'];
+    let deadline = order['deadline'];
+    let betWindow = order['betWindow'];
+    let nonce = order['nonce'];
     let data = contract.bet.getData(ante,deadline,betWindow,nonce);
     let Tx = {
        from: userAddress,
