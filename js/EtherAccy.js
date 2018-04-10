@@ -147,13 +147,13 @@ const EtherAccy = function() {
   }
   
   function setInGameBalance(val) {
-    setInterval(function() {
-      $('#inGameBalance').text(val);
-    }, 5000);  
+    $('#inGameBalance').text(val);
   }  
   
   function getInGameBalance() {
-     contractFunctions.getGameHash(contractFunctions.getInGameBalance,setInGameBalance);
+    setInterval(function() {  
+      contractFunctions.getGameHash(contractFunctions.getInGameBalance,[setInGameBalance]);
+    }, 30000);        
   }  
   
   function getStructElements() {
@@ -179,6 +179,7 @@ const EtherAccy = function() {
     }
     if(~window.location.href.indexOf("https://etheraccy.github.io/gamePage.html")) {
       getStructElements();
+      getInGameBalance();
       $('#enterGame').on('click',joinTable);
     }
   
