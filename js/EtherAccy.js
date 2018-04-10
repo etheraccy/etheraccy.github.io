@@ -75,7 +75,12 @@ const EtherAccy = function() {
   
   function getCurrentPlayer(arr) {
     setInterval(function() {
-      $('#currentPlayer').text(arr[8])
+      let query = "[address='" + arr[8] + "']"; 
+      let elementWidth = $('body > div > div > div > div.row.tp > div > div > div.col-lg-8.player-parent.clearfix > ul > li:nth-child(3)').outerWidth();    
+      let currentPlayerNumber =  parseInt($(query).attr('id').replace("player",""));
+      let scaledWidth = elementWidth*currentPlayerNumber;
+      console.log(scaledWidth);
+      let padding_left = parseInt(parseInt($('.bettor').css('padding-left').replace("px","")) + scaledWidth);
     }, 10800);     
   }
   
@@ -119,7 +124,6 @@ const EtherAccy = function() {
   function moveBettorArrow() {
     let elementWidth = $('body > div > div > div > div.row.tp > div > div > div.col-lg-8.player-parent.clearfix > ul > li:nth-child(3)').outerWidth();    
     let padding_left = parseInt(parseInt($('.bettor').css('padding-left').replace("px","")) + elementWidth);
-    console.log(padding_left);
     $('.bettor').css('padding-left',padding_left.toString() + "px");
   }  
   
