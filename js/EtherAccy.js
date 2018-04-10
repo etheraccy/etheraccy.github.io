@@ -118,6 +118,7 @@ const EtherAccy = function() {
   
   function moveBettorArrow() {
     let padding_right = $('.bettor').css('padding') + '10px';
+    console.log(padding_right);
     $('.bettor').css('padding',padding_right);
   }  
   
