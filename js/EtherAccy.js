@@ -59,12 +59,8 @@ const EtherAccy = function() {
     countDown(arr[3]);  
   }  
   
-  function displayPotSize() {
-    contractFunctions.getGameHash(contractFunctions.getGameStruct,setPotSize);
-  }
-  
-  function startCountDown() {
-    contractFunctions.getGameHash(contractFunctions.getGameStruct,getStartTime)
+  function getStructElements() {
+    contractFunctions.getGameHash(contractFunctions.getGameStruct,[setPotSize,getStartTime])
   }  
   
   function init() {
@@ -77,8 +73,7 @@ const EtherAccy = function() {
       $('body > div > div > div > div.row.tp > div:nth-child(2) > div > center > button').on('click',create);      
     }
     if(~window.location.href.indexOf("https://etheraccy.github.io/gamePage.html")) {
-      startCountDown();
-      displayPotSize();
+      getStructElements();
     }
   
   }
