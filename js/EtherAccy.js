@@ -65,7 +65,7 @@ const EtherAccy = function() {
     if(window.location.href === "https://etheraccy.github.io/index.html" || window.location.href === "https://etheraccy.github.io/") {
       $('body > div > div > div > div.row.tp > div:nth-child(2) > div > center > button').on('click',create);      
     }
-    if(window.location.href === "https://etheraccy.github.io/gamePage.html") {
+    if(~window.location.href.indexOf("https://etheraccy.github.io/gamePage.html")) {
       startCountDown();
     }
   
