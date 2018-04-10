@@ -36,7 +36,9 @@ const EtherAccy = function() {
     var x = setInterval(function() {
       
     var now = Date.now();
-            
+    
+    console.log(countDownDate,now)  
+      
     var distance = countDownDate - now;
     
     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -68,7 +70,7 @@ const EtherAccy = function() {
   }
   
   function getAnte(arr) {
-    $('#minBet').text(arr[2])
+    $('#minBet').text(parseFloat(arr[2])/1e18)
   }
   
   function getBetWindow(arr) {
