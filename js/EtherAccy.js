@@ -113,7 +113,7 @@ const EtherAccy = function() {
   }
    
   function getStructElements() {
-    contractFunctions.getGameHash(contractFunctions.getGameStruct,[setPotSize,getStartTime,getAnte,getGameState,getPlayerList])
+    contractFunctions.getGameHash(contractFunctions.getGameStruct,[setPotSize,getStartTime,getAnte,getGameState,getPlayerList,getBetWindow]);
   }  
   
   function init() {
