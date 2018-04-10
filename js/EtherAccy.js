@@ -100,6 +100,7 @@ const EtherAccy = function() {
   function getGameState(arr) {
     setInterval(function() {
       let state;
+      console.log(arr[10]);
       if(arr[10] === 0) {
         state = "WAITING_FOR_PLAYERS" 
       }  
