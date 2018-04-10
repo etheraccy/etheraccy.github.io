@@ -70,7 +70,7 @@ const EtherAccy = function() {
   }
   
   function getAnte(arr) {
-    $('#minBet').text(parseFloat(arr[2])/1e18)
+    $('#minBet').text((parseFloat(arr[2])/1e18).toString() + " ETH")
   }
   
   function getBetWindow(arr) {
