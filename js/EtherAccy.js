@@ -154,11 +154,11 @@ const EtherAccy = function() {
    setInterval(function(){ 
     state = parseInt(state)
     let game_state = "";
-    else if(state === 0) {
+    if(state === 0) {
       game_state = "DEALING_CARDS";
       $('#enterGame').show();      
     }    
-    if(state === 1) {
+    else if(state === 1) {
       game_state = "WAITING_FOR_PLAYERS";
       $('#enterGame').show();
     }  
