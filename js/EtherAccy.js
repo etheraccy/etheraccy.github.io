@@ -152,7 +152,7 @@ const EtherAccy = function() {
     else if(state === 6) {
       game_state = "INVALID";                                    
     }         
-    $('#gameState').text(parseInt(game_state));
+    $('#gameState').text(game_state);
   }
   
   function setGameState(state) {
