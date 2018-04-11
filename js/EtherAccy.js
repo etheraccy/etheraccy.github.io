@@ -137,11 +137,11 @@ const EtherAccy = function() {
   }    
   
   function getState() {
-    contractFunctions.getGameHash(contractFunctions.getState,setState);
+    contractFunctions.getState(setState);
   }
   
   function getGameState() {
-    contractFunctions.getGameHash(contractFunctions.getGameState,setGameState);
+    contractFunctions.getGameState(setGameState);
   }  
     
   function moveBettorArrow() {
