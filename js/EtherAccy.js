@@ -42,9 +42,7 @@ const EtherAccy = function() {
     var x = setInterval(function() {
       
     var now = Date.now();
-    
-    console.log(countDownDate,now)  
-      
+          
     var distance = countDownDate - now;
     
     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -116,9 +114,9 @@ const EtherAccy = function() {
   }  
   
   function setPlayerList(arr) {
+    localStorage.setItem("playerList",arr);
     for(i=0;i<arr.length;i++) {
       let playerElement = '#player' + (i+1).toString() + '> a';
-      console.log(playerElement);
       $(playerElement).attr("data-content",arr[i]);      
     }  
   }
@@ -163,7 +161,6 @@ const EtherAccy = function() {
     else if(state === 6) {
       game_state = "INVALID";                                    
     }         
-    console.log(state,game_state);
     $('#gameState').text(game_state);
   }
   
@@ -193,7 +190,6 @@ const EtherAccy = function() {
     if(window.location.href === "https://etheraccy.github.io/depositWithdraw.html") {
       $('body > div > div > div > div.row.tp > div:nth-child(1) > div > center > button').on('click',deposit);
       $('body > div > div > div > div.row.tp > div:nth-child(2) > div > center > button').on('click',withdraw);  
-      console.log("deposit","withdraw")
     }  
     if(window.location.href === "https://etheraccy.github.io/index.html" || window.location.href === "https://etheraccy.github.io/") {
       $('body > div > div > div > div.row.tp > div:nth-child(2) > div > center > button').on('click',create);      
