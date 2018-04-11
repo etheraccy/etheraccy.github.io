@@ -135,3 +135,7 @@ h4, h5, span, p, input, input[placeholder], button {
     border: 3px solid #afafaf;
     padding: 3px;
 }
+
+#bettorPage > div > ul > div.col-lg-9 > li.cus > h5 > span > textarea {
+  resize:none;
+}
