@@ -26,7 +26,7 @@ const contractFunctions = function() {
     contract.getGameHash(ante,deadline,betWindow,nonce, function(err,val) {
       if(!err)
       if(callback && callback1)  
-      console.log(val,callback1)  
+      console.log(callback,val,callback1)  
       callback(val,callback1);
     })
   }
