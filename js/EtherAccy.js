@@ -143,7 +143,8 @@ const EtherAccy = function() {
         $('#startPlaying').show();
         return;
       }
-    }  
+    }
+    $('#gameJoined').show();
   }   
   
   function setState(state) {
