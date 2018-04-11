@@ -145,7 +145,9 @@ const EtherAccy = function() {
       game_state = "CARDS_DEALT";                  
     }  
     else if(state === 4) {
-      game_state = "GAME_CANCELLED";                        
+      game_state = "GAME_CANCELLED";  
+      $('#enterGame').hide();             
+      $('#withdrawAnte').show();
     }      
     else if(state === 5) {
       game_state = "GAME_FINISHED";                              
