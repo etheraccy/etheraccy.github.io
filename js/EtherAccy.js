@@ -112,8 +112,7 @@ const EtherAccy = function() {
   function setPlayerList(arr) {
     for(i=0;i<arr.length;i++) {
       let playerElement = '#player' + (i+1).toString();
-      let inner_html =  '<a href="#" data-toggle="popover" title="Popover Header" data-content="' + arr[i] + '">Player' + (i+1) + '</a>';      
-      $(playerElement).html(inner_html);      
+      $(playerElement).attr("data-content",arr[i]);      
     }  
   }
   
