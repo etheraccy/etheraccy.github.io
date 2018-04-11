@@ -142,7 +142,7 @@ const EtherAccy = function() {
       if(playerList[i] === user) {
         $('#enterGame').hide();
         $('#startPlaying').show();
-        $('mainGamePage').hide();
+        $('#mainGamePage').hide();
         $('#bettorPage').show();
         return;
       }
