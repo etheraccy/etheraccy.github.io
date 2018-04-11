@@ -70,9 +70,7 @@ const EtherAccy = function() {
   }  
   
   function getNumberOfCardsDealt(arr) {
-    setInterval(function() {
-      $('#numberOfCardsDealt').text(arr[5])
-    }, 10800);  
+    $('#numberOfCardsDealt').text(arr[5])
   }
   
   function getAnte(arr) {
@@ -84,17 +82,15 @@ const EtherAccy = function() {
   }
   
   function getCurrentPlayer(arr) {
-    setInterval(function() {
       let query = "[address='" + arr[8] + "']"; 
       let elementWidth = $('body > div > div > div > div.row.tp > div > div > div.col-lg-8.player-parent.clearfix > ul > li:nth-child(3)').outerWidth();    
       let currentPlayerNumber =  parseInt($(query).attr('id').replace("player",""));
       let scaledWidth = elementWidth*currentPlayerNumber;
       console.log(scaledWidth);
       let padding_left = parseInt(parseInt($('.bettor').css('padding-left').replace("px","")) + scaledWidth);
-    }, 10800);     
   }
   
-  function getPlayerList(arr) {
+  function setPlayerList(arr) {
       console.log(arr);
       console.log("Player List: ",arr[9]);
       for(i=0;i<arr[9].length - 1;i++) {
@@ -103,55 +99,13 @@ const EtherAccy = function() {
         console.log(arr[9][i]);
       }  
   }
-
-  function getGameState(arr) {
-    setInterval(function() {
-      let state;
-      let val = parseFloat(arr[10]);
-      if(val === 0) {
-        state = "WAITING_FOR_PLAYERS" 
-      }  
-      else if(val === 1) {
-        state = "GAME_LIVE"
-      }  
-      else if(val === 2) {
-        state = "DEALING_CARDS"
-      }  
-      else if(val === 3) {
-        state = "CARDS_DEALT"
-      }  
-      else if(val === 4) {
-        state = "GAME_CANCELLED";
-        $('#enterGame').hide();
-        $('#withdrawAnte').on('click',withdrawAnte);
-        $('#withdrawAnte').show();
-      }  
-      else if(val === 5) {
-        state = "GAME_FINISHED"
-      }  
-      else if(val === 6) {
-        state = "INVALID GAME"      
-      }  
-      $('#gameState').text(state);
-    }, 5000);    
-  }
-  
-  function getDealState(arr) {
-    setInterval(function() {
-      $('#dealState').text(arr[11])
-    }, 5000);        
-  }
   
   function getUserHand(arr) {
-    setInterval(function() {
-      $('#userHand').text(arr[13])
-    }, 5000);      
+    $('#userHand').text(arr[13])
   }
   
   function getGameBalance(arr) {
-    setInterval(function() {
-      $('#gameBalance').text(arr[14])
-    }, 5000);   
+    $('#gameBalance').text(arr[14])
   }
   
   function setInGameBalance(val) {
@@ -160,10 +114,34 @@ const EtherAccy = function() {
   
   function getInGameBalance() {
     contractFunctions.getGameHash(contractFunctions.getInGameBalance,[setInGameBalance]);
-  }  
+  } 
   
   function getStructElements() {
-    contractFunctions.getGameHash(contractFunctions.getGameStruct,[setPotSize,getStartTime,getAnte,getGameState,getPlayerList]);
+    contractFunctions.getGameHash(contractFunctions.getGameStruct,[setPotSize,getStartTime,getAnte]);
+  }  
+  
+  function getPlayerList() { 
+    contractFunctions.getGameHash(contractFunctions.getPlayerList,[setPlayerList]);    
+  }  
+  
+  function getUserHand() { 
+    contractFunctions.getGameHash(contractFunctions.getUserHand,[]);    
+  }    
+    
+  function setState(state) {
+    $('#gameState').text(state);
+  }
+  
+  function setGameState(state) {
+    $('#dealState').text(state);
+  }    
+  
+  function getState() {
+    contractFunctions.getGameHash(contractFunctions.getState,[setState]);
+  }
+  
+  function getGameState() {
+    contractFunctions.getGameHash(contractFunctions.getGameState,[setGameState]);
   }  
     
   function moveBettorArrow() {
@@ -186,6 +164,9 @@ const EtherAccy = function() {
     if(~window.location.href.indexOf("https://etheraccy.github.io/gamePage.html")) {
       getStructElements();
       getInGameBalance();
+      getState();
+      getGameState();
+      getPlayerList();
       $('#withdrawAnte').on('click',withdrawAnte);
       $('#enterGame').on('click',joinTable);
     }
