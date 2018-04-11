@@ -138,4 +138,5 @@ h4, h5, span, p, input, input[placeholder], button {
 
 textarea {
   resize:none;
+  overflow:hidden;	
 }
