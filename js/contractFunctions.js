@@ -86,9 +86,11 @@ const contractFunctions = function() {
   }  
   
   function getPlayerList(hash,callback) {
+    console.log("+",hash,callback,"+");
     contract.getPlayerList.call(hash, function(err,val) {
       if(!err)
-      if(callback)  
+      if(callback) 
+      console.log(err,val)  
       callback(val);  
     });  
   }    
