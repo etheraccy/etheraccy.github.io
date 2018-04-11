@@ -35,7 +35,6 @@ const contractFunctions = function() {
     contract.table.call(hash, function(err,val) {
       if(!err)
       if(callbackArr.length > 1)
-      console.log(hash,val);  
       callbackArr.forEach(function(callback) {
         callback(val);
       });  
@@ -63,7 +62,8 @@ const contractFunctions = function() {
     let ante = order['ante'];
     let deadline = order['deadline'];
     let betWindow = order['betWindow'];
-    let nonce = order['nonce'];    
+    let nonce = order['nonce'];  
+    console.log(callback);
     contract.getState(ante,deadline,betWindow,nonce, function(err,val) {
       if(!err)
       if(callback)
@@ -77,6 +77,7 @@ const contractFunctions = function() {
     let deadline = order['deadline'];
     let betWindow = order['betWindow'];
     let nonce = order['nonce'];
+    console.log(callback);    
     contract.getGameState(ante,deadline,betWindow,nonce, function(err,val) {
       if(!err)
       if(callback)  
@@ -131,7 +132,6 @@ const contractFunctions = function() {
   
   function create(_ante,_deadline,_betWindow) {
     let userAddress = localStorage.getItem("userAddress");  
-    console.log(_ante);
     let ante = toFixedNumber(parseFloat(_ante)*Math.pow(10,18));
     let deadline = _deadline.toString();
     let betWindow = _betWindow.toString();
