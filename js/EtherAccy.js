@@ -134,15 +134,28 @@ const EtherAccy = function() {
   function getUserHand() { 
     contractFunctions.getGameHash(contractFunctions.getUserHand,[]);    
   }    
-    
+ 
+  function redirectPlayerToGamePage() {
+    let playerList = localStorage.getItem("playerList");
+    let user = localStorage.getItem("userAddress");
+    for(let i in playerList) {
+      if(playerList[i] === user) {
+        $('#startPlaying').show();
+        return;
+      }
+    }  
+  }   
+  
   function setState(state) {
+   setInterval(function(){ 
     state = parseInt(state)
     let game_state = "";
     if(state === 0) {
       game_state = "WAITING_FOR_PLAYERS";
     }  
     else if(state === 1) {
-      game_state = "GAME_LIVE";      
+      game_state = "GAME_LIVE"; 
+      redirectPlayerToGamePage();
     }  
     else if(state === 2) {
       game_state = "DEALING_CARDS";            
@@ -162,6 +175,7 @@ const EtherAccy = function() {
       game_state = "INVALID";                                    
     }         
     $('#gameState').text(game_state);
+   },5000);  
   }
   
   function setGameState(state) {
@@ -176,8 +190,8 @@ const EtherAccy = function() {
     setInterval(function() {
       contractFunctions.getGameState(setGameState);
     }, 5000);  
-  }  
-    
+  }    
+  
   function moveBettorArrow() {
     let elementWidth = $('body > div > div > div > div.row.tp > div > div > div.col-lg-8.player-parent.clearfix > ul > li:nth-child(3)').outerWidth();    
     let padding_left = parseInt(parseInt($('.bettor').css('padding-left').replace("px","")) + elementWidth);
