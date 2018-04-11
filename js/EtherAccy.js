@@ -155,7 +155,7 @@ const EtherAccy = function() {
     state = parseInt(state)
     let game_state = "";
     if(state === 0) {
-      game_state = "DEALING_CARDS";
+      game_state = "NONE";
       $('#enterGame').show();      
     }    
     else if(state === 1) {
