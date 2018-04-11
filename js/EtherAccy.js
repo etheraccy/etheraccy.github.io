@@ -109,12 +109,12 @@ const EtherAccy = function() {
     contractFunctions.getGameHash(contractFunctions.getGameStruct,[setPotSize,getStartTime,getAnte]);
   }  
   
-    function setPlayerList(arr) {
-      console.log(arr)
-      for(i=0;i<arr.length - 1;i++) {
-        let playerElement = '#player' + (i+1).toString();
-        $(playerElement).text(arr[i]);
-      }  
+  function setPlayerList(arr) {
+    for(i=0;i<arr.length - 1;i++) {
+      let playerElement = '#player' + (i+1).toString();
+      console.log(playerElement,arr[i]);
+      $(playerElement).text(arr[i]);
+    }  
   }
   
   function getPlayerList() { 
