@@ -136,7 +136,7 @@ const EtherAccy = function() {
   }    
  
   function redirectPlayerToGamePage() {
-    let playerList = localStorage.getItem("playerList");
+    let playerList = localStorage.getItem("playerList").split(",");
     let user = localStorage.getItem("userAddress");
     for(let i in playerList) {
       if(playerList[i] === user) {
