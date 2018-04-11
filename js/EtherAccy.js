@@ -154,6 +154,7 @@ const EtherAccy = function() {
     let game_state = "";
     if(state === 0) {
       game_state = "WAITING_FOR_PLAYERS";
+      $('#enterGame').show();
     }  
     else if(state === 1) {
       game_state = "GAME_LIVE"; 
