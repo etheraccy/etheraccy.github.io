@@ -86,18 +86,7 @@ const EtherAccy = function() {
       let elementWidth = $('body > div > div > div > div.row.tp > div > div > div.col-lg-8.player-parent.clearfix > ul > li:nth-child(3)').outerWidth();    
       let currentPlayerNumber =  parseInt($(query).attr('id').replace("player",""));
       let scaledWidth = elementWidth*currentPlayerNumber;
-      console.log(scaledWidth);
       let padding_left = parseInt(parseInt($('.bettor').css('padding-left').replace("px","")) + scaledWidth);
-  }
-  
-  function setPlayerList(arr) {
-      console.log(arr);
-      console.log("Player List: ",arr[9]);
-      for(i=0;i<arr[9].length - 1;i++) {
-        let playerElement = '#player' + (i+1).toString();
-        $(playerElement).text(arr[9][i]);
-        console.log(arr[9][i]);
-      }  
   }
   
   function getUserHand(arr) {
@@ -120,8 +109,19 @@ const EtherAccy = function() {
     contractFunctions.getGameHash(contractFunctions.getGameStruct,[setPotSize,getStartTime,getAnte]);
   }  
   
+    function setPlayerList(arr) {
+      for(i=0;i<arr[9].length - 1;i++) {
+        let playerElement = '#player' + (i+1).toString();
+        $(playerElement).text(arr[9][i]);
+      }  
+  }
+  
   function getPlayerList() { 
     contractFunctions.getGameHash(contractFunctions.getPlayerList,[setPlayerList]);    
+  }  
+  
+  function setUserHand(arr) {
+    console.log(arr);
   }  
   
   function getUserHand() { 
