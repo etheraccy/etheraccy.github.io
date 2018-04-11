@@ -130,7 +130,8 @@ const EtherAccy = function() {
   }    
     
   function setState(state) {
-    let game_state;
+    state = parseInt(state)
+    let game_state = "";
     if(state === 0) {
       game_state = "WAITING_FOR_PLAYERS";
     }  
@@ -152,6 +153,7 @@ const EtherAccy = function() {
     else if(state === 6) {
       game_state = "INVALID";                                    
     }         
+    console.log(state,game_state);
     $('#gameState').text(game_state);
   }
   
