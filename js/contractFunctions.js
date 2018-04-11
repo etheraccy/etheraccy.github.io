@@ -26,7 +26,6 @@ const contractFunctions = function() {
     contract.getGameHash(ante,deadline,betWindow,nonce, function(err,val) {
       if(!err)
       if(callback && callback1)  
-      console.log(callback,val,callback1)  
       callback(val,callback1);
     })
   }
@@ -66,7 +65,6 @@ const contractFunctions = function() {
     contract.getState(ante,deadline,betWindow,nonce, function(err,val) {
       if(!err)
       if(callback)
-      console.log(callback,val)  
       callback(val);  
     });  
   } 
@@ -80,17 +78,14 @@ const contractFunctions = function() {
     contract.getGameState(ante,deadline,betWindow,nonce, function(err,val) {
       if(!err)
       if(callback)  
-      console.log(callback,val)          
       callback(val);  
     });  
   }  
   
   function getPlayerList(hash,callback) {
-    console.log("+",hash,callback,"+");
-    contract.getPlayerList.call(hash, function(err,val) {
+    contract.getPlayerList.call(hash, function(val,err) {
       if(!err)
       if(callback) 
-      console.log(err,val)  
       callback(val);  
     });  
   }    
@@ -139,7 +134,6 @@ const contractFunctions = function() {
     let betWindow = _betWindow.toString();
     let nonce = Math.random().toString().slice(2);
     let orderJSON = {'ante':ante,'deadline':deadline,'betWindow':betWindow,'nonce':nonce};
-    console.log(orderJSON);
     let data = contract.createGame.getData(ante,deadline,betWindow,nonce);
     let Tx = {
        from: userAddress,
