@@ -141,7 +141,6 @@ const EtherAccy = function() {
     for(let i in playerList) {
       if(playerList[i] === user) {
         $('#enterGame').hide();
-        $('#startPlaying').show();
         $('#mainGamePage').hide();
         $('#bettorPage').show();
         return;
