@@ -117,7 +117,7 @@ const EtherAccy = function() {
   }
   
   function getPlayerList() { 
-    contractFunctions.getGameHash(contractFunctions.getPlayerList,[setPlayerList]);    
+    contractFunctions.getGameHash(contractFunctions.getPlayerList,setPlayerList);    
   }  
   
   function setUserHand(arr) {
@@ -137,11 +137,11 @@ const EtherAccy = function() {
   }    
   
   function getState() {
-    contractFunctions.getGameHash(contractFunctions.getState,[setState]);
+    contractFunctions.getGameHash(contractFunctions.getState,setState);
   }
   
   function getGameState() {
-    contractFunctions.getGameHash(contractFunctions.getGameState,[setGameState]);
+    contractFunctions.getGameHash(contractFunctions.getGameState,setGameState);
   }  
     
   function moveBettorArrow() {
