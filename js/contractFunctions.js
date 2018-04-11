@@ -63,10 +63,10 @@ const contractFunctions = function() {
     let deadline = order['deadline'];
     let betWindow = order['betWindow'];
     let nonce = order['nonce'];  
-    console.log(callback);
     contract.getState(ante,deadline,betWindow,nonce, function(err,val) {
       if(!err)
       if(callback)
+      console.log(callback,val)  
       callback(val);  
     });  
   } 
@@ -77,10 +77,10 @@ const contractFunctions = function() {
     let deadline = order['deadline'];
     let betWindow = order['betWindow'];
     let nonce = order['nonce'];
-    console.log(callback);    
     contract.getGameState(ante,deadline,betWindow,nonce, function(err,val) {
       if(!err)
       if(callback)  
+      console.log(callback,val)          
       callback(val);  
     });  
   }  
