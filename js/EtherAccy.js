@@ -129,11 +129,11 @@ const EtherAccy = function() {
   }    
     
   function setState(state) {
-    $('#gameState').text(state);
+    $('#gameState').text(parseInt(state));
   }
   
   function setGameState(state) {
-    $('#dealState').text(state);
+    $('#dealState').text(parseInt(state));
   }    
   
   function getState() {
