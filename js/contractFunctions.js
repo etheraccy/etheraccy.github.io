@@ -83,10 +83,10 @@ const contractFunctions = function() {
   }  
   
   function getPlayerList(hash,callback) {
-    contract.getPlayerList.call(hash, function(val,err) {
+    contract.getPlayerList.call(hash, function(err,val) {
       if(!err)
       if(callback) 
-      console.log(val);  
+      console.log(err,val);  
       callback(val);  
     });  
   }    
