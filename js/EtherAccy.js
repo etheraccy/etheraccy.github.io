@@ -154,29 +154,33 @@ const EtherAccy = function() {
    setInterval(function(){ 
     state = parseInt(state)
     let game_state = "";
-    if(state === 0) {
+    else if(state === 0) {
+      game_state = "DEALING_CARDS";
+      $('#enterGame').show();      
+    }    
+    if(state === 1) {
       game_state = "WAITING_FOR_PLAYERS";
       $('#enterGame').show();
     }  
-    else if(state === 1) {
+    else if(state === 2) {
       game_state = "GAME_LIVE"; 
       redirectPlayerToGamePage();
     }  
-    else if(state === 2) {
+    else if(state === 3) {
       game_state = "DEALING_CARDS";            
     }  
-    else if(state === 3) {
+    else if(state === 4) {
       game_state = "CARDS_DEALT";                  
     }  
-    else if(state === 4) {
+    else if(state === 5) {
       game_state = "GAME_CANCELLED";  
       $('#enterGame').hide();             
       $('#withdrawAnte').show();
     }      
-    else if(state === 5) {
+    else if(state === 6) {
       game_state = "GAME_FINISHED";                              
     }     
-    else if(state === 6) {
+    else if(state === 7) {
       game_state = "INVALID";                                    
     }         
     $('#gameState').text(game_state);
