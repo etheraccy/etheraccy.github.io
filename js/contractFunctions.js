@@ -54,20 +54,53 @@ const contractFunctions = function() {
     let userAddress = localStorage.getItem("userAddress");        
     contract.getInGameBalance(hash,userAddress, function(err,val) {
       if(!err)
-      console.log(val);
       callbackArr[0](val);  
     });  
   }  
+
+  function getState(callback) {
+    let order = JSON.parse(decodeURI(localStorage.getItem("order"))); 
+    let ante = order['ante'];
+    let deadline = order['deadline'];
+    let betWindow = order['betWindow'];
+    let nonce = order['nonce'];    
+    contract.getState(ante,deadline,betWindow,nonce, function(err,val) {
+      if(!err)
+      if(callback)
+      callback(val);  
+    });  
+  } 
+  
+  function getGameState(callback) {
+    let order = JSON.parse(decodeURI(localStorage.getItem("order"))); 
+    let ante = order['ante'];
+    let deadline = order['deadline'];
+    let betWindow = order['betWindow'];
+    let nonce = order['nonce'];
+    contract.getGameState(ante,deadline,betWindow,nonce, function(err,val) {
+      if(!err)
+      if(callback)  
+      callback(val);  
+    });  
+  }  
+  
+  function getPlayerList(hash,callback) {
+    contract.getPlayerList.call(hash, function(err,val) {
+      if(!err)
+      if(callback)        
+      callback(val);  
+    });  
+  }    
   
   function getUserHand(hash,address) {
-    contract.getUserHand(hash,address, function(err,val) {
+    contract.getUserHand.call(hash,address, function(err,val) {
       if(!err)
       console.log(val);  
     });  
   }   
   
   function getPlayerIndex(hash,address) {
-    contract.getPlayerIndex(hash,address, function(err,val) {
+    contract.getPlayerIndex.call(hash,address, function(err,val) {
       if(!err)
       console.log(val);  
     });  
