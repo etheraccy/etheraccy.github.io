@@ -140,6 +140,7 @@ const EtherAccy = function() {
     let user = localStorage.getItem("userAddress");
     for(let i in playerList) {
       if(playerList[i] === user) {
+        $('#enterGame').hide();
         $('#startPlaying').show();
         return;
       }
