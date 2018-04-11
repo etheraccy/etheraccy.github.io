@@ -111,7 +111,8 @@ const EtherAccy = function() {
   
   function setPlayerList(arr) {
     for(i=0;i<arr.length;i++) {
-      let playerElement = '#player' + (i+1).toString();
+      let playerElement = '#player' + (i+1).toString() + '> a';
+      console.log(playerElement);
       $(playerElement).attr("data-content",arr[i]);      
     }  
   }
