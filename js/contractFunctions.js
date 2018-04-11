@@ -92,17 +92,21 @@ const contractFunctions = function() {
     });  
   }    
   
-  function getUserHand(hash,address) {
+  function getUserHand(hash,callback) {
+    let address = localStorage.getItem("userAddress");
     contract.getUserHand.call(hash,address, function(err,val) {
       if(!err)
-      console.log(val);  
+      if(callback)
+      callback(val);  
     });  
   }   
   
-  function getPlayerIndex(hash,address) {
+  function getPlayerIndex(hash,address,callback) {
+    let address = localStorage.getItem("userAddress");    
     contract.getPlayerIndex.call(hash,address, function(err,val) {
       if(!err)
-      console.log(val);  
+      if(callback)  
+      callback(val);  
     });  
   }     
   
@@ -110,6 +114,7 @@ const contractFunctions = function() {
     let userAddress = localStorage.getItem("userAddress");
     contract.userBalance.call(userAddress, function(err,val) {
       if(!err)
+      if(callback)  
       callback(val);  
     })    
   }
@@ -250,7 +255,12 @@ const contractFunctions = function() {
     getGameHash,
     bet,
     getGameStruct,
-    getInGameBalance
+    getInGameBalance,
+    getState,
+    getGameState,
+    getPlayerList,
+    getUserHand,
+    getPlayerIndex
   };
   
 }();
