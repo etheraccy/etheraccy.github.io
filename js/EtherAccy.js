@@ -110,9 +110,10 @@ const EtherAccy = function() {
   }  
   
     function setPlayerList(arr) {
-      for(i=0;i<arr[9].length - 1;i++) {
+      console.log(arr)
+      for(i=0;i<arr.length - 1;i++) {
         let playerElement = '#player' + (i+1).toString();
-        $(playerElement).text(arr[9][i]);
+        $(playerElement).text(arr[i]);
       }  
   }
   
