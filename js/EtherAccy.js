@@ -6,7 +6,9 @@ const EtherAccy = function() {
   }  
   
   function getBalance() {
-    contractFunctions.getBalance(setBalance);  
+    setInterval(function() {       
+      contractFunctions.getBalance(setBalance);  
+    },10000);  
   }  
   
   function create() {
@@ -102,11 +104,15 @@ const EtherAccy = function() {
   }  
   
   function getInGameBalance() {
-    contractFunctions.getGameHash(contractFunctions.getInGameBalance,[setInGameBalance]);
+    setInterval(function() {       
+      contractFunctions.getGameHash(contractFunctions.getInGameBalance,[setInGameBalance]);
+    },30000);    
   } 
   
   function getStructElements() {
-    contractFunctions.getGameHash(contractFunctions.getGameStruct,[setPotSize,getStartTime,getAnte]);
+    setInterval(function() {   
+      contractFunctions.getGameHash(contractFunctions.getGameStruct,[setPotSize,getStartTime,getAnte]);
+    },30000);        
   }  
   
   function setPlayerList(arr) {
@@ -117,8 +123,10 @@ const EtherAccy = function() {
     }  
   }
   
-  function getPlayerList() { 
-    contractFunctions.getGameHash(contractFunctions.getPlayerList,setPlayerList);    
+  function getPlayerList() {
+    setInterval(function() {   
+      contractFunctions.getGameHash(contractFunctions.getPlayerList,setPlayerList);    
+    },30000);  
   }  
   
   function setUserHand(arr) {
@@ -168,7 +176,9 @@ const EtherAccy = function() {
   }
   
   function getGameState() {
-    contractFunctions.getGameState(setGameState);
+    setInterval(function() {
+      contractFunctions.getGameState(setGameState);
+    }, 30000);  
   }  
     
   function moveBettorArrow() {
