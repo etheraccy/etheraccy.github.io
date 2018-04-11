@@ -186,6 +186,7 @@ const EtherAccy = function() {
     if(~window.location.href.indexOf("https://etheraccy.github.io/gamePage.html")) {
       getStructElements();
       getInGameBalance();
+      $('#withdrawAnte').on('click',withdrawAnte);
       $('#enterGame').on('click',joinTable);
     }
   
