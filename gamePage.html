@@ -127,22 +127,22 @@
                     
                       <li class="col-lg-3 player">
                         <span id="player1">
-                          <a href="javascript:void(0)" data-toggle="popover" data-content="None">Player 1</a>  
+                          <a  data-toggle="popover" data-content="None">Player 1</a>  
                         </span>
                       </li>
                       <li class="col-lg-3 player">
                         <span id="player2">
-                          <a href="javascript:void(0)" data-toggle="popover"  data-content="None">Player 2</a>  
+                          <a  data-toggle="popover"  data-content="None">Player 2</a>  
                         </span>
                     </li>
                       <li class="col-lg-3 player">
                         <span id="player3">
-                          <a href="javascript:void(0)" data-toggle="popover"  data-content="None">Player 3</a>  
+                          <a  data-toggle="popover"  data-content="None">Player 3</a>  
                         </span>
                     </li>
                       <li class="col-lg-3 player">
                         <span id="player4">
-                          <a href="javascript:void(0)" data-toggle="popover"  data-content="None">Player 4</a>  
+                          <a  data-toggle="popover"  data-content="None">Player 4</a>  
                         </span> 
                     </li>  
                     
@@ -177,7 +177,7 @@
     <script src="js/main.js"></script> 
     <script>
      $(document).ready(function(){
-        $('[data-toggle="popover"]').popover();   
+        $('[data-toggle="popover"]').popover({ trigger: "hover" });   
      });
     </script>  
   </body>
