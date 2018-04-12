@@ -207,7 +207,17 @@ const EtherAccy = function() {
     let elementWidth = $('body > div > div > div > div.row.tp > div > div > div.col-lg-8.player-parent.clearfix > ul > li:nth-child(3)').outerWidth();    
     let padding_left = parseInt(parseInt($('.bettor').css('padding-left').replace("px","")) + elementWidth);
     $('.bettor').css('padding-left',padding_left.toString() + "px");
+  } 
+  
+  function selectMinBet() {
+    $('#bettorPage > div > ul > div.col-lg-9 > li.min > h5 > span').addClass('active')
+    $('#bettorPage > div > ul > div.col-lg-9 > li.max > h5 > span').removeClass('active')
   }  
+  
+  function selectMaxBet() {
+    $('#bettorPage > div > ul > div.col-lg-9 > li.max > h5 > span').addClass('active')
+    $('#bettorPage > div > ul > div.col-lg-9 > li.min > h5 > span').removeClass('active') 
+  }
   
   function init() {
     getBalance();  
@@ -224,6 +234,8 @@ const EtherAccy = function() {
       $('#withdrawAnte').on('click',withdrawAnte);
       $('#enterGame').on('click',joinTable); 
       $('#adminWithdrawal').on('click',adminWithdrawal);
+      $('#bettorPage > div > ul > div.col-lg-9 > li.min > h5 > span').on('click',selectMinBet);
+      $('#bettorPage > div > ul > div.col-lg-9 > li.max > h5 > span').on('click',selectMaxBet);
       getStructElements();
       getInGameBalance();
       getState();
