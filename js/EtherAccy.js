@@ -210,14 +210,20 @@ const EtherAccy = function() {
   } 
   
   function selectMinBet() {
-    $('#bettorPage > div > ul > div.col-lg-9 > li.min > h5 > span').addClass('active')
-    $('#bettorPage > div > ul > div.col-lg-9 > li.max > h5 > span').removeClass('active')
+    $('#bettorPage > div > ul > div.col-lg-9 > li.min > h5 > span').addClass('active');
+    $('#bettorPage > div > ul > div.col-lg-9 > li.max > h5 > span').removeClass('active');
   }  
   
   function selectMaxBet() {
-    $('#bettorPage > div > ul > div.col-lg-9 > li.max > h5 > span').addClass('active')
-    $('#bettorPage > div > ul > div.col-lg-9 > li.min > h5 > span').removeClass('active') 
+    $('#bettorPage > div > ul > div.col-lg-9 > li.max > h5 > span').addClass('active');
+    $('#bettorPage > div > ul > div.col-lg-9 > li.min > h5 > span').removeClass('active'); 
   }
+  
+  function selectCustomBet() {
+    $('#bettorPage > div > ul > div.col-lg-9 > li.min > h5 > span').removeClass('active');  
+    $('#bettorPage > div > ul > div.col-lg-9 > li.max > h5 > span').removeClass('active');    
+    $('#bettorPage > div > ul > div.col-lg-9 > li.cus > h5 > span').style('border-color','black');  
+  }  
   
   function init() {
     getBalance();  
@@ -236,6 +242,7 @@ const EtherAccy = function() {
       $('#adminWithdrawal').on('click',adminWithdrawal);
       $('#bettorPage > div > ul > div.col-lg-9 > li.min > h5 > span').on('click',selectMinBet);
       $('#bettorPage > div > ul > div.col-lg-9 > li.max > h5 > span').on('click',selectMaxBet);
+      $('#bettorPage > div > ul > div.col-lg-9 > li.cus > h5 > span > input').on('click',selectCustomBet);
       getStructElements();
       getInGameBalance();
       getState();
