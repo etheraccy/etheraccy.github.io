@@ -305,7 +305,6 @@ const EtherAccy = function() {
     else if(betChoice === "customBet") {
       betValue = parseFloat($('#bettorPage > div > ul > div.col-lg-9 > li.cus > h5 > span > input').val());
     }
-    console.log(betChoice,betValue);
     contractFunctions.bet(betValue);
   }  
   
