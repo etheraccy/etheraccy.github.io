@@ -212,11 +212,13 @@ const EtherAccy = function() {
   function selectMinBet() {
     $('#bettorPage > div > ul > div.col-lg-9 > li.min > h5 > span').addClass('selectedBox');
     $('#bettorPage > div > ul > div.col-lg-9 > li.max > h5 > span').removeClass('selectedBox');
+    $('#bettorPage > div > ul > div.col-lg-9 > li.cus > h5 > span').css('border-color','#afafaf');  
   }  
   
   function selectMaxBet() {
     $('#bettorPage > div > ul > div.col-lg-9 > li.max > h5 > span').addClass('selectedBox');
-    $('#bettorPage > div > ul > div.col-lg-9 > li.min > h5 > span').removeClass('selectedBox'); 
+    $('#bettorPage > div > ul > div.col-lg-9 > li.min > h5 > span').removeClass('selectedBox');
+    $('#bettorPage > div > ul > div.col-lg-9 > li.cus > h5 > span').css('border-color','afafaf');      
   }
   
   function selectCustomBet() {
