@@ -210,18 +210,18 @@ const EtherAccy = function() {
   } 
   
   function selectMinBet() {
-    $('#bettorPage > div > ul > div.col-lg-9 > li.min > h5 > span').addClass('active');
-    $('#bettorPage > div > ul > div.col-lg-9 > li.max > h5 > span').removeClass('active');
+    $('#bettorPage > div > ul > div.col-lg-9 > li.min > h5 > span').addClass('selectedBox');
+    $('#bettorPage > div > ul > div.col-lg-9 > li.max > h5 > span').removeClass('selectedBox');
   }  
   
   function selectMaxBet() {
-    $('#bettorPage > div > ul > div.col-lg-9 > li.max > h5 > span').addClass('active');
-    $('#bettorPage > div > ul > div.col-lg-9 > li.min > h5 > span').removeClass('active'); 
+    $('#bettorPage > div > ul > div.col-lg-9 > li.max > h5 > span').addClass('selectedBox');
+    $('#bettorPage > div > ul > div.col-lg-9 > li.min > h5 > span').removeClass('selectedBox'); 
   }
   
   function selectCustomBet() {
-    $('#bettorPage > div > ul > div.col-lg-9 > li.min > h5 > span').removeClass('active');  
-    $('#bettorPage > div > ul > div.col-lg-9 > li.max > h5 > span').removeClass('active');    
+    $('#bettorPage > div > ul > div.col-lg-9 > li.min > h5 > span').removeClass('selectedBox');  
+    $('#bettorPage > div > ul > div.col-lg-9 > li.max > h5 > span').removeClass('selectedBox');    
     $('#bettorPage > div > ul > div.col-lg-9 > li.cus > h5 > span').css('border-color','black');  
   }  
   
