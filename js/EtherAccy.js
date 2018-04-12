@@ -244,6 +244,16 @@ const EtherAccy = function() {
     else {
       localStorage.setItem(cardTypeNum,null);
     } 
+    $('#bettorPage > ul > div > li:nth-child(1) > div.n > h4').text(cardValue);
+    $('#bettorPage > ul > div > li:nth-child(3) > div.s > img').html(link to cardType + ".png");
+  }  
+  
+  function checkForThirdCard(arr) {
+    setInterval(function() {
+      if(arr.length == 3) {
+        displayCard(arr[2]);  
+      }  
+    });  
   }  
   
   function setCards(arr) {
