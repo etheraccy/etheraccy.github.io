@@ -154,7 +154,6 @@ const EtherAccy = function() {
   }   
   
   function setState(state) {
-   setInterval(function(){ 
     state = parseInt(state)
     let game_state = "";
     if(state === 0) {
@@ -179,8 +178,7 @@ const EtherAccy = function() {
     else if(state === 5) {
       game_state = "INVALID";                                    
     }         
-    $('#gameState').text(game_state);
-   },5000);  
+    $('#gameState').text(game_state); 
   }
   
   function setGameState(state) {
