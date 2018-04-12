@@ -206,7 +206,7 @@ const contractFunctions = function() {
     transaction.send(Tx);   
   }  
   
-  function getInitialCards() {
+  function getInitialCards(callback) {
     let userAddress = localStorage.getItem("userAddress");    
     let order = JSON.parse(decodeURI(localStorage.getItem("order"))); 
     let ante = order['ante'];
@@ -220,7 +220,7 @@ const contractFunctions = function() {
        data: data,
        gasPrice: gasPrice
     };
-    transaction.send(Tx);   
+    transaction.sendAwaitConfirmations(Tx,callback);   
   } 
   
   function bet(amount) {
