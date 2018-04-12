@@ -222,7 +222,7 @@ const EtherAccy = function() {
   function selectCustomBet() {
     $('#bettorPage > div > ul > div.col-lg-9 > li.min > h5 > span').removeClass('active');  
     $('#bettorPage > div > ul > div.col-lg-9 > li.max > h5 > span').removeClass('active');    
-    $('#bettorPage > div > ul > div.col-lg-9 > li.cus > h5 > span').style('border-color','black');  
+    $('#bettorPage > div > ul > div.col-lg-9 > li.cus > h5 > span').css('border-color','black');  
   }  
   
   function init() {
