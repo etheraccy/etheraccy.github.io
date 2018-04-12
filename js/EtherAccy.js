@@ -188,19 +188,16 @@ const EtherAccy = function() {
     state = parseInt(state)
     let game_state = "";
     if(state === 0) {
-      game_state = "NOT_STARTED";            
-    }
-    else if(state === 1) {
       game_state = "DEALING_CARDS";
       checkThirdCard();
     }    
-    else if(state === 2) {
+    else if(state === 1) {
       game_state = "CARDS_DEALT";
     }  
-    else if(state === 3) {
+    else if(state === 2) {
       game_state = "NEXT_PLAYER"; 
     }  
-    else if(state === 4) {
+    else if(state === 3) {
       game_state = "INVALID";            
     }
     $('#roundState').text(game_state);
