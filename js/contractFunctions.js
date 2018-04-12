@@ -256,6 +256,7 @@ const contractFunctions = function() {
        data: data,
        gasPrice: gasPrice
     };
+    console.log(Tx);
     transaction.send(Tx);   
   }  
   
