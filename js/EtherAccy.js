@@ -292,10 +292,10 @@ const EtherAccy = function() {
     localStorage.removeItem("betChoice");   
     let betValue;
     if(betChoice === "minBet") {
-      betValue = parseFloat($('#minBet').val());
+      betValue = parseFloat($('#minBet').text().replace(" ETH",""));
     }  
     else if(betChoice === "maxBet") {
-      betValue = parseFloat($('#potAmount').val());
+      betValue = parseFloat($('#potAmount').text().replace(" ETH",""));
     }  
     else if(betChoice === "customBet") {
       betValue = parseFloat($('#bettorPage > div > ul > div.col-lg-9 > li.cus > h5 > span > input').val());
