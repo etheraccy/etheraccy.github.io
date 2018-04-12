@@ -285,11 +285,8 @@ const EtherAccy = function() {
   }
   
   function getInitialCards() {
-    $('#getInitialCards').hide();
-    $('#getInitialCards').on('click',function() {
-      $('#bettorPage').show();
-      contractFunctions.getInitialCards(getCards);        
-    });
+    $('#bettorPage').show();
+    contractFunctions.getInitialCards(getCards);        
   }  
   
   function placeBet() {
