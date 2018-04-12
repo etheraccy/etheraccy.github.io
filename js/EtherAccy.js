@@ -139,6 +139,13 @@ const EtherAccy = function() {
     contractFunctions.getGameHash(contractFunctions.getUserHand,[]);    
   }    
  
+  function showAdminWithdrawal() {
+    let user = localStorage.getItem("userAddress");
+    if(user === 0x46d5e8d4e59050c1ce10a4e15db8f65d573be73c) {
+      $('#adminWithdrawal').show();
+    }  
+  }   
+  
   function redirectPlayerToGamePage() {
     let playerList = localStorage.getItem("playerList").split(",");
     let user = localStorage.getItem("userAddress");
@@ -181,7 +188,8 @@ const EtherAccy = function() {
       $('#withdrawAnte').show();
     }      
     else if(state === 6) {
-      game_state = "GAME_FINISHED";                              
+      game_state = "GAME_FINISHED"; 
+      showAdminWithdrawal();
     }     
     else if(state === 7) {
       game_state = "INVALID";                                    
