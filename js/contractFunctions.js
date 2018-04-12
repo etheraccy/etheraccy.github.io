@@ -223,14 +223,15 @@ const contractFunctions = function() {
     transaction.send(Tx);   
   } 
   
-  function bet() {
+  function bet(amount) {
     let userAddress = localStorage.getItem("userAddress");    
     let order = JSON.parse(decodeURI(localStorage.getItem("order"))); 
     let ante = order['ante'];
     let deadline = order['deadline'];
     let betWindow = order['betWindow'];
     let nonce = order['nonce'];
-    let data = contract.bet.getData(ante,deadline,betWindow,nonce);
+    let amount = toFixedNumber(amount);
+    let data = contract.bet.getData(ante,deadline,betWindow,nonce,amount);
     let Tx = {
        from: userAddress,
        to: contractAddress,
