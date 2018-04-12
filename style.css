@@ -141,6 +141,6 @@ textarea {
   overflow:hidden;	
 }
 
-.active {
+.selectedBox {
   background-color:black;
 }	
