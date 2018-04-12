@@ -140,3 +140,7 @@ textarea {
   resize:none;
   overflow:hidden;	
 }
+
+.active {
+  background-color:black;
+}	
