@@ -223,14 +223,14 @@ const contractFunctions = function() {
     transaction.sendAwaitConfirmations(Tx,callback);   
   } 
   
-  function bet(amount) {
+  function bet(value) {
     let userAddress = localStorage.getItem("userAddress");    
     let order = JSON.parse(decodeURI(localStorage.getItem("order"))); 
     let ante = order['ante'];
     let deadline = order['deadline'];
     let betWindow = order['betWindow'];
     let nonce = order['nonce'];
-    let amount = toFixedNumber(amount);
+    let amount = toFixedNumber(value);
     let data = contract.bet.getData(ante,deadline,betWindow,nonce,amount);
     let Tx = {
        from: userAddress,
