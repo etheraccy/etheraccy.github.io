@@ -146,8 +146,9 @@ const EtherAccy = function() {
       if(playerList[i] === user) {
         $('#enterGame').hide();
         $('#mainGamePage').hide();
-        $('#bettorPage').hide();
-        $('#getInitialCards').show();
+        if($('#bettorPage').css('display') === 'none') {
+          $('#getInitialCards').show();          
+        }  
         return;
       }
     }
@@ -287,8 +288,8 @@ const EtherAccy = function() {
     $('#getInitialCards').hide();
     $('#getInitialCards').on('click',function() {
       $('#bettorPage').show();
+      contractFunctions.getInitialCards(getCards);        
     });
-    contractFunctions.getInitialCards(getCards);  
   }  
   
   function placeBet() {
