@@ -231,16 +231,13 @@ const contractFunctions = function() {
     let betWindow = order['betWindow'];
     let nonce = order['nonce'];
     let amount = toFixedNumber(value);
-    console.log(ante,deadline,betWindow,nonce,amount);
     let data = contract.bet.getData(ante,deadline,betWindow,nonce,amount);
-    console.log(data);
     let Tx = {
        from: userAddress,
        to: contractAddress,
        data: data,
        gasPrice: gasPrice
     };
-    console.log(Tx);
     transaction.send(Tx);   
   } 
   
