@@ -264,7 +264,7 @@ const EtherAccy = function() {
       localStorage.setItem(cardTypeNum,null);
     } 
     $('#bettorPage > ul > div > li:nth-child(1) > div.n > h4').text(cardValue);
-    $('#bettorPage > ul > div > li:nth-child(3) > div.s > img').html(link to cardType + ".png");
+    $('#bettorPage > ul > div > li:nth-child(3) > div.s > img').attr('src',"img/" + cardType + ".png");
   }  
   
   function checkForThirdCardLogic(arr) {
