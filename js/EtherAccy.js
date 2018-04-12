@@ -327,6 +327,7 @@ const EtherAccy = function() {
       $('#bettorPage > div > ul > div.col-lg-9 > li.max > h5 > span').on('click',selectMaxBet);
       $('#bettorPage > div > ul > div.col-lg-9 > li.cus > h5 > span > input').on('click',selectCustomBet);
       $('#getInitialCards').on('click',getInitialCards);
+      $('#placeBet').on('click',placeBet);
       getStructElements();
       getInGameBalance();
       getState();
