@@ -144,3 +144,7 @@ textarea {
 .selectedBox {
   background-color:black;
 }	
+
+#betPageData {
+  display:none;
+}	
