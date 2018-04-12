@@ -190,11 +190,30 @@ const EtherAccy = function() {
   }
   
   function setGameState(state) {
-    $('#dealState').text(parseInt(state));
-  }    
+    $('#roundState').text(parseInt(state));
+    state = parseInt(state)
+    let game_state = "";
+    if(state === 0) {
+      game_state = "DEALING_CARDS";
+      getInitialCards();
+      checkThirdCard();
+    }    
+    else if(state === 1) {
+      game_state = "CARDS_DEALT";
+    }  
+    else if(state === 2) {
+      game_state = "NEXT_PLAYER"; 
+    }  
+    else if(state === 3) {
+      game_state = "INVALID";            
+    }
+    $('#roundState').text(game_state);
+ }    
   
   function getState() {
-    contractFunctions.getState(setState);
+    setInterval(function() {
+      contractFunctions.getState(setState);
+    }, 5000);  
   }
   
   function getGameState() {
@@ -248,24 +267,28 @@ const EtherAccy = function() {
     $('#bettorPage > ul > div > li:nth-child(3) > div.s > img').html(link to cardType + ".png");
   }  
   
-  function checkForThirdCard(arr) {
-    setInterval(function() {
-      if(arr.length == 3) {
-        displayCard(arr[2]);  
-      }  
-    });  
+  function checkForThirdCardLogic(arr) {
+    if(arr.length == 3) {
+      displayCard(arr[2]);  
+    }    
+  }  
+ 
+  function checkThirdCard() {
+    setInterval(function() {    
+      contractFunctions.getUserHand(checkForThirdCardLogic);
+    },5000);
   }  
   
   function setCards(arr) {
     displayCard(arr[0]);
     displayCard(arr[1]);
   }  
-  
+ 
   function getCards() {
     contractFunctions.getUserHand(setCards);
   }
   
-  function getInitalCards() {
+  function getInitialCards() {
     contractFunctions.getInitialCards(getCards);  
   }  
   
