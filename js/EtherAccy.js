@@ -82,7 +82,7 @@ const EtherAccy = function() {
   }
   
   function getBetWindow(arr) {
-    countDown(arr[5],'#betWindow');      
+    $('#betWindow').text((parseInt(arr[5])/60).toString() + " mins" );      
   }
   
   function getCurrentPlayer(arr) {
