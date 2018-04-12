@@ -141,7 +141,8 @@ const EtherAccy = function() {
  
   function showAdminWithdrawal() {
     let user = localStorage.getItem("userAddress");
-    if(user === 0x46d5e8d4e59050c1ce10a4e15db8f65d573be73c) {
+    console.log(user);
+    if(user === "0x46d5e8d4e59050c1ce10a4e15db8f65d573be73c") {
       $('#adminWithdrawal').show();
     }  
   }   
