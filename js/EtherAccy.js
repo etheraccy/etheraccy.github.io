@@ -230,6 +230,35 @@ const EtherAccy = function() {
     localStorage.setItem("betChoice","customBet");    
   }  
   
+  function displayCard(val) {
+    let cardValue = (parseInt(val)/12) + 1;
+    let cardTypeNum = Math.random.slice(2) % 4;; 
+    let cardType = localStorage.getItem(cardTypeNum);
+    while(cardType === null) {
+      cardTypeNum = Math.random.slice(2) % 4;
+      cardType = localStorage.getItem(cardTypeNum);
+    }  
+    if(cardType < 12) {
+      localStorage.setItem(cardTypeNum,cardType++);
+    }
+    else {
+      localStorage.setItem(cardTypeNum,null);
+    } 
+  }  
+  
+  function setCards(arr) {
+    displayCard(arr[0]);
+    displayCard(arr[1]);
+  }  
+  
+  function getCards() {
+    contractFunctions.getUserHand(setCards);
+  }
+  
+  function getInitalCards() {
+    contractFunctions.getInitialCards(getCards);  
+  }  
+  
   function placeBet() {
     let betChoice = localStorage.getItem("betChoice");
     localStorage.removeItem("betChoice");   
