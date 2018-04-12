@@ -66,7 +66,6 @@ const contractFunctions = function() {
     contract.getState(ante,deadline,betWindow,nonce, function(err,val) {
       if(!err)
       if(callback)
-      console.log("state: ",parseInt(val),order);  
       callback(val);  
     });  
   } 
