@@ -36,6 +36,10 @@ const EtherAccy = function() {
     contractFunctions.withdrawAnte();
  }
   
+ function adminWithdrawal() {
+    contractFunctions.adminWithdrawal();
+ }
+  
   function countDown(time,id) {
     var countDownDate = time*1000;
         
@@ -219,7 +223,8 @@ const EtherAccy = function() {
     if(~window.location.href.indexOf("https://etheraccy.github.io/gamePage.html")) {
       $('[data-toggle="popover"]').popover();            
       $('#withdrawAnte').on('click',withdrawAnte);
-      $('#enterGame').on('click',joinTable);      
+      $('#enterGame').on('click',joinTable); 
+      $('#adminWithdrawal').on('click',adminWithdrawal);
       getStructElements();
       getInGameBalance();
       getState();
