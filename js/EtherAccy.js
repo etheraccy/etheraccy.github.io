@@ -146,7 +146,8 @@ const EtherAccy = function() {
       if(playerList[i] === user) {
         $('#enterGame').hide();
         $('#mainGamePage').hide();
-        $('#bettorPage').show();
+        $('#bettorPage').hide();
+        $('#getInitialCards').show();
         return;
       }
     }
@@ -190,7 +191,6 @@ const EtherAccy = function() {
     }
     else if(state === 1) {
       game_state = "DEALING_CARDS";
-      getInitialCards();
       checkThirdCard();
     }    
     else if(state === 2) {
@@ -284,6 +284,10 @@ const EtherAccy = function() {
   }
   
   function getInitialCards() {
+    $('#getInitialCards').hide();
+    $('#getInitialCards').on('click',function() {
+      $('#bettorPage').show();
+    });
     contractFunctions.getInitialCards(getCards);  
   }  
   
@@ -322,6 +326,7 @@ const EtherAccy = function() {
       $('#bettorPage > div > ul > div.col-lg-9 > li.min > h5 > span').on('click',selectMinBet);
       $('#bettorPage > div > ul > div.col-lg-9 > li.max > h5 > span').on('click',selectMaxBet);
       $('#bettorPage > div > ul > div.col-lg-9 > li.cus > h5 > span > input').on('click',selectCustomBet);
+      $('#getInitialCards').on('click',getInitialCards);
       $('#placeBet').on('click',placeBet);
       getStructElements();
       getInGameBalance();
