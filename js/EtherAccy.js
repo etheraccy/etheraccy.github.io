@@ -290,17 +290,18 @@ const EtherAccy = function() {
   function placeBet() {
     let betChoice = localStorage.getItem("betChoice");
     localStorage.removeItem("betChoice");   
-    let value;
+    let betValue;
     if(betChoice === "minBet") {
-      value = parseFloat($('#minBet').val());
+      betValue = parseFloat($('#minBet').val());
     }  
     else if(betChoice === "maxBet") {
-      value = parseFloat($('#potAmount').val());
+      betValue = parseFloat($('#potAmount').val());
     }  
     else if(betChoice === "customBet") {
-      value = parseFloat($('#bettorPage > div > ul > div.col-lg-9 > li.cus > h5 > span > input').val());
+      betValue = parseFloat($('#bettorPage > div > ul > div.col-lg-9 > li.cus > h5 > span > input').val());
     }
-    contractFunctions.bet(value);
+    contractFunctions.bet(betValue);
+    getBetWindow();
   }  
   
   function init() {
