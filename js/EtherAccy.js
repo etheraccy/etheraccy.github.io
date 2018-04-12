@@ -213,18 +213,37 @@ const EtherAccy = function() {
     $('#bettorPage > div > ul > div.col-lg-9 > li.min > h5 > span').addClass('selectedBox');
     $('#bettorPage > div > ul > div.col-lg-9 > li.max > h5 > span').removeClass('selectedBox');
     $('#bettorPage > div > ul > div.col-lg-9 > li.cus > h5 > span').css('border-color','#afafaf');  
+    localStorage.setItem("betChoice","minBet");
   }  
   
   function selectMaxBet() {
     $('#bettorPage > div > ul > div.col-lg-9 > li.max > h5 > span').addClass('selectedBox');
     $('#bettorPage > div > ul > div.col-lg-9 > li.min > h5 > span').removeClass('selectedBox');
-    $('#bettorPage > div > ul > div.col-lg-9 > li.cus > h5 > span').css('border-color','#afafaf');      
+    $('#bettorPage > div > ul > div.col-lg-9 > li.cus > h5 > span').css('border-color','#afafaf'); 
+    localStorage.setItem("betChoice","maxBet");   
   }
   
   function selectCustomBet() {
     $('#bettorPage > div > ul > div.col-lg-9 > li.min > h5 > span').removeClass('selectedBox');  
     $('#bettorPage > div > ul > div.col-lg-9 > li.max > h5 > span').removeClass('selectedBox');    
-    $('#bettorPage > div > ul > div.col-lg-9 > li.cus > h5 > span').css('border-color','black');  
+    $('#bettorPage > div > ul > div.col-lg-9 > li.cus > h5 > span').css('border-color','black'); 
+    localStorage.setItem("betChoice","customBet");    
+  }  
+  
+  function placeBet() {
+    let betChoice = localStorage.getItem("betChoice");
+    localStorage.removeItem("betChoice");   
+    let value;
+    if(betChoice === "minBet") {
+      value = parseFloat($('#minBet').val());
+    }  
+    else if(betChoice === "maxBet") {
+      value = parseFloat($('#potAmount').val());
+    }  
+    else if(betChoice === "customBet") {
+      value = parseFloat($('#bettorPage > div > ul > div.col-lg-9 > li.cus > h5 > span > input').val());
+    }
+    contractFunctions.bet(value);
   }  
   
   function init() {
@@ -245,6 +264,7 @@ const EtherAccy = function() {
       $('#bettorPage > div > ul > div.col-lg-9 > li.min > h5 > span').on('click',selectMinBet);
       $('#bettorPage > div > ul > div.col-lg-9 > li.max > h5 > span').on('click',selectMaxBet);
       $('#bettorPage > div > ul > div.col-lg-9 > li.cus > h5 > span > input').on('click',selectCustomBet);
+      $('#placeBet').on('click',placeBet);
       getStructElements();
       getInGameBalance();
       getState();
