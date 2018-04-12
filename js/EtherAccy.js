@@ -113,7 +113,7 @@ const EtherAccy = function() {
   
   function getStructElements() {
     setInterval(function() {   
-      contractFunctions.getGameHash(contractFunctions.getGameStruct,[setPotSize,getStartTime,getAnte]);
+      contractFunctions.getGameHash(contractFunctions.getGameStruct,[setPotSize,getStartTime,getAnte,getBetWindow]);
     },5000);        
   }  
   
@@ -301,7 +301,6 @@ const EtherAccy = function() {
       betValue = parseFloat($('#bettorPage > div > ul > div.col-lg-9 > li.cus > h5 > span > input').val());
     }
     contractFunctions.bet(betValue);
-    getBetWindow();
   }  
   
   function init() {
