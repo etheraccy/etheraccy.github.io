@@ -241,6 +241,23 @@ const contractFunctions = function() {
     transaction.send(Tx);   
   } 
   
+  function adminWithdrawal() {
+    let userAddress = localStorage.getItem("userAddress");    
+    let order = JSON.parse(decodeURI(localStorage.getItem("order"))); 
+    let ante = order['ante'];
+    let deadline = order['deadline'];
+    let betWindow = order['betWindow'];
+    let nonce = order['nonce'];
+    let data = contract.adminWithdrawal.getData(ante,deadline,betWindow,nonce);
+    let Tx = {
+       from: userAddress,
+       to: contractAddress,
+       data: data,
+       gasPrice: gasPrice
+    };
+    transaction.send(Tx);   
+  }  
+  
   return {
     getBalance,
     createGameLink,
@@ -252,6 +269,7 @@ const contractFunctions = function() {
     getInitialCards,
     getGameHash,
     bet,
+    adminWithdrawal,
     getGameStruct,
     getInGameBalance,
     getState,
