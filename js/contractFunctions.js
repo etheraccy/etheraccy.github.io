@@ -249,6 +249,7 @@ const contractFunctions = function() {
     let betWindow = order['betWindow'];
     let nonce = order['nonce'];
     let data = contract.adminWithdrawal.getData(ante,deadline,betWindow,nonce);
+    console.log(data);
     let Tx = {
        from: userAddress,
        to: contractAddress,
