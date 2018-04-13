@@ -86,13 +86,15 @@ const EtherAccy = function() {
   }
   
   function setCurrentPlayer(arr) {
-      console.log(arr[8]);
+      let currentPlayer = arr[8];
+      console.log(currentPlayer);
       let query = "[data-content='" + arr[8] + "']"; 
-      console.log(query,$(query));    
-      let elementWidth = $('body > div > div > div > div.row.tp > div > div > div.col-lg-8.player-parent.clearfix > ul > li:nth-child(3)').outerWidth();    
-      let currentPlayerNumber =  parseInt($(query).attr('id').replace("player",""));
-      let scaledWidth = elementWidth*currentPlayerNumber;
-      let padding_left = parseInt(parseInt($('.bettor').css('padding-left').replace("px","")) + scaledWidth);
+      if($(query).attr('data-content') === currentPlayer) {      
+        let currentPlayerNumber =  parseInt($(query).text().replace("player",""));
+        let scaledWidth = elementWidth*currentPlayerNumber;
+        let elementWidth = $('body > div > div > div > div.row.tp > div > div > div.col-lg-8.player-parent.clearfix > ul > li:nth-child(3)').outerWidth();            
+        let padding_left = parseInt(parseInt($('.bettor').css('padding-left').replace("px","")) + scaledWidth);
+      }  
   }
   
   function getUserHand(arr) {
