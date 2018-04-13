@@ -87,15 +87,12 @@ const EtherAccy = function() {
   
   function setCurrentPlayer(arr) {
       let currentPlayer = arr[8];
-      console.log(currentPlayer);
-      let query = "[data-content='" + arr[8] + "']"; 
+      let query = "[data-content='" + currentPlayer + "']"; 
       if($(query).attr('data-content') === currentPlayer) {      
         let currentPlayerNumber =  parseInt($(query).text().replace("Player ",""));
         let elementWidth = $('#mainGamePage > div > ul > li:nth-child(1)').outerWidth();            
         let scaledWidth = elementWidth*currentPlayerNumber;        
-        let padding_left = parseInt(parseInt($('#mainGamePage > div > div').css('padding-left').replace("px","")) + scaledWidth);
-        console.log(padding_left);
-        $('#mainGamePage > div > div').css('padding-left', padding_left.toString() + "px");
+        $('#mainGamePage > div > div').css('padding-left', scaledWidth.toString() + "px");
       }  
   }
   
