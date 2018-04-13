@@ -93,6 +93,7 @@ const contractFunctions = function() {
   
   function getUserHand(hash,callback) {
     let address = localStorage.getItem("userAddress");
+    console.log(hash,address);
     contract.getUserHand.call(hash,address, function(err,val) {
       if(!err)
       if(callback)
