@@ -88,13 +88,17 @@ const EtherAccy = function() {
   function setCurrentPlayer(arr) {
       let currentPlayer = arr[8];
       let query = "[data-content='" + currentPlayer + "']"; 
+      let userAddress = localStorage.getItem("userAddress");
+      if(userAddress === currentPlayer) {
+        $('#mainGamePage').show();
+        $('#bettorPage').show();
+      }  
       if($(query).attr('data-content') === currentPlayer) {      
         let currentPlayerNumber =  parseInt($(query).text().replace("Player ",""));
         let elementWidth = parseInt($('#mainGamePage > div > ul > li:nth-child(1)').outerWidth());            
         let scaledWidth = (elementWidth)*(currentPlayerNumber-1);       
         let paddingLeft = 35 + scaledWidth;        
         $('#mainGamePage > div > div').css('padding-left', paddingLeft.toString() + "px"); 
-        console.log(elementWidth,currentPlayerNumber,scaledWidth);
       }  
   }
   
