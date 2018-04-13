@@ -91,10 +91,10 @@ const EtherAccy = function() {
       let query = "[data-content='" + arr[8] + "']"; 
       if($(query).attr('data-content') === currentPlayer) {      
         let currentPlayerNumber =  parseInt($(query).text().replace("Player ",""));
-        console.log(currentPlayerNumber);
         let elementWidth = $('body > div > div > div > div.row.tp > div > div > div.col-lg-8.player-parent.clearfix > ul > li:nth-child(3)').outerWidth();            
         let scaledWidth = elementWidth*currentPlayerNumber;
         let padding_left = parseInt(parseInt($('.bettor').css('padding-left').replace("px","")) + scaledWidth);
+        $('.bettor').css('padding-left',padding_left.toString() + "px");    
       }  
   }
   
@@ -226,12 +226,6 @@ const EtherAccy = function() {
       contractFunctions.getGameState(setGameState);
     }, 5000);  
   }    
-  
-  function moveBettorArrow() {
-    let elementWidth = $('body > div > div > div > div.row.tp > div > div > div.col-lg-8.player-parent.clearfix > ul > li:nth-child(3)').outerWidth();    
-    let padding_left = parseInt(parseInt($('.bettor').css('padding-left').replace("px","")) + elementWidth);
-    $('.bettor').css('padding-left',padding_left.toString() + "px");
-  } 
   
   function selectMinBet() {
     $('#bettorPage > div > ul > div.col-lg-9 > li.min > h5 > span').addClass('selectedBox');
