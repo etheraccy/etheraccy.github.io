@@ -250,7 +250,7 @@ const EtherAccy = function() {
     let cardType = localStorage.getItem(cardTypeNum);
     while(cardType === null) {
       cardTypeNum = Math.random % 4;
-      cardType = localStorage.setItem(cardTypeNum);
+      localStorage.setItem(cardTypeNum,cardValue);
     }  
     if(cardType < 12) {
       localStorage.setItem(cardTypeNum,cardType++);
