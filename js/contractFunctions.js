@@ -26,7 +26,6 @@ const contractFunctions = function() {
     contract.getGameHash(ante,deadline,betWindow,nonce, function(err,val) {
       if(!err)
       if(callback && callback1)
-      console.log(val);  
       callback(val,callback1);
     })
   }
@@ -35,6 +34,7 @@ const contractFunctions = function() {
     contract.table.call(hash, function(err,val) {
       if(!err)
       if(callbackArr.length > 1)
+      console.log(val);  
       callbackArr.forEach(function(callback) {
         callback(val);
       });  
@@ -93,7 +93,6 @@ const contractFunctions = function() {
   
   function getUserHand(hash,callback) {
     let address = localStorage.getItem("userAddress");
-    console.log(hash,address);
     contract.getUserHand.call(hash,address, function(err,val) {
       if(!err)
       if(callback)
@@ -197,7 +196,6 @@ const contractFunctions = function() {
     let deadline = order['deadline'];
     let betWindow = order['betWindow'];
     let nonce = order['nonce'];
-    console.log(ante,deadline,betWindow,nonce);
     let data = contract.withdrawAnte.getData(ante,deadline,betWindow,nonce);
     let Tx = {
        from: userAddress,
@@ -215,7 +213,6 @@ const contractFunctions = function() {
     let deadline = order['deadline'];
     let betWindow = order['betWindow'];
     let nonce = order['nonce'];
-    console.log(ante,deadline,betWindow,nonce);
     let data = contract.getInitialCards.getData(ante,deadline,betWindow,nonce);
     let Tx = {
        from: userAddress,
