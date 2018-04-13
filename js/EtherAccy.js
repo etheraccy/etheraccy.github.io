@@ -85,7 +85,7 @@ const EtherAccy = function() {
     $('#betWindow').text((parseInt(arr[5])/3600).toString() + " mins" );      
   }
   
-  function getCurrentPlayer(arr) {
+  function setCurrentPlayer(arr) {
       console.log(arr[8]);
       let query = "[address='" + arr[8] + "']"; 
       let elementWidth = $('body > div > div > div > div.row.tp > div > div > div.col-lg-8.player-parent.clearfix > ul > li:nth-child(3)').outerWidth();    
@@ -120,7 +120,7 @@ const EtherAccy = function() {
 
   function getCurrentPlayer() {
     setInterval(function() {
-      contractFunctions.getGameHash(contractFunctions.getGameStruct,[getCurrentPlayer]);
+      contractFunctions.getGameHash(contractFunctions.getGameStruct,[setCurrentPlayer]);
     },5000);  
   }
   
