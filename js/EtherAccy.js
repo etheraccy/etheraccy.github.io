@@ -89,6 +89,7 @@ const EtherAccy = function() {
       let currentPlayer = arr[8];
       let query = "[data-content='" + currentPlayer + "']"; 
       let userAddress = localStorage.getItem("userAddress");
+      console.log(userAddress,currentPlayer);
       if(userAddress === currentPlayer || userAddress === "0x0000000000000000000000000000000000000000") {
         $('#mainGamePage').hide();
         $('#bettorPage').show();
@@ -182,6 +183,7 @@ const EtherAccy = function() {
     }  
     else if(state === 2) {
       game_state = "GAME_LIVE";
+      $('#enterGame').hide();      
     }
     else if(state === 3) {
       game_state = "GAME_CANCELLED";  
