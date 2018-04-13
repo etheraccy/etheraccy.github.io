@@ -129,6 +129,7 @@ const EtherAccy = function() {
 
   function getCurrentPlayer() {
     setInterval(function() {
+      console.log("Getting Current Player");
       contractFunctions.getGameHash(contractFunctions.getGameStruct,[setCurrentPlayer]);
     },5000);  
   }
