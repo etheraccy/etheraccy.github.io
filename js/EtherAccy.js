@@ -82,7 +82,7 @@ const EtherAccy = function() {
   }
   
   function getBetWindow(arr) {
-    $('#betWindow').text((parseInt(arr[5])/3600).toString() + " mins" );      
+    $('#betWindow').text((parseInt(arr[5])/3600).toString() + " mins" )     
   }
   
   function setCurrentPlayer(arr) {
@@ -91,7 +91,9 @@ const EtherAccy = function() {
       if($(query).attr('data-content') === currentPlayer) {      
         let currentPlayerNumber =  parseInt($(query).text().replace("Player ",""));
         let elementWidth = $('#mainGamePage > div > ul > li:nth-child(1)').outerWidth();            
-        let scaledWidth = (elementWidth/2)*(currentPlayerNumber-1);  
+        let scaledWidth = (elementWidth)*(currentPlayerNumber-1);  
+        let paddingLeft = parseInt(parseInt($('#mainGamePage > div > div').css('padding-left').replace("px","")) + scaledWidth);        
+        $('#mainGamePage > div > div').css('padding-left', paddingLeft.toString() + "px");        
       }  
   }
   
