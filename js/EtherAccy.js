@@ -113,9 +113,15 @@ const EtherAccy = function() {
   
   function getStructElements() {
     setInterval(function() {   
-      contractFunctions.getGameHash(contractFunctions.getGameStruct,[setPotSize,getStartTime,getAnte,getBetWindow,getCurrentPlayer]);
+      contractFunctions.getGameHash(contractFunctions.getGameStruct,[setPotSize,getStartTime,getAnte,getBetWindow]);
     },5000);        
   }  
+
+  function getCurrentPlayer() {
+    setInterval(function() {
+      contractFunctions.getGameHash(contractFunctions.getGameStruct,[getCurrentPlayer]);
+    },5000);  
+  }
   
   function setPlayerList(arr) {
     localStorage.setItem("playerList",arr);
@@ -325,6 +331,7 @@ const EtherAccy = function() {
       $('#bettorPage > div > ul > div.col-lg-9 > li.cus > h5 > span > input').on('click',selectCustomBet);
       $('#getInitialCards').on('click',getInitialCards);
       $('#placeBet').on('click',placeBet);
+      getCurrentPlayer(); 
       getStructElements();
       getInGameBalance();
       getState();
