@@ -92,6 +92,7 @@ const EtherAccy = function() {
         let currentPlayerNumber =  parseInt($(query).text().replace("Player ",""));
         let elementWidth = parseInt($('#mainGamePage > div > ul > li:nth-child(1)').outerWidth());            
         let scaledWidth = (elementWidth)*(currentPlayerNumber-1);       
+        console.log(elementWidth,currentPlayerNumber);
       }  
   }
   
