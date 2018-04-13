@@ -89,8 +89,7 @@ const EtherAccy = function() {
       let currentPlayer = arr[8];
       let query = "[data-content='" + currentPlayer + "']"; 
       let userAddress = localStorage.getItem("userAddress");
-      console.log(userAddress === currentPlayer,userAddress === "0x0000000000000000000000000000000000000000"); 
-      if(userAddress === currentPlayer || userAddress === "0x0000000000000000000000000000000000000000") {
+      if(currentPlayer === userAddress || currentPlayer === "0x0000000000000000000000000000000000000000") {
         console.log("passed");
         $('#mainGamePage').hide();
         $('#bettorPage').show();
