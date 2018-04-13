@@ -92,8 +92,6 @@ const EtherAccy = function() {
         let currentPlayerNumber =  parseInt($(query).text().replace("Player ",""));
         let elementWidth = $('#mainGamePage > div > ul > li:nth-child(1)').outerWidth();            
         let scaledWidth = (elementWidth/2)*(currentPlayerNumber-1);  
-        console.log(elementWidth,scaledWidth);
-        $('#mainGamePage > div > div').css('padding-left', scaledWidth.toString() + "px");
       }  
   }
   
