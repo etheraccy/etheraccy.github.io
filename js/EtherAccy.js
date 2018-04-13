@@ -177,11 +177,14 @@ const EtherAccy = function() {
     }
     else if(state === 3) {
       game_state = "GAME_CANCELLED";  
-      $('#enterGame').hide();             
+      $('#enterGame').hide();    
       $('#withdrawAnte').show();
     }      
     else if(state === 4) {
       game_state = "GAME_FINISHED"; 
+      $('#mainGamePage').show();
+      $('#getInitialCards').hide();
+      $('#bettorPage').hide();    
     }     
     else if(state === 5) {
       game_state = "INVALID";                                    
