@@ -246,10 +246,10 @@ const EtherAccy = function() {
   
   function displayCard(val) {
     let cardValue = (parseInt(val)/12) + 1;
-    let cardTypeNum = Math.random.slice(2) % 4;; 
+    let cardTypeNum = Math.random % 4;; 
     let cardType = localStorage.getItem(cardTypeNum);
     while(cardType === null) {
-      cardTypeNum = Math.random.slice(2) % 4;
+      cardTypeNum = Math.random % 4;
       cardType = localStorage.getItem(cardTypeNum);
     }  
     if(cardType < 12) {
