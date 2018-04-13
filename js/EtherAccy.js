@@ -282,6 +282,7 @@ const EtherAccy = function() {
   }
   
   function getInitialCards() {
+    $('#getInitialCards').hide();    
     $('#bettorPage').show();
     contractFunctions.getInitialCards(getCards);        
   }  
