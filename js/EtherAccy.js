@@ -215,15 +215,11 @@ const EtherAccy = function() {
  }    
   
   function getState() {
-    setInterval(function() {
-      contractFunctions.getState(setState);
-    }, 5000);  
+    contractFunctions.getState(setState);
   }
   
   function getGameState() {
-    setInterval(function() {
-      contractFunctions.getGameState(setGameState);
-    }, 5000);  
+    contractFunctions.getGameState(setGameState);
   }    
   
   function selectMinBet() {
