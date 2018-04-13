@@ -177,7 +177,8 @@ const EtherAccy = function() {
       $('#enterGame').show();
     }  
     else if(state === 2) {
-      game_state = "GAME_LIVE"; 
+      game_state = "GAME_LIVE";
+      redirectPlayerToGamePage();   
     }
     else if(state === 3) {
       game_state = "GAME_CANCELLED";  
