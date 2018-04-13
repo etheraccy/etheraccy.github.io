@@ -90,7 +90,7 @@ const EtherAccy = function() {
       let query = "[data-content='" + currentPlayer + "']"; 
       let userAddress = localStorage.getItem("userAddress");
       if(userAddress === currentPlayer) {
-        $('#mainGamePage').show();
+        $('#mainGamePage').hide();
         $('#bettorPage').show();
       }  
       if($(query).attr('data-content') === currentPlayer) {      
