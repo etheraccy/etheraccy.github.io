@@ -103,11 +103,7 @@ const EtherAccy = function() {
         $('#mainGamePage > div > div').css('padding-left', paddingLeft.toString() + "px"); 
       }  
   }
-  
-  function getUserHand(arr) {
-    $('#userHand').text(arr[13])
-  }
-  
+
   function getGameBalance(arr) {
     $('#gameBalance').text(arr[14])
   }
@@ -147,15 +143,7 @@ const EtherAccy = function() {
     setInterval(function() {   
       contractFunctions.getGameHash(contractFunctions.getPlayerList,setPlayerList);    
     },5000);  
-  }  
-  
-  function setUserHand(arr) {
-    console.log(arr);
-  }  
-  
-  function getUserHand() { 
-    contractFunctions.getGameHash(contractFunctions.getUserHand,[]);    
-  }    
+  }   
   
   function redirectPlayerToGamePage() {
     let playerList = localStorage.getItem("playerList").split(",");
@@ -278,11 +266,13 @@ const EtherAccy = function() {
     if(arr.length == 3) {
       displayCard(arr[2]);  
     }    
+    displayCard(arr[0]);
+    displayCard(arr[1]);
   }  
  
   function checkThirdCard() {
     setInterval(function() {    
-      contractFunctions.getUserHand(checkForThirdCardLogic);
+      contractFunctions.getGameHash(contractFunctions.getUserHand,checkForThirdCardLogic);
     },5000);
   }  
   
