@@ -82,7 +82,7 @@ const EtherAccy = function() {
   }
   
   function getBetWindow(arr) {
-    $('#betWindow').text((parseInt(arr[5])/60).toString() + " mins" );      
+    $('#betWindow').text((parseInt(arr[5])/3600).toString() + " mins" );      
   }
   
   function getCurrentPlayer(arr) {
@@ -113,7 +113,7 @@ const EtherAccy = function() {
   
   function getStructElements() {
     setInterval(function() {   
-      contractFunctions.getGameHash(contractFunctions.getGameStruct,[setPotSize,getStartTime,getAnte,getBetWindow]);
+      contractFunctions.getGameHash(contractFunctions.getGameStruct,[setPotSize,getStartTime,getAnte,getBetWindow,getCurrentPlayer]);
     },5000);        
   }  
   
