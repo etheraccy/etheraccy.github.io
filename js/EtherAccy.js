@@ -93,6 +93,7 @@ const EtherAccy = function() {
         console.log("passed");
         $('#mainGamePage').hide();
         $('#bettorPage').show();
+        $('#getInitialCards').show();
       }  
       if($(query).attr('data-content') === currentPlayer) {      
         let currentPlayerNumber =  parseInt($(query).text().replace("Player ",""));
