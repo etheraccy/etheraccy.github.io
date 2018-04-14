@@ -93,19 +93,7 @@ const EtherAccy = function() {
     $('#inGameBalance').text((val/1e18).toString() + " ETH");
   }  
   
-  function getInGameBalance() {
-    setInterval(function() {       
-      contractFunctions.getGameHash(contractFunctions.getInGameBalance,[setInGameBalance]);
-    },5000);    
-  } 
-  
-  function getStructElements() {
-    setInterval(function() {   
-      contractFunctions.getGameHash(contractFunctions.getGameStruct,[setPotSize,getStartTime,getAnte,getBetWindow]);
-    },5000);        
-  }  
-  
-  function setCurrentPlayer(arr) {
+   function setCurrentPlayer(arr) {
       let currentPlayer = arr[6];
       let query = "[data-content='" + currentPlayer + "']"; 
       let userAddress = localStorage.getItem("userAddress");
@@ -122,13 +110,20 @@ const EtherAccy = function() {
         let paddingLeft = 35 + scaledWidth;        
         $('#mainGamePage > div > div').css('padding-left', paddingLeft.toString() + "px"); 
       }  
+  }   
+  
+  function getInGameBalance() {
+    setInterval(function() {       
+      contractFunctions.getGameHash(contractFunctions.getInGameBalance,[setInGameBalance]);
+    },5000);    
+  } 
+  
+  function getStructElements() {
+    setInterval(function() {   
+      contractFunctions.getGameHash(contractFunctions.getGameStruct,[setPotSize,getStartTime,getAnte,getBetWindow,setCurrentPlayer]);
+    },5000);        
   }  
 
-  function getCurrentPlayer() {
-      console.log("Getting Current Player");
-      contractFunctions.getGameHash(contractFunctions.getGameStruct,[setCurrentPlayer]);
-  }
-  
   function setPlayerList(arr) {
     localStorage.setItem("playerList",arr);
     for(i=0;i<arr.length;i++) {
