@@ -84,24 +84,6 @@ const EtherAccy = function() {
   function getBetWindow(arr) {
     $('#betWindow').text((parseInt(arr[5])/3600).toString() + " mins" )     
   }
-  
-  function setCurrentPlayer(arr) {
-      let currentPlayer = arr[8];
-      let query = "[data-content='" + currentPlayer + "']"; 
-      let userAddress = localStorage.getItem("userAddress");
-      if(currentPlayer === userAddress || currentPlayer === "0x0000000000000000000000000000000000000000") {
-        $('#mainGamePage').hide();
-        $('#bettorPage').show();
-        $('#getInitialCards').show();
-      }  
-      if($(query).attr('data-content') === currentPlayer) {      
-        let currentPlayerNumber =  parseInt($(query).text().replace("Player ",""));
-        let elementWidth = parseInt($('#mainGamePage > div > ul > li:nth-child(1)').outerWidth());            
-        let scaledWidth = (elementWidth)*(currentPlayerNumber-1);       
-        let paddingLeft = 35 + scaledWidth;        
-        $('#mainGamePage > div > div').css('padding-left', paddingLeft.toString() + "px"); 
-      }  
-  }
 
   function getGameBalance(arr) {
     $('#gameBalance').text(arr[14])
@@ -121,6 +103,24 @@ const EtherAccy = function() {
     setInterval(function() {   
       contractFunctions.getGameHash(contractFunctions.getGameStruct,[setPotSize,getStartTime,getAnte,getBetWindow]);
     },5000);        
+  }  
+  
+  function setCurrentPlayer(arr) {
+      let currentPlayer = arr[8];
+      let query = "[data-content='" + currentPlayer + "']"; 
+      let userAddress = localStorage.getItem("userAddress");
+      if(currentPlayer === userAddress || currentPlayer === "0x0000000000000000000000000000000000000000") {
+        $('#mainGamePage').hide();
+        $('#bettorPage').show();
+        $('#getInitialCards').show();
+      }  
+      if($(query).attr('data-content') === currentPlayer) {      
+        let currentPlayerNumber =  parseInt($(query).text().replace("Player ",""));
+        let elementWidth = parseInt($('#mainGamePage > div > ul > li:nth-child(1)').outerWidth());            
+        let scaledWidth = (elementWidth)*(currentPlayerNumber-1);       
+        let paddingLeft = 35 + scaledWidth;        
+        $('#mainGamePage > div > div').css('padding-left', paddingLeft.toString() + "px"); 
+      }  
   }  
 
   function getCurrentPlayer() {
@@ -222,8 +222,6 @@ const EtherAccy = function() {
     contractFunctions.getState(setState);
   }
   
- 
-  
   function selectMinBet() {
     $('#bettorPage > div > ul > div.col-lg-9 > li.min > h5 > span').addClass('selectedBox');
     $('#bettorPage > div > ul > div.col-lg-9 > li.max > h5 > span').removeClass('selectedBox');
@@ -271,6 +269,11 @@ const EtherAccy = function() {
     return decimalNumber;
   }
   
+  function setCards(arr) {
+    displayCard(toDecimal(arr[0]));
+    displayCard(toDecimal(arr[1]));
+  }   
+  
   function checkForThirdCardLogic(arr) {
     console.log(arr);
     if(arr.length == 3) {
@@ -281,17 +284,25 @@ const EtherAccy = function() {
       displayCard(toDecimal(arr[0]));
       displayCard(toDecimal(arr[1]));
     }  
-  }  
- 
-  function checkThirdCard() {
-      contractFunctions.getGameHash(contractFunctions.getUserHand,checkForThirdCardLogic);
+  }   
+
+  function logUserHand(arr) {
+    console.log(arr[8]);
   }  
   
-  function setCards(arr) {
-    displayCard(toDecimal(arr[0]));
-    displayCard(toDecimal(arr[1]));
+  function getCurrentUserHand(hash,arr) {
+    let user = arr[8];
+    contractFunctions.getUserHand(hash,user,logUserHand);
   }  
- 
+  
+  function getGameStructWrapper(hash) {
+    contractFunctions.getGameStruct(hash,getCurrentUserHand);    
+  }  
+  
+  function getCurrentUserCards() {
+    contractFunctions.getGameHash(getGameStructWrapper);
+  }  
+  
   function getCards() {
     contractFunctions.getUserHand(setCards);
   }
@@ -338,6 +349,7 @@ const EtherAccy = function() {
       $('#bettorPage > div > ul > div.col-lg-9 > li.cus > h5 > span > input').on('click',selectCustomBet);
       $('#getInitialCards').on('click',getInitialCards);
       $('#placeBet').on('click',placeBet);
+      getCurrentUserCards();
       getStructElements();
       getInGameBalance();
       getState();
