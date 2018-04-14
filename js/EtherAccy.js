@@ -113,9 +113,7 @@ const EtherAccy = function() {
   }   
   
   function getCurrentPlayer() {
-    setInterval(function() {       
-      contractFunctions.getGameHash(contractFunctions.getCurrentPlayer,[setCurrentPlayer]);
-    },5000);    
+    contractFunctions.getGameHash(contractFunctions.getCurrentPlayer,[setCurrentPlayer]);
   } 
   
   function getInGameBalance() {
@@ -126,7 +124,7 @@ const EtherAccy = function() {
   
   function getStructElements() {
     setInterval(function() {   
-      contractFunctions.getGameHash(contractFunctions.getGameStruct,[setPotSize,getStartTime,getAnte,getBetWindow,setCurrentPlayer]);
+      contractFunctions.getGameHash(contractFunctions.getGameStruct,[setPotSize,getStartTime,getAnte,getBetWindow]);
     },5000);        
   }  
 
