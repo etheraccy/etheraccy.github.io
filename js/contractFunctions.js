@@ -91,8 +91,7 @@ const contractFunctions = function() {
     });  
   }    
   
-  function getUserHand(hash,callback) {
-    let address = localStorage.getItem("userAddress");
+  function getUserHand(hash,address,callback) {
     contract.getUserHand.call(hash,address, function(err,val) {
       if(!err)
       if(callback)
