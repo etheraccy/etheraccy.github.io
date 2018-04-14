@@ -267,12 +267,12 @@ const EtherAccy = function() {
   }  
   
   function checkForThirdCardLogic(arr) {
+    console.log(arr);
     if(arr.length == 3) {
       displayCard(arr[2]); 
       $('#mainGamePage > ul').show();      
     }
     if(arr.length == 2) {
-      console.log(arr);
       displayCard(arr[0]);
       displayCard(arr[1]);
     }  
