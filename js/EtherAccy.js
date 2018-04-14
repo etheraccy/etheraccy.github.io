@@ -176,6 +176,7 @@ const EtherAccy = function() {
     else if(state === 2) {
       game_state = "GAME_LIVE";
       getGameState();
+      getCurrentPlayer();     
       $('#enterGame').hide();      
     }
     else if(state === 3) {
@@ -330,7 +331,6 @@ const EtherAccy = function() {
       $('#bettorPage > div > ul > div.col-lg-9 > li.cus > h5 > span > input').on('click',selectCustomBet);
       $('#getInitialCards').on('click',getInitialCards);
       $('#placeBet').on('click',placeBet);
-      getCurrentPlayer();   
       getStructElements();
       getInGameBalance();
       getState();
