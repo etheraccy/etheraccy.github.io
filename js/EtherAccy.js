@@ -286,17 +286,15 @@ const EtherAccy = function() {
   }   
 
   function logUserHand(arr) {
-    console.log(arr[6]);
+    console.log(arr);
   }  
   
   function getCurrentUserHand(hash,arr) {
     let user = arr[6];
-    console.log(hash,arr,user);
     contractFunctions.getUserHand(hash,user,logUserHand);
   }  
   
   function getGameStructWrapper(hash) {
-    console.log(hash);
     contractFunctions.getGameStruct(hash,getCurrentUserHand);    
   }  
   
