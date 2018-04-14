@@ -272,6 +272,7 @@ const EtherAccy = function() {
   }
   
   function checkForThirdCardLogic(arr) {
+    console.log(arr);
     if(arr.length == 3) {
       displayCard(toDecimal(arr[2])); 
       $('#mainGamePage > ul').show();      
