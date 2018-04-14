@@ -25,16 +25,22 @@ const contractFunctions = function() {
     let nonce = order['nonce'];
     contract.getGameHash(ante,deadline,betWindow,nonce, function(err,val) {
       if(!err)
-      if(callback && callback1)
-      callback(val,callback1);
+      if(callback && !callback1) {
+        callback(val);
+      }  
+      if(callback && callback1) {
+        callback(val,callback1);
+      }  
     })
   }
   
   function getGameStruct(hash,callbackArr) {
     contract.table.call(hash, function(err,val) {
       if(!err)
+      if(typeof callbackArr === "function") {
+        callbackArr(hash,val);
+      }  
       if(callbackArr.length > 1)
-      console.log(val);  
       callbackArr.forEach(function(callback) {
         callback(val);
       });  
