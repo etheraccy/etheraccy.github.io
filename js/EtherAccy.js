@@ -265,16 +265,20 @@ const EtherAccy = function() {
     $('#bettorPage > ul > div > li:nth-child(1) > div.n > h4').text(cardValue);
     $('#bettorPage > ul > div > li:nth-child(3) > div.s > img').attr('src',"img/" + cardType + ".png");
   }  
+
+  function toDecimal(hex) {  
+    let decimalNumber = parseInt(hex.replace(/^[0]+/g,""),16)  
+    return decimalNumber;
+  }
   
   function checkForThirdCardLogic(arr) {
-    console.log(arr);
     if(arr.length == 3) {
-      displayCard(arr[2]); 
+      displayCard(toDecimal(arr[2])); 
       $('#mainGamePage > ul').show();      
     }
     if(arr.length == 2) {
-      displayCard(arr[0]);
-      displayCard(arr[1]);
+      displayCard(toDecimal(arr[0]));
+      displayCard(toDecimal(arr[1]));
     }  
   }  
  
@@ -283,8 +287,8 @@ const EtherAccy = function() {
   }  
   
   function setCards(arr) {
-    displayCard(arr[0]);
-    displayCard(arr[1]);
+    displayCard(toDecimal(arr[0]));
+    displayCard(toDecimal(arr[1]));
   }  
  
   function getCards() {
