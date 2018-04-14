@@ -177,6 +177,7 @@ const EtherAccy = function() {
       game_state = "GAME_LIVE";
       getGameState();
       getCurrentPlayer();     
+      checkThirdCard();      
       $('#enterGame').hide();      
     }
     else if(state === 3) {
@@ -204,7 +205,6 @@ const EtherAccy = function() {
       game_state = "DEALING_CARDS";
       $('#getInitialCards').hide();          
       $('#mainGamePage').show();      
-      checkThirdCard();
     }    
     else if(state === 1) {
       game_state = "CARDS_DEALT";
@@ -268,10 +268,14 @@ const EtherAccy = function() {
   
   function checkForThirdCardLogic(arr) {
     if(arr.length == 3) {
-      displayCard(arr[2]);  
-    }    
-    displayCard(arr[0]);
-    displayCard(arr[1]);
+      displayCard(arr[2]); 
+      $('#mainGamePage > ul').show();      
+    }
+    if(arr.length == 2) {
+      console.log(arr);
+      displayCard(arr[0]);
+      displayCard(arr[1]);
+    }  
   }  
  
   function checkThirdCard() {
