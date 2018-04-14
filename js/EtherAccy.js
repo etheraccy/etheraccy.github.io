@@ -203,6 +203,7 @@ const EtherAccy = function() {
     if(state === 0) {
       game_state = "DEALING_CARDS";
       $('#getInitialCards').hide();          
+      $('#mainGamePage').show();      
       checkThirdCard();
     }    
     else if(state === 1) {
