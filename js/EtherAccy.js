@@ -94,21 +94,22 @@ const EtherAccy = function() {
   }  
   
    function setCurrentPlayer(arr) {
-      let currentPlayer = arr[6];
-      let query = "[data-content='" + currentPlayer + "']"; 
-      let userAddress = localStorage.getItem("userAddress");
-      console.log(currentPlayer,userAddress,currentPlayer === userAddress,currentPlayer === "0x0000000000000000000000000000000000000000")
-      if(currentPlayer === userAddress || currentPlayer === "0x0000000000000000000000000000000000000000") {
-        $('#mainGamePage').hide();
-        $('#bettorPage').show();
-        $('#getInitialCards').show();
-      }  
-      if($(query).attr('data-content') === currentPlayer) {      
-        let currentPlayerNumber =  parseInt($(query).text().replace("Player ",""));
-        let elementWidth = parseInt($('#mainGamePage > div > ul > li:nth-child(1)').outerWidth());            
-        let scaledWidth = (elementWidth)*(currentPlayerNumber-1);       
-        let paddingLeft = 35 + scaledWidth;        
-        $('#mainGamePage > div > div').css('padding-left', paddingLeft.toString() + "px"); 
+      if($("#gameState").text() === "GAME_LIVE") {
+        let currentPlayer = arr[6];
+        let query = "[data-content='" + currentPlayer + "']"; 
+        let userAddress = localStorage.getItem("userAddress");
+        if(currentPlayer === userAddress || currentPlayer === "0x0000000000000000000000000000000000000000") {
+          $('#mainGamePage').hide();
+          $('#bettorPage').show();
+          $('#getInitialCards').show();
+        }  
+        if($(query).attr('data-content') === currentPlayer) {      
+          let currentPlayerNumber =  parseInt($(query).text().replace("Player ",""));
+          let elementWidth = parseInt($('#mainGamePage > div > ul > li:nth-child(1)').outerWidth());            
+          let scaledWidth = (elementWidth)*(currentPlayerNumber-1);       
+          let paddingLeft = 35 + scaledWidth;        
+          $('#mainGamePage > div > div').css('padding-left', paddingLeft.toString() + "px"); 
+        }
       }  
   }   
   
