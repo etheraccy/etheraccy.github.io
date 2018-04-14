@@ -112,6 +112,12 @@ const EtherAccy = function() {
       }  
   }   
   
+  function getCurrentPlayer() {
+    setInterval(function() {       
+      contractFunctions.getGameHash(contractFunctions.getCurrentPlayer,[setCurrentPlayer]);
+    },5000);    
+  } 
+  
   function getInGameBalance() {
     setInterval(function() {       
       contractFunctions.getGameHash(contractFunctions.getInGameBalance,[setInGameBalance]);
