@@ -113,7 +113,11 @@ const EtherAccy = function() {
   }   
   
   function getCurrentPlayer() {
-    contractFunctions.getGameHash(contractFunctions.getCurrentPlayer,[setCurrentPlayer]);
+    setInterval(function() {     
+      if($('#gameState').text() === 'GAME_LIVE') {
+        contractFunctions.getGameHash(contractFunctions.getCurrentPlayer,[setCurrentPlayer]);
+      }  
+    },5000);          
   } 
   
   function getInGameBalance() {
@@ -174,7 +178,6 @@ const EtherAccy = function() {
     else if(state === 2) {
       game_state = "GAME_LIVE";
       getGameState();
-      getCurrentPlayer();     
       $('#enterGame').hide();      
     }
     else if(state === 3) {
@@ -349,6 +352,7 @@ const EtherAccy = function() {
       getCurrentUserCards();
       getStructElements();
       getInGameBalance();
+      getCurrentPlayer();    
       getState();
       getPlayerList();
     }
