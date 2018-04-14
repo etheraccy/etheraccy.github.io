@@ -37,8 +37,8 @@ const contractFunctions = function() {
   function getGameStruct(hash,callbackArr) {
     contract.table.call(hash, function(err,val) {
       if(!err)
-      console.log(typeof callbackArr)  
       if((typeof callbackArr) === "function") {
+        console.log(callbackArr)          
         callbackArr(hash,val);
       }  
       else if(callbackArr.length > 1) {
