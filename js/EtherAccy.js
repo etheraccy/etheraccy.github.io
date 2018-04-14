@@ -159,6 +159,9 @@ const EtherAccy = function() {
     }
     $('#gameJoined').show();
   }   
+  function getGameState() {
+    contractFunctions.getGameState(setGameState);
+  }   
   
   function setState(state) {
     state = parseInt(state)
@@ -172,6 +175,7 @@ const EtherAccy = function() {
     }  
     else if(state === 2) {
       game_state = "GAME_LIVE";
+      getGameState();
       $('#enterGame').hide();      
     }
     else if(state === 3) {
@@ -217,9 +221,7 @@ const EtherAccy = function() {
     contractFunctions.getState(setState);
   }
   
-  function getGameState() {
-    contractFunctions.getGameState(setGameState);
-  }    
+ 
   
   function selectMinBet() {
     $('#bettorPage > div > ul > div.col-lg-9 > li.min > h5 > span').addClass('selectedBox');
@@ -332,7 +334,6 @@ const EtherAccy = function() {
       getStructElements();
       getInGameBalance();
       getState();
-      getGameState();
       getPlayerList();
     }
   
