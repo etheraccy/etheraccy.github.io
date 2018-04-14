@@ -292,6 +292,7 @@ const EtherAccy = function() {
   
   function getCurrentUserHand(hash,arr) {
     let user = arr[6];
+    console.log(hash);
     contractFunctions.getUserHand(hash,user,logUserHand);
   }  
   
