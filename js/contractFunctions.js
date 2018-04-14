@@ -25,11 +25,10 @@ const contractFunctions = function() {
     let nonce = order['nonce'];
     contract.getGameHash(ante,deadline,betWindow,nonce, function(err,val) {
       if(!err)
-      console.log(callback,callback1);  
       if(callback && !callback1) {
         callback(val);
       }  
-      if(callback && callback1) {
+      else if(callback && callback1) {
         callback(val,callback1);
       }  
     })
@@ -103,6 +102,7 @@ const contractFunctions = function() {
     contract.getUserHand.call(hash,address, function(err,val) {
       if(!err)
       if(callback)
+      console.log(callback,val);  
       callback(val);  
     });  
   }   
