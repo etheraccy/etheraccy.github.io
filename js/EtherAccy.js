@@ -275,9 +275,7 @@ const EtherAccy = function() {
   }  
  
   function checkThirdCard() {
-    setInterval(function() {    
       contractFunctions.getGameHash(contractFunctions.getUserHand,checkForThirdCardLogic);
-    },5000);
   }  
   
   function setCards(arr) {
