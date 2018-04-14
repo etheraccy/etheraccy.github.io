@@ -177,7 +177,6 @@ const EtherAccy = function() {
       game_state = "GAME_LIVE";
       getGameState();
       getCurrentPlayer();     
-      checkThirdCard();      
       $('#enterGame').hide();      
     }
     else if(state === 3) {
