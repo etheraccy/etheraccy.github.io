@@ -41,7 +41,7 @@ const contractFunctions = function() {
       if((typeof callbackArr) === "function") {
         callbackArr(hash,val);
       }  
-      if(callbackArr.length > 1) {
+      else if(callbackArr.length > 1) {
         callbackArr.forEach(function(callback) {
           callback(val);
         });  
