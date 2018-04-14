@@ -25,6 +25,7 @@ const contractFunctions = function() {
     let nonce = order['nonce'];
     contract.getGameHash(ante,deadline,betWindow,nonce, function(err,val) {
       if(!err)
+      console.log(callback,callback1);  
       if(callback && !callback1) {
         callback(val);
       }  
@@ -38,7 +39,6 @@ const contractFunctions = function() {
     contract.table.call(hash, function(err,val) {
       if(!err)
       if((typeof callbackArr) === "function") {
-        console.log(callbackArr)          
         callbackArr(hash,val);
       }  
       else if(callbackArr.length > 1) {
@@ -100,11 +100,9 @@ const contractFunctions = function() {
   }    
   
   function getUserHand(hash,address,callback) {
-    console.log(hash,address);
     contract.getUserHand.call(hash,address, function(err,val) {
       if(!err)
       if(callback)
-      console.log(val);  
       callback(val);  
     });  
   }   
@@ -257,7 +255,6 @@ const contractFunctions = function() {
     let deadline = order['deadline'];
     let betWindow = order['betWindow'];
     let nonce = order['nonce'];
-    console.log(order);
     let data = contract.adminWithdrawal.getData(ante,deadline,betWindow,nonce);
     let Tx = {
        from: userAddress,
