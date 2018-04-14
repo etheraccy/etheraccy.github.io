@@ -70,15 +70,15 @@ const EtherAccy = function() {
   function getStartTime(arr) {
     let order = JSON.parse(decodeURI(localStorage.getItem("order"))); 
     let deadline = parseInt(order['deadline']);
-    countDown(parseInt(arr[6]) + deadline,'#timeFrame');  
+    countDown(parseInt(arr[4]) + deadline,'#timeFrame');  
   }  
   
   function getNumberOfCardsDealt(arr) {
-    $('#numberOfCardsDealt').text(arr[5])
+    $('#numberOfCardsDealt').text(arr[3])
   }
   
   function getAnte(arr) {
-    $('#minBet').text((parseFloat(arr[2])/1e18).toString() + " ETH")
+    $('#minBet').text((parseFloat(arr[1])/1e18).toString() + " ETH")
   }
   
   function getBetWindow(arr) {
@@ -86,7 +86,7 @@ const EtherAccy = function() {
   }
 
   function getGameBalance(arr) {
-    $('#gameBalance').text(arr[14])
+    $('#gameBalance').text(arr[0])
   }
   
   function setInGameBalance(val) {
@@ -106,7 +106,7 @@ const EtherAccy = function() {
   }  
   
   function setCurrentPlayer(arr) {
-      let currentPlayer = arr[8];
+      let currentPlayer = arr[6];
       let query = "[data-content='" + currentPlayer + "']"; 
       let userAddress = localStorage.getItem("userAddress");
       if(currentPlayer === userAddress || currentPlayer === "0x0000000000000000000000000000000000000000") {
@@ -286,11 +286,11 @@ const EtherAccy = function() {
   }   
 
   function logUserHand(arr) {
-    console.log(arr[8]);
+    console.log(arr[6]);
   }  
   
   function getCurrentUserHand(hash,arr) {
-    let user = arr[8];
+    let user = arr[6];
     console.log(hash,arr,user);
     contractFunctions.getUserHand(hash,user,logUserHand);
   }  
