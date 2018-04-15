@@ -273,18 +273,20 @@ const EtherAccy = function() {
   
   function checkForThirdCardLogic(arr) {
     console.log(arr);
-    if(arr.length == 3) {
+    if(parseInt(arr[3]) !== 0) {
       displayCard(arr[2]); 
       $('#mainGamePage > ul').show();      
     }
-    if(arr.length == 2) {
-      displayCard(arr[0]);
-      displayCard(arr[1]);
+    else {
+      displayCard(parseInt(arr[0]));
+      displayCard(parseInt(arr[1]));
+      $('##bettorPage > ul').show();
     }  
   }   
 
   function logUserHand(arr) {
     console.log(arr);
+    checkForThirdCardLogic(arr);  
   }  
   
   function getCurrentUserHand(hash,arr) {
