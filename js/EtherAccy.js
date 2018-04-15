@@ -273,11 +273,13 @@ const EtherAccy = function() {
   
   function checkForThirdCardLogic(arr) {
     console.log(arr);
-    if(parseInt(arr[3]) !== 0) {
+    if(parseInt(arr[2]) !== 0) {
+      console.log("here");
       displayCard(arr[2]); 
       $('#mainGamePage > ul').show();      
     }
     else {
+      console.log("there");      
       displayCard(parseInt(arr[0]));
       displayCard(parseInt(arr[1]));
       $('#bettorPage > ul').show();
