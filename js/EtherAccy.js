@@ -103,7 +103,6 @@ const EtherAccy = function() {
           $('#bettorPage').show();
           if($("#roundState").text() === "NEXT_PLAYER") {
             $('#bettorPage').show();            
-            $('#getInitialCards').show();
           }  
         }  
         if($(query).attr('data-content') === currentPlayer) {      
@@ -182,7 +181,6 @@ const EtherAccy = function() {
     else if(state === 2) {
       game_state = "GAME_LIVE";
       getGameState();
-      $('#getInitialCards').hide();          
       $('#enterGame').hide();      
     }
     else if(state === 3) {
@@ -213,12 +211,15 @@ const EtherAccy = function() {
     }    
     else if(state === 1) {
       game_state = "CARDS_DEALT";
+      $('#getInitialCards').hide();       
     }  
     else if(state === 2) {
       game_state = "NEXT_PLAYER"; 
+      $('#getInitialCards').show(); 
     }  
     else if(state === 3) {
-      game_state = "INVALID";            
+      game_state = "INVALID"; 
+      $('#getInitialCards').hide();       
     }
     $('#roundState').text(game_state);
  }    
