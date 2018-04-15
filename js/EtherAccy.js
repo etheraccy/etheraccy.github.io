@@ -247,7 +247,7 @@ const EtherAccy = function() {
   
   function displayCard(val,type) {
     let cardValue = (parseInt(val)%12) + 1;
-    let cardType = (Math.random % 4) + 1;
+    let cardType = (Math.random() % 4) + 1;
     console.log(cardType);
     if(type === 0) {
       $('#bettorPage > ul > div > li:nth-child(1) > div.n > h4').text(cardValue);
