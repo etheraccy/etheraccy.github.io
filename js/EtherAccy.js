@@ -254,14 +254,20 @@ const EtherAccy = function() {
     if(type === 0) {
       $('#bettorPage > ul > div > li:nth-child(1) > div.n > h4').text(cardValue);
       $('#bettorPage > ul > div > li:nth-child(1) > div.s > img').attr('src',"img/" + cardType + ".png");      
+      $('#mainGamePage > ul > div > li:nth-child(1) > div.n > h4').text(cardValue);
+      $('#mainGamePage > ul > div > li:nth-child(1) > div.s > img').attr('src',"img/" + cardType + ".png");  
     }
     else if(type === 1) {
       $('#bettorPage > ul > div > li:nth-child(3) > div.n > h4').text(cardValue);
       $('#bettorPage > ul > div > li:nth-child(3) > div.s > img').attr('src',"img/" + cardType + ".png"); 
+      $('#mainGamePage > ul > div > li:nth-child(3) > div.n > h4').text(cardValue);
+      $('#mainGamePage > ul > div > li:nth-child(3) > div.s > img').attr('src',"img/" + cardType + ".png");      
     }
     else if(type === 2) {
       $('#bettorPage > ul > div > li:nth-child(2) > div.n > h4').text(cardValue);
       $('#bettorPage > ul > div > li:nth-child(2) > div.s > img').attr('src',"img/" + cardType + ".png");
+      $('#mainGamePage > ul > div > li:nth-child(2) > div.n > h4').text(cardValue);
+      $('#mainGamePage > ul > div > li:nth-child(2) > div.s > img').attr('src',"img/" + cardType + ".png");      
     }    
   }  
   
