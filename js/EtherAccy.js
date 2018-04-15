@@ -179,6 +179,7 @@ const EtherAccy = function() {
     else if(state === 2) {
       game_state = "GAME_LIVE";
       getGameState();
+      $('#getInitialCards').hide();          
       $('#enterGame').hide();      
     }
     else if(state === 3) {
@@ -305,7 +306,6 @@ const EtherAccy = function() {
   }
   
   function getInitialCards() {
-    $('#getInitialCards').hide();    
     $('#bettorPage').show();
     contractFunctions.getInitialCards(getCards);        
   }  
