@@ -245,8 +245,8 @@ const EtherAccy = function() {
     localStorage.setItem("betChoice","customBet");    
   }  
   
-  function displayCard(val) {
-    let cardValue = (parseInt(val)/12) + 1;
+  function displayCard(val,type) {
+    let cardValue = (parseInt(val)%12) + 1;
     let cardTypeNum = Math.random % 4;; 
     let cardType = localStorage.getItem(cardTypeNum);
     if(cardType < 12) {
@@ -261,9 +261,19 @@ const EtherAccy = function() {
     while(cardType === "none") {
       cardTypeNum = Math.random % 4;
       cardType = localStorage.getItem(cardTypeNum);
-    }  
-    $('#bettorPage > ul > div > li:nth-child(1) > div.n > h4').text(cardValue);
-    $('#bettorPage > ul > div > li:nth-child(3) > div.s > img').attr('src',"img/" + cardType + ".png");
+    } 
+    if(type === 0) {
+      $('#bettorPage > ul > div > li:nth-child(1) > div.n > h4').text(cardValue);
+      $('#bettorPage > ul > div > li:nth-child(1) > div.s > img').attr('src',"img/" + cardType + ".png");      
+    }
+    else if(type === 1) {
+      $('#bettorPage > ul > div > li:nth-child(2) > div.n > h4').text(cardValue);
+      $('#bettorPage > ul > div > li:nth-child(2) > div.s > img').attr('src',"img/" + cardType + ".png"); 
+    }
+    else if(type === 2) {
+      $('#bettorPage > ul > div > li:nth-child(2) > div.n > h4').text(cardValue);
+      $('#bettorPage > ul > div > li:nth-child(3) > div.s > img').attr('src',"img/" + cardType + ".png");
+    }    
   }  
   
   function setCards(arr) {
@@ -275,13 +285,13 @@ const EtherAccy = function() {
     console.log(arr);
     if(parseInt(arr[2]) !== 0) {
       console.log("here");
-      displayCard(arr[2]); 
+      displayCard(arr[2],2); 
       $('#mainGamePage > ul').show();      
     }
     else {
       console.log("there");      
-      displayCard(parseInt(arr[0]));
-      displayCard(parseInt(arr[1]));
+      displayCard(arr[0],0);
+      displayCard(arr[1],1);
       $('#bettorPage > ul').show();
     }  
   }   
