@@ -96,11 +96,13 @@ const EtherAccy = function() {
    function setCurrentPlayer(arr) {
       if($("#gameState").text() === "GAME_LIVE") {
         let currentPlayer = arr[6];
+        $('#currentPlayer').text(currentPlayer);
         let query = "[data-content='" + currentPlayer + "']"; 
         let userAddress = localStorage.getItem("userAddress");
         if(currentPlayer === userAddress || currentPlayer === "0x0000000000000000000000000000000000000000") {
           $('#mainGamePage').hide();
           $('#bettorPage').show();
+          $('#getInitialCards').show();
         }  
         if($(query).attr('data-content') === currentPlayer) {      
           let currentPlayerNumber =  parseInt($(query).text().replace("Player ",""));
@@ -145,7 +147,7 @@ const EtherAccy = function() {
       contractFunctions.getGameHash(contractFunctions.getPlayerList,setPlayerList);    
     },5000);  
   }   
-  
+    
   function redirectPlayerToGamePage() {
     let playerList = localStorage.getItem("playerList").split(",");
     let user = localStorage.getItem("userAddress");
@@ -212,9 +214,9 @@ const EtherAccy = function() {
     }  
     else if(state === 2) {
       game_state = "NEXT_PLAYER"; 
-      $('#mainGamePage').hide();  
-      $('#getInitialCards').show();
-      $('#bettorPage').show();     
+      $('#mainGamePage').show();  
+      $('#getInitialCards').hide();
+      $('#bettorPage').hide();     
     }  
     else if(state === 3) {
       game_state = "INVALID"; 
