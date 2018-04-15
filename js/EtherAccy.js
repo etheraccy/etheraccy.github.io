@@ -280,7 +280,7 @@ const EtherAccy = function() {
     else {
       displayCard(parseInt(arr[0]));
       displayCard(parseInt(arr[1]));
-      $('##bettorPage > ul').show();
+      $('#bettorPage > ul').show();
     }  
   }   
 
