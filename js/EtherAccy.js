@@ -247,21 +247,7 @@ const EtherAccy = function() {
   
   function displayCard(val,type) {
     let cardValue = (parseInt(val)%12) + 1;
-    let cardTypeNum = Math.random % 4;; 
-    let cardType = localStorage.getItem(cardTypeNum);
-    if(cardType < 12) {
-      localStorage.setItem(cardTypeNum,cardType++);
-    }
-    if(cardType > 12) {
-      localStorage.setItem(cardTypeNum,"none");
-    }    
-    if(cardType === null) {
-      localStorage.setItem(cardTypeNum,1);
-    }  
-    while(cardType === "none") {
-      cardTypeNum = Math.random % 4;
-      cardType = localStorage.getItem(cardTypeNum);
-    } 
+    let cardType = (Math.random % 4) + 1;
     if(type === 0) {
       $('#bettorPage > ul > div > li:nth-child(1) > div.n > h4').text(cardValue);
       $('#bettorPage > ul > div > li:nth-child(1) > div.s > img').attr('src',"img/" + cardType + ".png");      
