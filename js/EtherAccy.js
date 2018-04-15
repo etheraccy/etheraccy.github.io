@@ -215,7 +215,7 @@ const EtherAccy = function() {
     }  
     else if(state === 2) {
       game_state = "NEXT_PLAYER"; 
-      $('#getInitialCards').show(); 
+      $('#mainGamePage').hide();             
     }  
     else if(state === 3) {
       game_state = "INVALID"; 
