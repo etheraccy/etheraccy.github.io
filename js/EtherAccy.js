@@ -291,6 +291,7 @@ const EtherAccy = function() {
     else {
       displayCard(arr[0],0);
       displayCard(arr[1],1);
+      $('#bettorPage > ul > div > li:nth-child(2) > div.n > h4').text("?");
       $('#bettorPage > ul').show();
     }  
   }   
