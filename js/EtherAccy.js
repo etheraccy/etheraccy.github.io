@@ -101,7 +101,9 @@ const EtherAccy = function() {
         if(currentPlayer === userAddress || currentPlayer === "0x0000000000000000000000000000000000000000") {
           $('#mainGamePage').hide();
           $('#bettorPage').show();
-          $('#getInitialCards').show();
+          if($("#roundState").text() === "NEXT_PLAYER") {
+            $('#getInitialCards').show();
+          }  
         }  
         if($(query).attr('data-content') === currentPlayer) {      
           let currentPlayerNumber =  parseInt($(query).text().replace("Player ",""));
