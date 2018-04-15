@@ -101,10 +101,6 @@ const EtherAccy = function() {
         if(currentPlayer === userAddress || currentPlayer === "0x0000000000000000000000000000000000000000") {
           $('#mainGamePage').hide();
           $('#bettorPage').show();
-          if($('#roundState') === "NEXT_PLAYER") {
-            $('#getInitialCards').show();
-            $('#bettorPage').show();            
-          }
         }  
         if($(query).attr('data-content') === currentPlayer) {      
           let currentPlayerNumber =  parseInt($(query).text().replace("Player ",""));
@@ -216,7 +212,9 @@ const EtherAccy = function() {
     }  
     else if(state === 2) {
       game_state = "NEXT_PLAYER"; 
-      $('#mainGamePage').hide();             
+      $('#mainGamePage').hide();  
+      $('#getInitialCards').show();
+      $('#bettorPage').show();     
     }  
     else if(state === 3) {
       game_state = "INVALID"; 
@@ -318,7 +316,6 @@ const EtherAccy = function() {
   }
   
   function getInitialCards() {
-    $('#bettorPage').show();
     contractFunctions.getInitialCards(getCards);        
   }  
   
