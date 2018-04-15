@@ -103,6 +103,7 @@ const EtherAccy = function() {
           $('#bettorPage').show();
           if($('#roundState') === "NEXT_PLAYER") {
             $('#getInitialCards').show();
+            $('#bettorPage').show();            
           }
         }  
         if($(query).attr('data-content') === currentPlayer) {      
