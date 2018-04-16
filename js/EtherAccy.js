@@ -334,7 +334,6 @@ const EtherAccy = function() {
         $('#bettorPage').hide();
       }
       else if($('#gameState').text() === "GAME_LIVE") {
-        getCurrentUserCards(); 
         redirectPlayerToGamePage();        
       }
       else if($('#gameState').text() === "GAME_CANCELLED") {
