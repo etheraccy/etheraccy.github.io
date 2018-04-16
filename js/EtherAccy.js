@@ -99,7 +99,7 @@ const EtherAccy = function() {
       }  
       if($("#gameState").text() === "GAME_LIVE") {
         $('#mainGamePage > div > div').show();
-        let currentPlayer = arr[6];
+        let currentPlayer = arr[6] !== "0x0000000000000000000000000000000000000000" ? arr[6] : "WAITING_FOR_FIRST_BETTOR";
         $('#currentPlayer').text(currentPlayer);
         let query = "[data-content='" + currentPlayer + "']"; 
         let userAddress = localStorage.getItem("userAddress");
