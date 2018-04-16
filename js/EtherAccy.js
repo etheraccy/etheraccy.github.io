@@ -107,6 +107,7 @@ const EtherAccy = function() {
             $('#placeBet').show();
         }  
         if(currentPlayer !== userAddress && currentPlayer !== "0x0000000000000000000000000000000000000000") {
+            $('#getInitialCards').hide();                         
             $('#bettorPage').hide(); 
             $('#mainGamePage').show();          
             $('#mainGamePage > ul').show();         
