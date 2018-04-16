@@ -106,19 +106,21 @@ const EtherAccy = function() {
   
    function setCurrentPlayer(arr) { 
       console.log($("#gameState").text())
-      if($("#gameState").text() === "GAME_LIVE" && userIsInPlayerList()) {
+      if($("#gameState").text() === "GAME_LIVE") {
         let currentPlayer = arr[6];
         let currentPlayerText = arr[6] !== "0x0000000000000000000000000000000000000000" ? arr[6] : "WAITING_FOR_FIRST_BETTOR";
         $('#currentPlayer').text(currentPlayerText);
         let query = "[data-content='" + currentPlayer + "']"; 
         let userAddress = localStorage.getItem("userAddress");
-        if(currentPlayer === userAddress || currentPlayer === "0x0000000000000000000000000000000000000000") {
-            console.log("here")
-            $('#mainGamePage').hide();
-            $('#bettorPage').show();
-            $('#bettorPage > ul').show();           
-            $('#getInitialCards').show();                         
-            $('#placeBet').show();
+        if(userIsInPlayerList()) {
+          if(currentPlayer === userAddress || currentPlayer === "0x0000000000000000000000000000000000000000") {
+              console.log("here")
+              $('#mainGamePage').hide();
+              $('#bettorPage').show();
+              $('#bettorPage > ul').show();           
+              $('#getInitialCards').show();                         
+              $('#placeBet').show();
+          }  
         }  
         if(currentPlayer !== userAddress && currentPlayer !== "0x0000000000000000000000000000000000000000") {
             $('#getInitialCards').hide();                         
