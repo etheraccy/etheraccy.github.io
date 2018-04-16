@@ -216,7 +216,7 @@ const EtherAccy = function() {
   
   function displayCard(val,type) {
     let cardValue = getCardValue(parseInt(val),type);
-    let cardType = (parseInt(Math.random()*(1e16)) % 5);
+    let cardType = (parseInt(Math.random()*(1e16)) % 4) + 1;
     if(type === 0) {
       $('#bettorPage > ul > div > li:nth-child(1) > div.n > h4').text(cardValue);
       $('#bettorPage > ul > div > li:nth-child(1) > div.s > img').attr('src',"img/" + cardType + ".png");      
