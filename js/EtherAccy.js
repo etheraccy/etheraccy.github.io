@@ -98,6 +98,7 @@ const EtherAccy = function() {
         $('#mainGamePage > div > div').hide();
       }  
       if($("#gameState").text() === "GAME_LIVE") {
+        $('#mainGamePage').show();        
         $('#mainGamePage > div > div').show();
         let currentPlayer = arr[6] !== "0x0000000000000000000000000000000000000000" ? arr[6] : "WAITING_FOR_FIRST_BETTOR";
         $('#currentPlayer').text(currentPlayer);
