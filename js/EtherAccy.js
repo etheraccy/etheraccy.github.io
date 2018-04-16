@@ -351,6 +351,7 @@ const EtherAccy = function() {
         $('#mainGamePage > div > div').hide();                    
       }
       else if($('#gameState').text() === "GAME_LIVE") {
+        $('#enterGame').hide();
         $('#mainGamePage > div > div').show();   
         $('#bettorPage > ul').show();     
         $('#mainGamePage > ul').show();     
