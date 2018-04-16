@@ -104,6 +104,7 @@ const EtherAccy = function() {
             $('#mainGamePage').hide();
             $('#bettorPage').show();
             $('#bettorPage > ul').show();           
+            $('#getInitialCards').hide();                         
             $('#placeBet').show();
         }  
         if($("#roundState").text() === "DEALING_CARDS" || $("#roundState").text() === "INVALID") {
@@ -303,18 +304,15 @@ const EtherAccy = function() {
     let game_state = "";
     if(state === 0) {
       game_state = "DEALING_CARDS"; 
-      $('#getInitialCards').hide();                        
     }    
     else if(state === 1) {
       game_state = "CARDS_DEALT";
     }  
     else if(state === 2) {
       game_state = "NEXT_PLAYER";
-      $('#getInitialCards').show();                  
     }  
     else if(state === 3) {
       game_state = "INVALID"; 
-      $('#getInitialCards').hide();                              
     }
     $('#roundState').text(game_state);
   }    
