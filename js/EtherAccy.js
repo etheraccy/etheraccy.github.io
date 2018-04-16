@@ -82,7 +82,7 @@ const EtherAccy = function() {
   }
   
   function getBetWindow(arr) {
-    $('#betWindow').text(("none" + " mins" )     
+    $('#betWindow').text(("none" + " mins" ))     
   }
 
   function getGameBalance(arr) {
