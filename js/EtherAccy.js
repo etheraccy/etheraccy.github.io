@@ -339,11 +339,11 @@ const EtherAccy = function() {
         $('#mainGamePage > ul').hide();
         $('#enterGame').show();
         $('#bettorPage').hide();
+        redirectPlayerToGamePage();         
       }
       else if($('#gameState').text() === "GAME_LIVE") {
         $('#mainGamePage').show();   
         $('#mainGamePage > div > div').show();            
-        redirectPlayerToGamePage(); 
       }
       else if($('#gameState').text() === "GAME_CANCELLED") {
         $('#mainGamePage').show();
