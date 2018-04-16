@@ -93,10 +93,7 @@ const EtherAccy = function() {
     $('#inGameBalance').text((val/1e18).toString() + " ETH");
   }  
   
-   function setCurrentPlayer(arr) {
-      if($("#gameState").text() !== "GAME_LIVE" || $("#gameState").text() !== "GAME_FINISHED") {
-        $('#mainGamePage > div > div').hide();
-      }  
+   function setCurrentPlayer(arr) { 
       if($("#gameState").text() === "GAME_LIVE") {
         let currentPlayer = arr[6] !== "0x0000000000000000000000000000000000000000" ? arr[6] : "WAITING_FOR_FIRST_BETTOR";
         $('#currentPlayer').text(currentPlayer);
@@ -245,13 +242,11 @@ const EtherAccy = function() {
     console.log(parseInt(arr[1]))
     console.log(parseInt(arr[2]))
     if(parseInt(arr[2]) !== 0) { 
-      $('#bettorPage > ul').show();      
       displayCard(arr[0],0);
       displayCard(arr[1],1);      
       displayCard(arr[2],2); 
     }
     else if(parseInt(arr[1]) > 0 && parseInt(arr[0]) > 0) {
-     $('#bettorPage > ul').show();      
       displayCard(arr[0],0);
       displayCard(arr[1],1);
       $('#bettorPage > ul > div > li:nth-child(2) > div.n > h4').text("?");
@@ -333,17 +328,21 @@ const EtherAccy = function() {
         $('#mainGamePage').hide();
         $('#bettorPage').hide();
         $('#enterGame').hide();
+        $('#mainGamePage > div > div').hide();            
       }
       else if($('#gameState').text() === "WAITING_FOR_PLAYERS") {
         $('#mainGamePage').show();
         $('#mainGamePage > ul').hide();
         $('#enterGame').show();
         $('#bettorPage').hide();
-        redirectPlayerToGamePage();         
+        redirectPlayerToGamePage();        
+        $('#mainGamePage > div > div').hide();                    
       }
       else if($('#gameState').text() === "GAME_LIVE") {
         $('#mainGamePage').show();   
-        $('#mainGamePage > div > div').show();            
+        $('#mainGamePage > div > div').show();   
+        $('#bettorPage > ul').show();     
+        $('#mainGamePage > ul').show();     
       }
       else if($('#gameState').text() === "GAME_CANCELLED") {
         $('#mainGamePage').show();
@@ -351,11 +350,13 @@ const EtherAccy = function() {
         $('#withdrawAnte').show();
         $('#enterGame').hide();
         $('#bettorPage').hide();
+        $('#mainGamePage > div > div').hide();                    
       }  
       else if($('#gameState').text() === "GAME_FINISHED") {
         $('#mainGamePage').show();
         $('#bettorPage').hide();
         $('#enterGame').hide();
+        $('#mainGamePage > div > div').hide();                    
       }      
     },5000);
   }
