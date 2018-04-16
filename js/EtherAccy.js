@@ -310,7 +310,8 @@ const EtherAccy = function() {
       game_state = "CARDS_DEALT";
     }  
     else if(state === 2) {
-      game_state = "NEXT_PLAYER"; 
+      game_state = "NEXT_PLAYER";
+      $('#getInitialCards').show();                  
     }  
     else if(state === 3) {
       game_state = "INVALID"; 
@@ -338,7 +339,7 @@ const EtherAccy = function() {
         $('#bettorPage').hide();
       }
       else if($('#gameState').text() === "GAME_LIVE") {
-        redirectPlayerToGamePage();        
+        redirectPlayerToGamePage(); 
       }
       else if($('#gameState').text() === "GAME_CANCELLED") {
         $('#mainGamePage').show();
@@ -408,6 +409,7 @@ const EtherAccy = function() {
       getStructElements();
       getInGameBalance();
       getState();
+      getGameState();        
       getCurrentPlayer();
       checkState();
       getPlayerList();
