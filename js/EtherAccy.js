@@ -277,12 +277,8 @@ const EtherAccy = function() {
     contractFunctions.getGameHash(getGameStructWrapper);
   }  
   
-  function getCards() {
-    contractFunctions.getUserHand(setCards);
-  }
-  
   function getInitialCards() {
-    contractFunctions.getInitialCards(getCards);        
+    contractFunctions.getInitialCards();        
   }  
   
   function placeBet() {
