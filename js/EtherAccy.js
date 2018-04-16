@@ -164,9 +164,6 @@ const EtherAccy = function() {
         return;
       }
     }
-    $('#bettorPage').hide();
-    $('#mainGamePage > div > div').show();    
-    $('#mainGamePage').show();
   }   
 
   function selectMinBet() {
@@ -276,9 +273,7 @@ const EtherAccy = function() {
   }  
   
   function getCurrentUserCards() {
-    if($('#gameState').text() === "GAME_LIVE") {
-      contractFunctions.getGameHash(getGameStructWrapper);
-    }  
+    contractFunctions.getGameHash(getGameStructWrapper);
   }  
   
   function getCards() {
@@ -346,6 +341,8 @@ const EtherAccy = function() {
         $('#bettorPage').hide();
       }
       else if($('#gameState').text() === "GAME_LIVE") {
+        $('#mainGamePage').show();   
+        $('#mainGamePage > div > div').show();            
         redirectPlayerToGamePage(); 
       }
       else if($('#gameState').text() === "GAME_CANCELLED") {
