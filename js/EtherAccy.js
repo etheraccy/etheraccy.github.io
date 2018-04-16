@@ -103,7 +103,6 @@ const EtherAccy = function() {
           $('#mainGamePage').hide();
           $('#bettorPage').show();
           $('#bettorPage > ul').show();            
-          $('#getInitialCards').show();
         }  
         if($(query).attr('data-content') === currentPlayer) {      
           let currentPlayerNumber =  parseInt($(query).text().replace("Player ",""));
@@ -117,9 +116,7 @@ const EtherAccy = function() {
   
   function getCurrentPlayer() {
     setInterval(function() {     
-      if($('#gameState').text() === 'GAME_LIVE') {
-        contractFunctions.getGameHash(contractFunctions.getCurrentPlayer,[setCurrentPlayer]);
-      }  
+      contractFunctions.getGameHash(contractFunctions.getCurrentPlayer,[setCurrentPlayer]);
     },5000);          
   } 
   
@@ -157,79 +154,15 @@ const EtherAccy = function() {
         $('#enterGame').hide();
         $('#mainGamePage').hide();
         if($('#bettorPage').css('display') === 'none') {
+          $('#bettorPage').show();
+          $('#bettorPage > ul').show();
           $('#getInitialCards').show();          
         }  
         return;
       }
     }
-    $('#gameJoined').show();
   }   
-  function getGameState() {
-    contractFunctions.getGameState(setGameState);
-  }   
-  
-  function setState(state) {
-    state = parseInt(state)
-    let game_state = "";
-    if(state === 0) {
-      game_state = "NONE";
-    }    
-    else if(state === 1) {
-      game_state = "WAITING_FOR_PLAYERS";
-      $('#enterGame').show();
-    }  
-    else if(state === 2) {
-      game_state = "GAME_LIVE";
-      getGameState();
-      $('#enterGame').hide();      
-    }
-    else if(state === 3) {
-      game_state = "GAME_CANCELLED";  
-      $('#enterGame').hide();    
-      $('#withdrawAnte').show();
-    }      
-    else if(state === 4) {
-      game_state = "GAME_FINISHED"; 
-      $('#mainGamePage').show();
-      $('#getInitialCards').hide();
-      $('#bettorPage').hide();    
-    }     
-    else if(state === 5) {
-      game_state = "INVALID";                                    
-    }         
-    $('#gameState').text(game_state); 
-  }
-  
-  function setGameState(state) {
-    $('#roundState').text(parseInt(state));
-    state = parseInt(state)
-    let game_state = "";
-    if(state === 0) {
-      game_state = "DEALING_CARDS";
-      $('#getInitialCards').hide(); 
-      $('#mainGamePage').show();      
-    }    
-    else if(state === 1) {
-      game_state = "CARDS_DEALT";
-      $('#getInitialCards').hide();       
-    }  
-    else if(state === 2) {
-      game_state = "NEXT_PLAYER"; 
-      $('#mainGamePage').show();  
-      $('#getInitialCards').hide();
-      $('#bettorPage').hide();     
-    }  
-    else if(state === 3) {
-      game_state = "INVALID"; 
-      $('#getInitialCards').hide();       
-    }
-    $('#roundState').text(game_state);
- }    
-  
-  function getState() {
-    contractFunctions.getState(setState);
-  }
-  
+
   function selectMinBet() {
     $('#bettorPage > div > ul > div.col-lg-9 > li.min > h5 > span').addClass('selectedBox');
     $('#bettorPage > div > ul > div.col-lg-9 > li.max > h5 > span').removeClass('selectedBox');
@@ -253,8 +186,7 @@ const EtherAccy = function() {
   
   function displayCard(val,type) {
     let cardValue = (parseInt(val)%12) + 1;
-    let cardType = (parseInt(Math.random()*(1e10)) % 4) + 1;
-    console.log(cardType);
+    let cardType = (parseInt(Math.random()*(1e16)) % 4) + 1;
     if(type === 0) {
       $('#bettorPage > ul > div > li:nth-child(1) > div.n > h4').text(cardValue);
       $('#bettorPage > ul > div > li:nth-child(1) > div.s > img').attr('src',"img/" + cardType + ".png");      
@@ -274,36 +206,26 @@ const EtherAccy = function() {
       $('#mainGamePage > ul > div > li:nth-child(2) > div.s > img').attr('src',"img/" + cardType + ".png");      
     }    
   }  
-  
-  function setCards(arr) {
-    displayCard(arr[0]);
-    displayCard(arr[1]);
-  }   
-  
+
   function checkForThirdCardLogic(arr) {
-    console.log(arr);
     if(parseInt(arr[2]) !== 0) {
       displayCard(arr[0],0);
       displayCard(arr[1],1);      
       displayCard(arr[2],2); 
-      $('#mainGamePage > ul').show();      
     }
     else {
       displayCard(arr[0],0);
       displayCard(arr[1],1);
       $('#bettorPage > ul > div > li:nth-child(2) > div.n > h4').text("?");
-      $('#bettorPage > ul').show();
     }  
   }   
 
   function logUserHand(arr) {
-    console.log(arr);
     checkForThirdCardLogic(arr);  
   }  
   
   function getCurrentUserHand(hash,arr) {
     let user = arr[6];
-    console.log(hash);
     contractFunctions.getUserHand(hash,user,logUserHand);
   }  
   
@@ -312,6 +234,7 @@ const EtherAccy = function() {
   }  
   
   function getCurrentUserCards() {
+    $('#mainGamePage > ul').show();
     contractFunctions.getGameHash(getGameStructWrapper);
   }  
   
@@ -336,10 +259,95 @@ const EtherAccy = function() {
     else if(betChoice === "customBet") {
       betValue = parseFloat($('#bettorPage > div > ul > div.col-lg-9 > li.cus > h5 > span > input').val());
     }
-    console.log(betValue)
     contractFunctions.bet(betValue);
   }  
+ 
+  function setGameState(state) {
+    state = parseInt(state)
+    let game_state = "";
+    if(state === 0) {
+      game_state = "DEALING_CARDS";     
+    }    
+    else if(state === 1) {
+      game_state = "CARDS_DEALT";
+    }  
+    else if(state === 2) {
+      game_state = "NEXT_PLAYER"; 
+    }  
+    else if(state === 3) {
+      game_state = "INVALID"; 
+    }
+    $('#roundState').text(game_state);
+  }    
   
+  function getGameState() {
+    setInterval(function(){
+      contractFunctions.getState(setGameState);
+    },5000);
+  }
+
+  function checkState() {
+    setInterval(function(){
+      if($('#gameState').text() === "NONE") {
+        $('#mainGamePage').hide();
+        $('#bettorPage').hide();
+        $('#enterGame').hide();
+      }
+      else if($('#gameState').text() === "WAITING_FOR_PLAYERS") {
+        $('#mainGamePage').show();
+        $('#mainGamePage > ul').hide();
+        $('#enterGame').show();
+        $('#bettorPage').hide();
+        redirectPlayerToGamePage();
+      }
+      else if($('#gameState').text() === "GAME_LIVE") {
+        getCurrentUserCards(); 
+      }
+      else if($('#gameState').text() === "GAME_CANCELLED") {
+        $('#mainGamePage').show();
+        $('#mainGamePage > ul').hide();
+        $('#withdrawAnte').show();
+        $('#enterGame').hide();
+        $('#bettorPage').hide();
+      }  
+      else if($('#gameState').text() === "GAME_FINISHED") {
+        $('#mainGamePage').show();
+        $('#bettorPage').hide();
+        $('#enterGame').hide();
+      }      
+    },5000);
+  }
+
+  function setState(state) {
+    state = parseInt(state)
+    let game_state = "";
+    if(state === 0) {
+      game_state = "NONE";
+    }    
+    else if(state === 1) {
+      game_state = "WAITING_FOR_PLAYERS";
+    }  
+    else if(state === 2) {
+      game_state = "GAME_LIVE";
+    }
+    else if(state === 3) {
+      game_state = "GAME_CANCELLED";  
+    }      
+    else if(state === 4) {
+      game_state = "GAME_FINISHED";    
+    }     
+    else if(state === 5) {
+      game_state = "INVALID";                                    
+    }         
+    $('#gameState').text(game_state); 
+  }
+ 
+  function getState() {
+    setInterval(function(){
+      contractFunctions.getState(setState);
+    },5000);
+  }
+
   function init() {
     getBalance();  
     if(window.location.href === "https://etheraccy.github.io/depositWithdraw.html") {
@@ -363,6 +371,8 @@ const EtherAccy = function() {
       getStructElements();
       getInGameBalance();
       getState();
+      getCurrentPlayer();
+      checkState();
       getPlayerList();
     }
   
