@@ -105,6 +105,10 @@ const EtherAccy = function() {
             $('#bettorPage > ul').show();           
             $('#placeBet').show();
         }  
+        else if(currentPlayer !== userAddress) {
+          $('#mainGamePage').show();          
+          $('#mainGamePage > ul').show();          
+        }  
         if($(query).attr('data-content') === currentPlayer) {      
           let currentPlayerNumber =  parseInt($(query).text().replace("Player ",""));
           let elementWidth = parseInt($('#mainGamePage > div > ul > li:nth-child(1)').outerWidth());            
@@ -118,7 +122,7 @@ const EtherAccy = function() {
   function getCurrentPlayer() {
     setInterval(function() {     
       contractFunctions.getGameHash(contractFunctions.getCurrentPlayer,[setCurrentPlayer]);
-    },20000);          
+    },5000);          
   } 
   
   function getInGameBalance() {
@@ -335,7 +339,6 @@ const EtherAccy = function() {
         $('#mainGamePage > div > div').hide();                    
       }
       else if($('#gameState').text() === "GAME_LIVE") {
-        $('#mainGamePage').show();   
         $('#mainGamePage > div > div').show();   
         $('#bettorPage > ul').show();     
         $('#mainGamePage > ul').show();     
