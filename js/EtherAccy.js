@@ -321,7 +321,7 @@ const EtherAccy = function() {
   
   function getGameState() {
     setInterval(function(){
-      contractFunctions.getState(setGameState);
+      contractFunctions.getGameState(setGameState);
     },5000);
   }
 
