@@ -99,15 +99,18 @@ const EtherAccy = function() {
         $('#currentPlayer').text(currentPlayer);
         let query = "[data-content='" + currentPlayer + "']"; 
         let userAddress = localStorage.getItem("userAddress");
+        console.log(currentPlayer);
         if(currentPlayer === userAddress || currentPlayer === "0x0000000000000000000000000000000000000000") {
             $('#mainGamePage').hide();
             $('#bettorPage').show();
             $('#bettorPage > ul').show();           
             $('#placeBet').show();
         }  
-        if(currentPlayer !== userAddress) {
-          $('#mainGamePage').show();          
-          $('#mainGamePage > ul').show();          
+        if($("#roundState").text() === "DEALING_CARDS" || $("#roundState").text() === "INVALID") {
+          if(currentPlayer !== userAddress) {
+            $('#mainGamePage').show();          
+            $('#mainGamePage > ul').show();         
+          }  
         }  
         if($(query).attr('data-content') === currentPlayer) {      
           let currentPlayerNumber =  parseInt($(query).text().replace("Player ",""));
