@@ -96,11 +96,8 @@ const EtherAccy = function() {
   function userIsInPlayerList() {
     let playerList = localStorage.getItem("playerList").split(",");
     let user = localStorage.getItem("userAddress");
-    console.log(playerList,user);
     for(let i in playerList) {
-      console.log(playerList[i],user,playerList[i] === user);
       if(playerList[i] === user) {
-        console.log(playerList[i],user);
         return true;
       }
     }
@@ -108,7 +105,6 @@ const EtherAccy = function() {
   }  
   
    function setCurrentPlayer(arr) { 
-      console.log($("#gameState").text())
       if($("#gameState").text() === "GAME_LIVE") {
         let currentPlayer = arr[6];
         let currentPlayerText = arr[6] !== "0x0000000000000000000000000000000000000000" ? arr[6] : "WAITING_FOR_FIRST_BETTOR";
@@ -116,10 +112,7 @@ const EtherAccy = function() {
         let query = "[data-content='" + currentPlayer + "']"; 
         let userAddress = localStorage.getItem("userAddress");
         $('#mainGamePage').show();
-        console.log("1",currentPlayer,userAddress);
-        console.log(userIsInPlayerList());
         if(userIsInPlayerList()) {
-          console.log("2",currentPlayer,userAddress);          
           if(currentPlayer === userAddress || currentPlayer === "0x0000000000000000000000000000000000000000") {
               $('#mainGamePage').hide();
               $('#bettorPage').show();
