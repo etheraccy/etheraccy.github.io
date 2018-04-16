@@ -185,6 +185,7 @@ const EtherAccy = function() {
   }  
   
   function displayCard(val,type) {
+    console.log(parseInt(val),parseInt(val) % 12)
     let cardValue = (parseInt(val)%12) + 1;
     let cardType = (parseInt(Math.random()*(1e16)) % 4) + 1;
     if(type === 0) {
@@ -208,9 +209,6 @@ const EtherAccy = function() {
   }  
 
   function checkForThirdCardLogic(arr) {
-    console.log(parseInt(arr[0]));
-    console.log(parseInt(arr[1]));
-    console.log(parseInt(arr[2]));
     if(parseInt(arr[2]) !== 0) {
       displayCard(arr[0],0);
       displayCard(arr[1],1);      
