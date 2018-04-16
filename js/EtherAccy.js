@@ -93,9 +93,20 @@ const EtherAccy = function() {
     $('#inGameBalance').text((val/1e18).toString() + " ETH");
   }  
   
+  function userIsInPlayerList() {
+    let playerList = localStorage.getItem("playerList").split(",");
+    let user = localStorage.getItem("userAddress");
+    for(let i in playerList) {
+      if(playerList[i] === user) {
+        return true;
+      }
+    }
+    return false;
+  }  
+  
    function setCurrentPlayer(arr) { 
       console.log($("#gameState").text())
-      if($("#gameState").text() === "GAME_LIVE") {
+      if($("#gameState").text() === "GAME_LIVE" && userIsInPlayerList()) {
         let currentPlayer = arr[6];
         let currentPlayerText = arr[6] !== "0x0000000000000000000000000000000000000000" ? arr[6] : "WAITING_FOR_FIRST_BETTOR";
         $('#currentPlayer').text(currentPlayerText);
@@ -161,7 +172,6 @@ const EtherAccy = function() {
       let playerList = localStorage.getItem("playerList").split(",");
       let user = localStorage.getItem("userAddress");
       for(let i in playerList) {
-        console.log(playerList[i],user);
         if(playerList[i] === user) {
           $('#mainGamePage').hide();
           if($('#bettorPage').css('display') === 'none') {
