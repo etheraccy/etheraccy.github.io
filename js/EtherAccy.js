@@ -104,7 +104,7 @@ const EtherAccy = function() {
             $('#mainGamePage').hide();
             $('#bettorPage').show();
             $('#bettorPage > ul').show();           
-            $('#getInitialCards').hide();                         
+            $('#getInitialCards').show();                         
             $('#placeBet').show();
         }  
         if($("#roundState").text() === "DEALING_CARDS" || $("#roundState").text() === "INVALID") {
