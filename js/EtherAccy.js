@@ -155,16 +155,16 @@ const EtherAccy = function() {
     let user = localStorage.getItem("userAddress");
     for(let i in playerList) {
       if(playerList[i] === user) {
-        $('#enterGame').hide();
         $('#mainGamePage').hide();
         if($('#bettorPage').css('display') === 'none') {
           $('#bettorPage').show();
           $('#bettorPage > ul').hide();
-          $('#getInitialCards').show();          
         }  
         return;
       }
     }
+    $('#bettorPage').hide();    
+    $('#mainGamePage').show();
   }   
 
   function selectMinBet() {
@@ -304,7 +304,8 @@ const EtherAccy = function() {
     state = parseInt(state)
     let game_state = "";
     if(state === 0) {
-      game_state = "DEALING_CARDS";     
+      game_state = "DEALING_CARDS"; 
+      $('#getInitialCards').hide();                        
     }    
     else if(state === 1) {
       game_state = "CARDS_DEALT";
@@ -315,6 +316,7 @@ const EtherAccy = function() {
     }  
     else if(state === 3) {
       game_state = "INVALID"; 
+      $('#getInitialCards').hide();                              
     }
     $('#roundState').text(game_state);
   }    
