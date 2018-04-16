@@ -208,7 +208,9 @@ const EtherAccy = function() {
   }  
 
   function checkForThirdCardLogic(arr) {
-    console.log(arr);
+    console.log(parseInt(arr[0]));
+    console.log(parseInt(arr[1]));
+    console.log(parseInt(arr[2]));
     if(parseInt(arr[2]) !== 0) {
       displayCard(arr[0],0);
       displayCard(arr[1],1);      
