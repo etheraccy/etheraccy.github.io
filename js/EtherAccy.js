@@ -100,6 +100,7 @@ const EtherAccy = function() {
         let query = "[data-content='" + currentPlayer + "']"; 
         let userAddress = localStorage.getItem("userAddress");
         if(currentPlayer === userAddress || currentPlayer === "0x0000000000000000000000000000000000000000") {
+            console.log("here")
             $('#mainGamePage').hide();
             $('#bettorPage').show();
             $('#bettorPage > ul').show();           
@@ -158,6 +159,7 @@ const EtherAccy = function() {
       let playerList = localStorage.getItem("playerList").split(",");
       let user = localStorage.getItem("userAddress");
       for(let i in playerList) {
+        console.log(playerList[i],user);
         if(playerList[i] === user) {
           $('#mainGamePage').hide();
           if($('#bettorPage').css('display') === 'none') {
@@ -346,7 +348,6 @@ const EtherAccy = function() {
         $('#mainGamePage > ul').hide();
         $('#enterGame').show();
         $('#bettorPage').hide();
-        redirectPlayerToGamePage();        
         $('#mainGamePage > div > div').hide();                    
       }
       else if($('#gameState').text() === "GAME_LIVE") {
