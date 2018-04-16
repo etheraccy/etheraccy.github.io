@@ -96,7 +96,9 @@ const EtherAccy = function() {
   function userIsInPlayerList() {
     let playerList = localStorage.getItem("playerList").split(",");
     let user = localStorage.getItem("userAddress");
+    console.log(playerList,user);
     for(let i in playerList) {
+      console.log(playerList[i],user,playerList[i] === user);
       if(playerList[i] === user) {
         console.log(playerList[i],user);
         return true;
@@ -116,7 +118,7 @@ const EtherAccy = function() {
         $('#mainGamePage').show();
         console.log("1",currentPlayer,userAddress);
         console.log(userIsInPlayerList());
-        if(userIsInPlayerList() === true) {
+        if(userIsInPlayerList()) {
           console.log("2",currentPlayer,userAddress);          
           if(currentPlayer === userAddress || currentPlayer === "0x0000000000000000000000000000000000000000") {
               $('#mainGamePage').hide();
