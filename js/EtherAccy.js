@@ -99,13 +99,11 @@ const EtherAccy = function() {
         $('#currentPlayer').text(currentPlayer);
         let query = "[data-content='" + currentPlayer + "']"; 
         let userAddress = localStorage.getItem("userAddress");
-        if($("#gameState").text() === "NEXT_PLAYER" || $("#gameState").text() === "DEALING_CARDS") {
-          if(currentPlayer === userAddress || currentPlayer === "0x0000000000000000000000000000000000000000") {
+        if(currentPlayer === userAddress || currentPlayer === "0x0000000000000000000000000000000000000000") {
             $('#mainGamePage').hide();
             $('#bettorPage').show();
             $('#bettorPage > ul').show();           
             $('#placeBet').show();
-          }  
         }  
         if($(query).attr('data-content') === currentPlayer) {      
           let currentPlayerNumber =  parseInt($(query).text().replace("Player ",""));
