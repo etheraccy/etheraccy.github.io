@@ -102,6 +102,7 @@ const contractFunctions = function() {
   function getUserHand(hash,address,callback) {
     contract.getUserHand.call(hash,address, function(err,val) {
       if(!err)
+      console.log(val);  
       if(callback)
       callback(val);  
     });  
