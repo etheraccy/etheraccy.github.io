@@ -300,6 +300,7 @@ const EtherAccy = function() {
  
   function setGameState(state) {
     state = parseInt(state)
+    console.log(state);
     let game_state = "";
     if(state === 0) {
       game_state = "DEALING_CARDS"; 
