@@ -311,14 +311,14 @@ const EtherAccy = function() {
     console.log(state);
     let game_state = "";
     if(state === 0) {
-      game_state = "DEALING_CARDS"; 
+      game_state = "NEXT_PLAYER"; 
     }    
     else if(state === 1) {
-      game_state = "CARDS_DEALT";
+      game_state = "DEALING_CARDS";
+      returnToDefaultCards();      
     }  
     else if(state === 2) {
-      game_state = "NEXT_PLAYER";
-      returnToDefaultCards();
+      game_state = "CARDS_DEALT";
     }  
     else if(state === 3) {
       game_state = "INVALID"; 
