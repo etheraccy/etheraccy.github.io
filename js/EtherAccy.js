@@ -118,7 +118,7 @@ const EtherAccy = function() {
   function getCurrentPlayer() {
     setInterval(function() {     
       contractFunctions.getGameHash(contractFunctions.getCurrentPlayer,[setCurrentPlayer]);
-    },5000);          
+    },15000);          
   } 
   
   function getInGameBalance() {
@@ -237,9 +237,6 @@ const EtherAccy = function() {
   }  
 
   function checkForThirdCardLogic(arr) {
-    console.log(parseInt(arr[0]))
-    console.log(parseInt(arr[1]))
-    console.log(parseInt(arr[2]))
     if(parseInt(arr[2]) !== 0) { 
       displayCard(arr[0],0);
       displayCard(arr[1],1);      
