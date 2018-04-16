@@ -155,7 +155,6 @@ const EtherAccy = function() {
   }   
     
   function redirectPlayerToGamePage() {
-    if($("#gameState").text() === "GAME_LIVE") {    
       let playerList = localStorage.getItem("playerList").split(",");
       let user = localStorage.getItem("userAddress");
       for(let i in playerList) {
@@ -168,7 +167,6 @@ const EtherAccy = function() {
           return;
         }
       }
-    }  
   }   
 
   function selectMinBet() {
