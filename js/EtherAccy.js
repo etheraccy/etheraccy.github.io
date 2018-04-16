@@ -107,11 +107,9 @@ const EtherAccy = function() {
             $('#getInitialCards').show();                         
             $('#placeBet').show();
         }  
-        if($("#roundState").text() === "DEALING_CARDS" || $("#roundState").text() === "INVALID") {
-          if(currentPlayer !== userAddress) {
+        if(currentPlayer === userAddress && currentPlayer === "0x0000000000000000000000000000000000000000") {
             $('#mainGamePage').show();          
             $('#mainGamePage > ul').show();         
-          }  
         }  
         if($(query).attr('data-content') === currentPlayer) {      
           let currentPlayerNumber =  parseInt($(query).text().replace("Player ",""));
