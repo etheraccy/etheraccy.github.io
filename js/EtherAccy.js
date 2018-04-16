@@ -155,18 +155,20 @@ const EtherAccy = function() {
   }   
     
   function redirectPlayerToGamePage() {
-    let playerList = localStorage.getItem("playerList").split(",");
-    let user = localStorage.getItem("userAddress");
-    for(let i in playerList) {
-      if(playerList[i] === user) {
-        $('#mainGamePage').hide();
-        if($('#bettorPage').css('display') === 'none') {
-          $('#bettorPage').show();
-          $('#bettorPage > ul').hide();
-        }  
-        return;
+    if($("#gameState").text() === "GAME_LIVE") {    
+      let playerList = localStorage.getItem("playerList").split(",");
+      let user = localStorage.getItem("userAddress");
+      for(let i in playerList) {
+        if(playerList[i] === user) {
+          $('#mainGamePage').hide();
+          if($('#bettorPage').css('display') === 'none') {
+            $('#bettorPage').show();
+            $('#bettorPage > ul').hide();
+          }  
+          return;
+        }
       }
-    }
+    }  
   }   
 
   function selectMinBet() {
