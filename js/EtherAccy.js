@@ -105,7 +105,7 @@ const EtherAccy = function() {
             $('#bettorPage > ul').show();           
             $('#placeBet').show();
         }  
-        else if(currentPlayer !== userAddress) {
+        if(currentPlayer !== userAddress) {
           $('#mainGamePage').show();          
           $('#mainGamePage > ul').show();          
         }  
