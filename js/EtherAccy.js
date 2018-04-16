@@ -312,10 +312,10 @@ const EtherAccy = function() {
     let game_state = "";
     if(state === 0) {
       game_state = "NEXT_PLAYER"; 
+      returnToDefaultCards();      
     }    
     else if(state === 1) {
       game_state = "DEALING_CARDS";
-      returnToDefaultCards();      
     }  
     else if(state === 2) {
       game_state = "CARDS_DEALT";
