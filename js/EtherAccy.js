@@ -274,7 +274,9 @@ const EtherAccy = function() {
   }  
   
   function getCurrentUserCards() {
-    contractFunctions.getGameHash(getGameStructWrapper);
+    setInterval(function() {
+      contractFunctions.getGameHash(getGameStructWrapper);
+    }, 5000);  
   }  
   
   function getInitialCards() {
