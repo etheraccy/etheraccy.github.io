@@ -155,7 +155,7 @@ const EtherAccy = function() {
         $('#mainGamePage').hide();
         if($('#bettorPage').css('display') === 'none') {
           $('#bettorPage').show();
-          $('#bettorPage > ul').show();
+          $('#bettorPage > ul').hide();
           $('#getInitialCards').show();          
         }  
         return;
@@ -239,11 +239,13 @@ const EtherAccy = function() {
 
   function checkForThirdCardLogic(arr) {
     if(parseInt(arr[2]) !== 0) {
+      $('#bettorPage > ul').show();      
       displayCard(arr[0],0);
       displayCard(arr[1],1);      
       displayCard(arr[2],2); 
     }
     else {
+     $('#bettorPage > ul').show();      
       displayCard(arr[0],0);
       displayCard(arr[1],1);
       $('#bettorPage > ul > div > li:nth-child(2) > div.n > h4').text("?");
@@ -264,8 +266,10 @@ const EtherAccy = function() {
   }  
   
   function getCurrentUserCards() {
-    $('#mainGamePage > ul').show();
-    contractFunctions.getGameHash(getGameStructWrapper);
+    if($('#gameState').text() === "GAME_LIVE") {
+      $('#mainGamePage > ul').show();
+      contractFunctions.getGameHash(getGameStructWrapper);
+    }  
   }  
   
   function getCards() {
@@ -328,10 +332,10 @@ const EtherAccy = function() {
         $('#mainGamePage > ul').hide();
         $('#enterGame').show();
         $('#bettorPage').hide();
-        redirectPlayerToGamePage();
       }
       else if($('#gameState').text() === "GAME_LIVE") {
         getCurrentUserCards(); 
+        redirectPlayerToGamePage();        
       }
       else if($('#gameState').text() === "GAME_CANCELLED") {
         $('#mainGamePage').show();
