@@ -184,8 +184,38 @@ const EtherAccy = function() {
     localStorage.setItem("betChoice","customBet");    
   }  
   
+  function getStandardCardValue(val) {
+    return (val % 13) + 1;
+  }  
+  
+  function getCardValue(val,type) {
+    let value;
+    if(type === 0) {
+      if(val % 13 == 0) {
+        value = 1;
+      }
+     if(val % 13 > 0) {
+         value = getStandardCardValue(val);  
+      }
+      return value;
+    }
+    if(type === 1) {
+      if(val % 13 == 0) {
+        value = 14;
+      }
+      if(val % 13 > 0) {
+        value = getStandardCardValue(val);
+      }
+      return value;
+    }  
+    if(type === 2) {
+      value = getStandardCardValue(val);
+      return value;
+    }  
+  }  
+  
   function displayCard(val,type) {
-    let cardValue = parseInt(val) % 12;
+    let cardValue = getCardValue(parseInt(val),type);
     let cardType = (parseInt(Math.random()*(1e16)) % 5);
     if(type === 0) {
       $('#bettorPage > ul > div > li:nth-child(1) > div.n > h4').text(cardValue);
