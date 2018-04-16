@@ -96,11 +96,11 @@ const EtherAccy = function() {
    function setCurrentPlayer(arr) { 
       console.log($("#gameState").text())
       if($("#gameState").text() === "GAME_LIVE") {
-        let currentPlayer = arr[6] !== "0x0000000000000000000000000000000000000000" ? arr[6] : "WAITING_FOR_FIRST_BETTOR";
+        let currentPlayer = arr[6];
+        let currentPlayerText = arr[6] !== "0x0000000000000000000000000000000000000000" ? arr[6] : "WAITING_FOR_FIRST_BETTOR";
         $('#currentPlayer').text(currentPlayer);
         let query = "[data-content='" + currentPlayer + "']"; 
         let userAddress = localStorage.getItem("userAddress");
-        console.log(currentPlayer,userAddress);
         if(currentPlayer === userAddress || currentPlayer === "0x0000000000000000000000000000000000000000") {
             console.log("here")
             $('#mainGamePage').hide();
