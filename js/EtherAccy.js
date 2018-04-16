@@ -112,9 +112,9 @@ const EtherAccy = function() {
         $('#currentPlayer').text(currentPlayerText);
         let query = "[data-content='" + currentPlayer + "']"; 
         let userAddress = localStorage.getItem("userAddress");
+        $('#mainGamePage').show();  
         if(userIsInPlayerList()) {
           if(currentPlayer === userAddress || currentPlayer === "0x0000000000000000000000000000000000000000") {
-              console.log("here")
               $('#mainGamePage').hide();
               $('#bettorPage').show();
               $('#bettorPage > ul').show();           
