@@ -312,7 +312,8 @@ const EtherAccy = function() {
     let game_state = "";
     if(state === 0) {
       game_state = "NEXT_PLAYER"; 
-      returnToDefaultCards();      
+      returnToDefaultCards();  
+      redirectPlayerToGamePage();      
     }    
     else if(state === 1) {
       game_state = "DEALING_CARDS";
