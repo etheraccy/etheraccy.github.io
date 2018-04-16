@@ -98,8 +98,6 @@ const EtherAccy = function() {
         $('#mainGamePage > div > div').hide();
       }  
       if($("#gameState").text() === "GAME_LIVE") {
-        $('#mainGamePage').show();        
-        $('#mainGamePage > div > div').show();
         let currentPlayer = arr[6] !== "0x0000000000000000000000000000000000000000" ? arr[6] : "WAITING_FOR_FIRST_BETTOR";
         $('#currentPlayer').text(currentPlayer);
         let query = "[data-content='" + currentPlayer + "']"; 
@@ -166,7 +164,8 @@ const EtherAccy = function() {
         return;
       }
     }
-    $('#bettorPage').hide();    
+    $('#bettorPage').hide();
+    $('#mainGamePage > div > div').show();    
     $('#mainGamePage').show();
   }   
 
@@ -268,6 +267,7 @@ const EtherAccy = function() {
   
   function getCurrentUserHand(hash,arr) {
     let user = arr[6];
+    console.log(user)
     contractFunctions.getUserHand(hash,user,logUserHand);
   }  
   
@@ -277,7 +277,6 @@ const EtherAccy = function() {
   
   function getCurrentUserCards() {
     if($('#gameState').text() === "GAME_LIVE") {
-      $('#mainGamePage > ul').show();
       contractFunctions.getGameHash(getGameStructWrapper);
     }  
   }  
