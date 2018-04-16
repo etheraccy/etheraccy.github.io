@@ -117,8 +117,10 @@ const EtherAccy = function() {
               $('#mainGamePage').hide();
               $('#bettorPage').show();
               $('#bettorPage > ul').show();           
-              $('#getInitialCards').show();                         
               $('#placeBet').show();
+              if($('#gameState').text() === "NEXT_PLAYER") {
+                $('#getInitialCards').show();                         
+              }
           }  
         }  
         if(currentPlayer !== userAddress && currentPlayer !== "0x0000000000000000000000000000000000000000") {
