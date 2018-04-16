@@ -104,6 +104,7 @@ const EtherAccy = function() {
             $('#mainGamePage').hide();
             $('#bettorPage').show();
             $('#bettorPage > ul').show();           
+            $('#placeBet').show();
           }  
         }  
         if($(query).attr('data-content') === currentPlayer) {      
