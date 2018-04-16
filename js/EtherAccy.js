@@ -94,7 +94,11 @@ const EtherAccy = function() {
   }  
   
    function setCurrentPlayer(arr) {
+      if($("#gameState").text() !== "GAME_LIVE" || $("#gameState").text() !== "GAME_FINISHED") {
+        $('#mainGamePage > div > div > img').hide();
+      }  
       if($("#gameState").text() === "GAME_LIVE") {
+        $('#mainGamePage > div > div > img').show();        
         let currentPlayer = arr[6];
         $('#currentPlayer').text(currentPlayer);
         let query = "[data-content='" + currentPlayer + "']"; 
