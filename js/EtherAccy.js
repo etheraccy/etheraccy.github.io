@@ -70,11 +70,11 @@ const EtherAccy = function() {
   function getStartTime(arr) {
     let order = JSON.parse(decodeURI(localStorage.getItem("order"))); 
     let deadline = parseInt(order['deadline']);
-    countDown(parseInt(arr[4]) + deadline,'#timeFrame');  
+    countDown(parseInt(arr[5]) + deadline,'#timeFrame');  
   }  
   
   function getNumberOfCardsDealt(arr) {
-    $('#numberOfCardsDealt').text(arr[2])
+    $('#numberOfCardsDealt').text(arr[3])
   }
   
   function getAnte(arr) {
@@ -95,7 +95,7 @@ const EtherAccy = function() {
   
    function setCurrentPlayer(arr) { 
       if($("#gameState").text() === "GAME_LIVE") {
-        let currentPlayer = arr[5] !== "0x0000000000000000000000000000000000000000" ? arr[5] : "WAITING_FOR_FIRST_BETTOR";
+        let currentPlayer = arr[6] !== "0x0000000000000000000000000000000000000000" ? arr[6] : "WAITING_FOR_FIRST_BETTOR";
         $('#currentPlayer').text(currentPlayer);
         let query = "[data-content='" + currentPlayer + "']"; 
         let userAddress = localStorage.getItem("userAddress");
@@ -273,7 +273,7 @@ const EtherAccy = function() {
   }  
   
   function getCurrentUserHand(hash,arr) {
-    let user = arr[5];
+    let user = arr[6];
     console.log(user)
     contractFunctions.getUserHand(hash,user,logUserHand);
   }  
