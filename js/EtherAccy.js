@@ -99,7 +99,6 @@ const EtherAccy = function() {
         $('#currentPlayer').text(currentPlayer);
         let query = "[data-content='" + currentPlayer + "']"; 
         let userAddress = localStorage.getItem("userAddress");
-        console.log(currentPlayer);
         if(currentPlayer === userAddress || currentPlayer === "0x0000000000000000000000000000000000000000") {
             $('#mainGamePage').hide();
             $('#bettorPage').show();
@@ -107,7 +106,7 @@ const EtherAccy = function() {
             $('#getInitialCards').show();                         
             $('#placeBet').show();
         }  
-        if(currentPlayer === userAddress && currentPlayer === "0x0000000000000000000000000000000000000000") {
+        if(currentPlayer !== userAddress && currentPlayer !== "0x0000000000000000000000000000000000000000") {
             $('#mainGamePage').show();          
             $('#mainGamePage > ul').show();         
         }  
