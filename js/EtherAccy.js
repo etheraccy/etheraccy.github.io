@@ -218,6 +218,15 @@ const EtherAccy = function() {
     }  
   }  
   
+  function returnToDefaultCards() {
+    $('#bettorPage > ul > div > li:nth-child(1) > div.n > h4').text("?");
+    $('#bettorPage > ul > div > li:nth-child(1) > div.s > img').attr('src',"");  
+    $('#bettorPage > ul > div > li:nth-child(2) > div.n > h4').text("?");
+    $('#bettorPage > ul > div > li:nth-child(2) > div.s > img').attr('src',"");    
+    $('#bettorPage > ul > div > li:nth-child(3) > div.n > h4').text("?");
+    $('#bettorPage > ul > div > li:nth-child(3) > div.s > img').attr('src',"");     
+  } 
+  
   function displayCard(val,type) {
     let cardValue = getCardValue(parseInt(val),type);
     let cardType = (parseInt(Math.random()*(1e16)) % 4) + 1;
@@ -307,6 +316,7 @@ const EtherAccy = function() {
     }  
     else if(state === 2) {
       game_state = "NEXT_PLAYER";
+      returnToDefaultCards();
     }  
     else if(state === 3) {
       game_state = "INVALID"; 
