@@ -103,10 +103,12 @@ const EtherAccy = function() {
         $('#currentPlayer').text(currentPlayer);
         let query = "[data-content='" + currentPlayer + "']"; 
         let userAddress = localStorage.getItem("userAddress");
-        if(currentPlayer === userAddress || currentPlayer === "0x0000000000000000000000000000000000000000") {
-          $('#mainGamePage').hide();
-          $('#bettorPage').show();
-          $('#bettorPage > ul').show();            
+        if($("#gameState").text() === "NEXT_PLAYER") {
+          if(currentPlayer === userAddress || currentPlayer === "0x0000000000000000000000000000000000000000") {
+            $('#mainGamePage').hide();
+            $('#bettorPage').show();
+            $('#bettorPage > ul').show();           
+          }  
         }  
         if($(query).attr('data-content') === currentPlayer) {      
           let currentPlayerNumber =  parseInt($(query).text().replace("Player ",""));
