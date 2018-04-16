@@ -239,7 +239,7 @@ const EtherAccy = function() {
       $('#bettorPage > ul > div > li:nth-child(2) > div.n > h4').text(cardValue);
       $('#bettorPage > ul > div > li:nth-child(2) > div.s > img').attr('src',"img/" + cardType + ".png");
       $('#mainGamePage > ul > div > li:nth-child(2) > div.n > h4').text(cardValue);
-      $('#mainGamePage > ul > div > li:nth-child(2) > div.s > img').attr('src',"img/" + cardType + ".png");      
+      $('#mainGamePage > ul > div > li:nth-child(2) > div.s').html("<img src" + "img/" + cardType + ".png" + "></img>" );      
     }    
   }  
 
@@ -274,9 +274,7 @@ const EtherAccy = function() {
   }  
   
   function getCurrentUserCards() {
-    setInterval(function() {
       contractFunctions.getGameHash(getGameStructWrapper);
-    }, 5000);  
   }  
   
   function getInitialCards() {
