@@ -277,6 +277,7 @@ const EtherAccy = function() {
   function getCurrentUserHand(hash,arr) {
     let user = arr[6];
     let currentUser = arr[6];
+    console.log($('#roundState').text());
     if($('#roundState').text() !== "DEALING_CARDS") {
       let playerList = localStorage.getItem("playerList").split(",");      
       currentUser = playerList[playerList.indexOf(user) - 1];
