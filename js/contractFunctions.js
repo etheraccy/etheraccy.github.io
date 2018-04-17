@@ -57,13 +57,6 @@ const contractFunctions = function() {
     });  
   }  
   
-  function getInGameBalance(hash,callbackArr) {
-    let userAddress = localStorage.getItem("userAddress");        
-    contract.getInGameBalance(hash,userAddress, function(err,val) {
-      if(!err)
-      callbackArr[0](val);  
-    });  
-  }  
 
   function getState(callback) {
     let order = JSON.parse(decodeURI(localStorage.getItem("order"))); 
@@ -298,7 +291,6 @@ const contractFunctions = function() {
     bet,
     adminWithdrawal,
     getGameStruct,
-    getInGameBalance,
     getState,
     getGameState,
     getPlayerList,
