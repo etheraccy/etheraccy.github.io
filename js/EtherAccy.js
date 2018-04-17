@@ -130,7 +130,6 @@ const EtherAccy = function() {
               $('#bettorPage > ul').show();           
               $('#placeBet').show();
               if($('#roundState').text() === "NEXT_PLAYER") {
-                returnToDefaultCards();                  
                 $('#getInitialCards').show();                         
               }
           }  
@@ -271,20 +270,23 @@ const EtherAccy = function() {
   }   
 
   function logUserHand(arr) {
+    console.log("4");
     checkForThirdCardLogic(arr);  
   }  
   
   function getCurrentUserHand(hash,arr) {
     let user = arr[6];
-    console.log(user)
+    console.log("3");
     contractFunctions.getUserHand(hash,user,logUserHand);
   }  
   
   function getGameStructWrapper(hash) {
+      console.log("2");    
     contractFunctions.getGameStruct(hash,getCurrentUserHand);    
   }  
   
   function getCurrentUserCards() {
+      console.log("1");
       contractFunctions.getGameHash(getGameStructWrapper);
   }  
   
