@@ -422,7 +422,6 @@ const EtherAccy = function() {
       $('#placeBet').on('click',placeBet);
       getCurrentUserCards();
       getStructElements();
-      getInGameBalance();
       getState();
       getGameState();        
       getCurrentPlayer();
