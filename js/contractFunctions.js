@@ -250,7 +250,7 @@ const contractFunctions = function() {
     let deadline = order['deadline'];
     let betWindow = order['betWindow'];
     let nonce = order['nonce'];
-    let amount = toFixedNumber(value);
+    let amount = (toFixedNumber(value)).toFixed(0);
     console.log(ante,deadline,betWindow,nonce,amount);
     let data = contract.bet.getData(ante,deadline,betWindow,nonce,amount);
     let Tx = {
