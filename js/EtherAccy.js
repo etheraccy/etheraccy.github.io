@@ -123,16 +123,14 @@ const EtherAccy = function() {
         let query = "[data-content='" + currentPlayer + "']"; 
         let userAddress = localStorage.getItem("userAddress");
         $('#mainGamePage').show();
-        if(userIsInPlayerList()) {
-          if($('#roundState').text() === "NEXT_PLAYER") {          
-            returnToDefaultCards();  
-          }  
+        if(userIsInPlayerList()) { 
           if(currentPlayer === userAddress || currentPlayer === "0x0000000000000000000000000000000000000000") {
               $('#mainGamePage').hide();
               $('#bettorPage').show();
               $('#bettorPage > ul').show();           
               $('#placeBet').show();
               if($('#roundState').text() === "NEXT_PLAYER") {
+                returnToDefaultCards();                  
                 $('#getInitialCards').show();                         
               }
           }  
