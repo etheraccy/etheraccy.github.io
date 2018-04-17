@@ -212,7 +212,7 @@ const EtherAccy = function() {
   }  
   
   function getCardValue(val,type) {
-    let value = getStandardCardValue(val) == 1 ? 1 : 14;
+    let value = getStandardCardValue(val) == 1 ? 14 : getStandardCardValue(val);
     return value; 
   }  
   
