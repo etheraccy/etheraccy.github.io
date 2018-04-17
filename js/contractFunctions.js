@@ -143,6 +143,7 @@ const contractFunctions = function() {
     let orderJSON = {'ante':ante,'deadline':deadline,'betWindow':betWindow,'nonce':nonce};
     let orderString = JSON.stringify(orderJSON);
     prompt("Copy Your Game Link","https://etheraccy.github.io/?" + orderString);
+    console.log("Copy Your Game Link","https://etheraccy.github.io/?" + orderString);
   }  
   
   function create(_ante,_deadline,_betWindow) {
