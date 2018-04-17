@@ -124,6 +124,9 @@ const EtherAccy = function() {
         let userAddress = localStorage.getItem("userAddress");
         $('#mainGamePage').show();
         if(userIsInPlayerList()) {
+          if($('#roundState').text() === "NEXT_PLAYER") {          
+            returnToDefaultCards();  
+          }  
           if(currentPlayer === userAddress || currentPlayer === "0x0000000000000000000000000000000000000000") {
               $('#mainGamePage').hide();
               $('#bettorPage').show();
@@ -313,7 +316,6 @@ const EtherAccy = function() {
     let game_state = "";
     if(state === 0) {
       game_state = "NEXT_PLAYER"; 
-      returnToDefaultCards();  
     }    
     else if(state === 1) {
       game_state = "DEALING_CARDS";
