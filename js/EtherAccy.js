@@ -307,9 +307,8 @@ const EtherAccy = function() {
       betValue = parseFloat($('#potAmount').text().replace(" ETH",""))*1e18;
     }  
     else if(betChoice === "customBet") {
-      betValue = parseFloat($('#bettorPage > div > ul > div.col-lg-9 > li.cus > h5 > span > input').val());
+      betValue = parseFloat($('#bettorPage > div > ul > div.col-lg-9 > li.cus > h5 > span > input').val())*1e18;
     }
-    console.log(betValue);
     contractFunctions.bet(betValue);
   }  
  
