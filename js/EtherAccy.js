@@ -16,9 +16,13 @@ const EtherAccy = function() {
     $('#lastBet').text(value.toString() + " ETH");
   } 
   
+  function getLastBetLogic(hash) {
+   contractFunctions.getLastBet(hash,setLastBet); 
+  }  
+  
   function getLastBet() {
     setInterval(function() {       
-      contractFunctions.getLastBet(setLastBet);  
+      contractFunctions.getGameHash(getLastBetLogic);  
     },5000);  
   }  
   
@@ -100,10 +104,6 @@ const EtherAccy = function() {
     $('#gameBalance').text(arr[0])
   }
   
-  function setInGameBalance(val) {
-    $('#inGameBalance').text((val/1e18).toString() + " ETH");
-  }  
-  
   function userIsInPlayerList() {
     let playerList = localStorage.getItem("playerList").split(",");
     let user = localStorage.getItem("userAddress");
@@ -154,12 +154,6 @@ const EtherAccy = function() {
     setInterval(function() {     
       contractFunctions.getGameHash(contractFunctions.getCurrentPlayer,[setCurrentPlayer]);
     },5000);          
-  } 
-  
-  function getInGameBalance() {
-    setInterval(function() {       
-      contractFunctions.getGameHash(contractFunctions.getInGameBalance,[setInGameBalance]);
-    },5000);    
   } 
   
   function getStructElements() {
