@@ -277,8 +277,7 @@ const EtherAccy = function() {
   function getCurrentUserHand(hash,arr) {
     let user = arr[6];
     let currentUser = arr[6];
-    console.log($('#roundState').text());
-    if($('#roundState').text() !== "DEALING_CARDS") {
+    if(localStorage.getItem("roundState") !== "DEALING_CARDS") {
       let playerList = localStorage.getItem("playerList").split(",");      
       currentUser = playerList[playerList.indexOf(user) - 1];
     }  
@@ -322,6 +321,7 @@ const EtherAccy = function() {
     }    
     else if(state === 1) {
       game_state = "DEALING_CARDS";
+      localStorage.setItem("roundState","DEALING_CARDS");
     }  
     else if(state === 2) {
       game_state = "CARDS_DEALT";
