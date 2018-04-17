@@ -303,6 +303,7 @@ const contractFunctions = function() {
     getGameState,
     getPlayerList,
     getUserHand,
+    getLastBet,
     getPlayerIndex
   };
   
