@@ -116,6 +116,15 @@ const contractFunctions = function() {
       callback(val);  
     });  
   }    
+
+  function getLastBet(hash,callback) {
+    let address = localStorage.getItem("userAddress");    
+    contract.getLastBet.call(hash,address, function(err,val) {
+      if(!err)
+      if(callback)  
+      callback(val);  
+    });  
+  }       
   
   function getPlayerIndex(hash,callback) {
     let address = localStorage.getItem("userAddress");    
