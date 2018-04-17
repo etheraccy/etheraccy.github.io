@@ -246,7 +246,7 @@ const contractFunctions = function() {
   function bet(value) {
     let userAddress = localStorage.getItem("userAddress");    
     let order = JSON.parse(decodeURI(localStorage.getItem("order"))); 
-    let ante = order['ante'];
+    let ante = order['ante'].replace(".1","");
     let deadline = order['deadline'];
     let betWindow = order['betWindow'];
     let nonce = order['nonce'];
