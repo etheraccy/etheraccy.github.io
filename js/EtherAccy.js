@@ -13,7 +13,7 @@ const EtherAccy = function() {
   
   function setLastBet(val) {
     let value = parseInt(val)/1e18;
-    $('#lastBet').text(value);
+    $('#lastBet').text(value.toString() + " ETH");
   } 
   
   function getLastBet() {
