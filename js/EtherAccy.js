@@ -276,9 +276,12 @@ const EtherAccy = function() {
   
   function getCurrentUserHand(hash,arr) {
     let user = arr[6];
-    let playerList = localStorage.getItem("playerList").split(",");
-    let lastUser = playerList[playerList.indexOf(user) - 1];
-    contractFunctions.getUserHand(hash,lastUser,logUserHand);
+    let currentUser = arr[6];
+    if($('#roundState').text() !== "DEALING_CARDS") {
+      let playerList = localStorage.getItem("playerList").split(",");      
+      currentUser = playerList[playerList.indexOf(user) - 1];
+    }  
+    contractFunctions.getUserHand(hash,currentUser,logUserHand);
   }  
   
   function getGameStructWrapper(hash) {
