@@ -11,6 +11,17 @@ const EtherAccy = function() {
     },5000);  
   }  
   
+  function setLastBet(val) {
+    let value = parseInt(val)/1e18;
+    $('#lastBet').text(value);
+  } 
+  
+  function getLastBet() {
+    setInterval(function() {       
+      contractFunctions.getLastBet(setLastBet);  
+    },5000);  
+  }  
+  
   function create() {
     let ante = $('body > div > div > div > div.row.tp > div:nth-child(2) > div > div:nth-child(2) > input').val();
     let deadline = parseInt(parseFloat($('body > div > div > div > div.row.tp > div:nth-child(2) > div > div:nth-child(3) > input').val())*60*60);
@@ -422,6 +433,7 @@ const EtherAccy = function() {
       getGameState();        
       getCurrentPlayer();
       checkState();
+      getLastBet();
       getPlayerList();
     }
   
