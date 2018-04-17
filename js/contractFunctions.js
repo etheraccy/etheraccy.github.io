@@ -246,11 +246,10 @@ const contractFunctions = function() {
   function bet(value) {
     let userAddress = localStorage.getItem("userAddress");    
     let order = JSON.parse(decodeURI(localStorage.getItem("order"))); 
-    let ante = order['ante'].replace(".1","");
+    let ante = order['ante'];
     let deadline = order['deadline'];
     let betWindow = order['betWindow'];
     let nonce = order['nonce'];
-    console.log(value);
     let amount = toFixedNumber(value);
     console.log(ante,deadline,betWindow,nonce,amount);
     let data = contract.bet.getData(ante,deadline,betWindow,nonce,amount);
