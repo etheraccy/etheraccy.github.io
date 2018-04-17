@@ -301,13 +301,13 @@ const EtherAccy = function() {
     localStorage.removeItem("betChoice");   
     let betValue;
     if(betChoice === "minBet") {
-      betValue = parseFloat($('#minBet').text().replace(" ETH",""))*1e18;
+      betValue = (parseFloat($('#minBet').text().replace(" ETH",""))*1e18).toFixed(0);
     }  
     else if(betChoice === "maxBet") {
-      betValue = parseFloat($('#potAmount').text().replace(" ETH",""))*1e18;
+      betValue = (parseFloat($('#potAmount').text().replace(" ETH",""))*1e18).toFixed(0);
     }  
     else if(betChoice === "customBet") {
-      betValue = parseFloat($('#bettorPage > div > ul > div.col-lg-9 > li.cus > h5 > span > input').val())*1e18;
+      betValue = (parseFloat($('#bettorPage > div > ul > div.col-lg-9 > li.cus > h5 > span > input').val())*1e18).toFixed(0);
     }
     contractFunctions.bet(betValue);
   }  
