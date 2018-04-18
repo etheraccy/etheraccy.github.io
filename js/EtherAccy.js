@@ -321,7 +321,7 @@ const EtherAccy = function() {
     let game_state = "";
     if(state === 0) {
       game_state = "NEXT_PLAYER"; 
-      localStorage.setItem("roundState","DEALING_CARDS");      
+      localStorage.setItem("roundState","NEXT_PLAYER");      
     }    
     else if(state === 1) {
       game_state = "DEALING_CARDS";
@@ -329,11 +329,11 @@ const EtherAccy = function() {
     }  
     else if(state === 2) {
       game_state = "CARDS_DEALT";
-      localStorage.setItem("roundState","DEALING_CARDS");      
+      localStorage.setItem("roundState","CARDS_DEALT");      
     }  
     else if(state === 3) {
       game_state = "INVALID"; 
-      localStorage.setItem("roundState","DEALING_CARDS");      
+      localStorage.setItem("roundState","INVALID");      
     }
     $('#roundState').text(game_state);
   }    
