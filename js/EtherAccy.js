@@ -282,6 +282,7 @@ const EtherAccy = function() {
     if(localStorage.getItem("roundState") !== "DEALING_CARDS") {
       let playerList = localStorage.getItem("playerList").split(",");      
       currentUser = playerList[playerList.indexOf(user) - 1];
+      console.log(arr[6],playerList,playerList.indexOf(user),currentUser);
     }  
     contractFunctions.getUserHand(hash,currentUser,logUserHand);
   }  
