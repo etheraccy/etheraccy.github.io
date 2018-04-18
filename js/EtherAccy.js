@@ -116,7 +116,9 @@ const EtherAccy = function() {
   }  
   
    function setCurrentPlayer(arr) { 
-      if($("#gameState").text() === "GAME_LIVE") {
+      let gameState = localStorage.getItem("gameState");
+      let roundState = localStorage.getItem("roundState");
+      if(gameState === "GAME_LIVE") {
         let currentPlayer = arr[6];
         let currentPlayerText = arr[6] !== "0x0000000000000000000000000000000000000000" ? arr[6] : "WAITING_FOR_FIRST_BETTOR";
         $('#currentPlayer').text(currentPlayerText);
@@ -129,8 +131,8 @@ const EtherAccy = function() {
               $('#bettorPage').show();
               $('#bettorPage > ul').show();           
               $('#placeBet').show();
-              if($('#roundState').text() === "NEXT_PLAYER") {
-                 returnToDefaultCards(); 
+              if(roundState === "NEXT_PLAYER") {
+                returnToDefaultCards(); 
                 $('#getInitialCards').show();                         
               }
           }  
@@ -319,6 +321,7 @@ const EtherAccy = function() {
     let game_state = "";
     if(state === 0) {
       game_state = "NEXT_PLAYER"; 
+      localStorage.setItem("roundState","DEALING_CARDS");      
     }    
     else if(state === 1) {
       game_state = "DEALING_CARDS";
@@ -326,9 +329,11 @@ const EtherAccy = function() {
     }  
     else if(state === 2) {
       game_state = "CARDS_DEALT";
+      localStorage.setItem("roundState","DEALING_CARDS");      
     }  
     else if(state === 3) {
       game_state = "INVALID"; 
+      localStorage.setItem("roundState","DEALING_CARDS");      
     }
     $('#roundState').text(game_state);
   }    
@@ -341,26 +346,27 @@ const EtherAccy = function() {
 
   function checkState() {
     setInterval(function(){
-      if($('#gameState').text() === "NONE") {
+      let gameState = localStorage.getItem("gameState");
+      if(gameState === "NONE") {
         $('#mainGamePage').hide();
         $('#bettorPage').hide();
         $('#enterGame').hide();
         $('#mainGamePage > div > div').hide();            
       }
-      else if($('#gameState').text() === "WAITING_FOR_PLAYERS") {
+      else if(gameState=== "WAITING_FOR_PLAYERS") {
         $('#mainGamePage').show();
         $('#mainGamePage > ul').hide();
         $('#enterGame').show();
         $('#bettorPage').hide();
         $('#mainGamePage > div > div').hide();                    
       }
-      else if($('#gameState').text() === "GAME_LIVE") {
+      else if(gameState === "GAME_LIVE") {
         $('#enterGame').hide();
         $('#mainGamePage > div > div').show();   
         $('#bettorPage > ul').show();     
         $('#mainGamePage > ul').show();     
       }
-      else if($('#gameState').text() === "GAME_CANCELLED") {
+      else if(gameState === "GAME_CANCELLED") {
         $('#mainGamePage').show();
         $('#mainGamePage > ul').hide();
         $('#withdrawAnte').show();
@@ -368,7 +374,7 @@ const EtherAccy = function() {
         $('#bettorPage').hide();
         $('#mainGamePage > div > div').hide();                    
       }  
-      else if($('#gameState').text() === "GAME_FINISHED") {
+      else if(gameState === "GAME_FINISHED") {
         $('#mainGamePage').show();
         $('#bettorPage').hide();
         $('#enterGame').hide();
@@ -382,21 +388,27 @@ const EtherAccy = function() {
     let game_state = "";
     if(state === 0) {
       game_state = "NONE";
+      localStorage.setItem("gameState","NONE");
     }    
     else if(state === 1) {
       game_state = "WAITING_FOR_PLAYERS";
+      localStorage.setItem("gameState","WAITING_FOR_PLAYERS");      
     }  
     else if(state === 2) {
       game_state = "GAME_LIVE";
+      localStorage.setItem("gameState","GAME_LIVE");            
     }
     else if(state === 3) {
-      game_state = "GAME_CANCELLED";  
+      game_state = "GAME_CANCELLED"; 
+      localStorage.setItem("gameState","GAME_CANCELLED");                  
     }      
     else if(state === 4) {
-      game_state = "GAME_FINISHED";    
+      game_state = "GAME_FINISHED"; 
+      localStorage.setItem("gameState","GAME_FINISHED");                        
     }     
     else if(state === 5) {
-      game_state = "INVALID";                                    
+      game_state = "INVALID"; 
+      localStorage.setItem("gameState","INVALID");                              
     }         
     $('#gameState').text(game_state); 
   }
