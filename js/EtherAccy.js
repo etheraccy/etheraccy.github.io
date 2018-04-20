@@ -435,7 +435,7 @@ const EtherAccy = function() {
       $('body > div > div > div > div.row.tp > div:nth-child(2) > div > center > button').on('click',withdraw);  
     }  
     if(window.location.href === "https://etheraccy.github.io/index.html" || window.location.href === "https://etheraccy.github.io/") {
-      $('body > div > div > div > div.row.tp > div:nth-child(2) > div > center > button').on('click',create);      
+      $('body > div > div > div > div.row.tp > div > div > center > button').on('click',create);      
     }
     if(~window.location.href.indexOf("https://etheraccy.github.io/gamePage.html")) {
       $('[data-toggle="popover"]').popover();            
