@@ -96,8 +96,16 @@ const EtherAccy = function() {
     $('#minBet').text((parseFloat(arr[1])/1e18).toString() + " ETH")
   }
   
-  function getBetWindow(arr) {
-    $('#betWindow').text(("none" + " mins" ))     
+  function setBetWindow(val) {
+    $('#betWindow').text(parseInt(val)/(60) + " mins" )     
+  }    
+  
+  function getBetWindowLogic(hash) {
+    contractFunctions.getBetWindow(hash,setBetWindow);    
+  }  
+  
+  function getBetWindow(hash) {
+    contractFunctions.getGameHash(getBetWindowLogic);
   }
 
   function getGameBalance(arr) {
