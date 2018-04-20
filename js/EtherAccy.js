@@ -97,7 +97,7 @@ const EtherAccy = function() {
   }
   
   function setBetWindow(val) {
-    $('#betWindow').text(parseInt(val)/(60) + " mins" )     
+    $('#betWindow').text((parseInt(val)/(60)).toString() + " mins" )     
   }    
   
   function getBetWindowLogic(hash) {
