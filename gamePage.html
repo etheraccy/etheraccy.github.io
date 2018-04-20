@@ -228,7 +228,7 @@
 
         </div>
                <span style="color:white;font-size:20px;">info@etheracey.com</span>
- 
+          <span id="chatLink" style="margin-left:2%;color:white;font-size:20px;">Chatroom</span>
       </div>
 
     </div>
@@ -242,11 +242,12 @@
     <script src="js/transaction.js"></script>
     <script src="js/contractFunctions.js"></script>
     <script src="js/EtherAccy.js"></script>    
-    <script src="js/main.js"></script> 
+    <script src="js/main.js"></script>
     <script>
-     $(document).ready(function(){
-        $('[data-toggle="popover"]').popover({ trigger: "hover" });   
-     });
+      window.onload = function() {
+        $('#chatLink').on('click',function() { window.location.href = "https://t.me/etheracey";});
+      } 
     </script>  
+ 
   </body>
 </html>
