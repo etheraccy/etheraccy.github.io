@@ -156,7 +156,6 @@ const contractFunctions = function() {
     let nonce = Math.random().toString().slice(2);
     let orderJSON = {'ante':ante,'deadline':deadline,'betWindow':betWindow,'nonce':nonce};
     let data = contract.createGame.getData(ante,deadline,betWindow,nonce);
-    console.log(ante,deadline,betWindow,nonce,data);
     let Tx = {
        from: userAddress,
        to: contractAddress,
