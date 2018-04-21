@@ -2,6 +2,7 @@ const metamask = function() {
   
   function init() {
     setInterval(function() {
+      console.log("here")
       web3.eth.getAccounts(function (err, accounts) {
         console.log(err);
         if(err) return
