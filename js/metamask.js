@@ -2,11 +2,8 @@ const metamask = function() {
   
   function init() {
     setInterval(function() {
-      console.log("here")
       web3.eth.getAccounts(function (err, accounts) {
-        console.log(err);
         if(err) return
-        console.log(accounts);
         let element = document.getElementById("metamask");
         if(accounts[0]) {
           element.style.color = "green";
