@@ -1,3 +1,4 @@
-window.onload = function () {
-  metamask.init();
-};  
+console.log("here");
+getParameters.init();
+EtherAccy.init();
+metamask.init();
